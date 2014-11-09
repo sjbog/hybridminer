@@ -24,6 +24,8 @@
     </repositories>
 
     <dependencies>
+
+        <!--
         <dependency>
             <groupId>org.deckfour.xes</groupId>
             <artifactId>OpenXES</artifactId>
@@ -40,7 +42,7 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>18.0</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 
