@@ -1,0 +1,432 @@
+W_Completeren aanvraag#complete(freq = 0.017482371594275462) W_Completeren aanvraag#complete(freq = 0.017482371594275462) = 0.017482371594275462
+W_Nabellen offertes#schedule(freq = 0.7558034368405185) W_Completeren aanvraag#complete(freq = 0.20920432261025576) = 0.48250387972538716
+A_CANCELLED#complete(freq = 0.26718916993231207) W_Completeren aanvraag#complete(freq = 0.0312930279133809) = 0.14924109892284648
+A_ACCEPTED#complete(freq = 0.014277332290240563) W_Completeren aanvraag#complete(freq = 0.0030458547169024074) = 0.008661593503571485
+O_SENT#complete(freq = 1.422475106685633E-4) W_Completeren aanvraag#complete(freq = 4.17240372178412E-5) = 9.198577394320226E-5
+A_DECLINED#complete(freq = 0.1457760314341847) W_Completeren aanvraag#complete(freq = 0.04643885342345725) = 0.09610744242882097
+W_Completeren aanvraag#schedule(freq = 1.35666802333469E-4) W_Completeren aanvraag#complete(freq = 4.17240372178412E-5) = 8.86954197756551E-5
+W_Completeren aanvraag#start(freq = 0.7057247363048657) W_Completeren aanvraag#complete(freq = 0.692326949555639) = 0.6990258429302523
+W_Beoordelen fraude#schedule(freq = 0.024193548387096774) W_Completeren aanvraag#complete(freq = 1.2517211165352359E-4) = 0.012159360249375148
+W_Completeren aanvraag#complete(freq = 4.17240372178412E-5) O_SELECTED#complete(freq = 1.422475106685633E-4) = 9.198577394320226E-5
+W_Completeren aanvraag#complete(freq = 0.017482371594275462) W_Completeren aanvraag#complete(freq = 0.017482371594275462) = 0.017482371594275462
+W_Completeren aanvraag#complete(freq = 2.08620186089206E-4) W_Nabellen offertes#complete(freq = 2.176183844011142E-4) = 2.131192852451601E-4
+W_Completeren aanvraag#complete(freq = 0.2090374264613844) W_Nabellen offertes#start(freq = 0.22360082120860483) = 0.21631912383499463
+W_Completeren aanvraag#complete(freq = 0.0187340927108107) A_CANCELLED#complete(freq = 0.15995724973281084) = 0.08934567122181077
+W_Completeren aanvraag#complete(freq = 1.2517211165352359E-4) W_Beoordelen fraude#start(freq = 0.011111111111111112) = 0.005618141611382317
+W_Completeren aanvraag#complete(freq = 0.08090290816539408) end(freq = 0.1481622984641247) = 0.1145326033147594
+W_Completeren aanvraag#complete(freq = 1.2517211165352359E-4) A_ACCEPTED#complete(freq = 5.86739683160571E-4) = 3.559558974070473E-4
+W_Completeren aanvraag#complete(freq = 0.6733425126215212) W_Completeren aanvraag#start(freq = 0.6863729159578088) = 0.679857714289665
+
+
+W_Completeren aanvraag#complete: number of predecessors = 9; number of successors =9
+
+
+W_Nabellen incomplete dossiers#start(freq = 8.771929824561403E-5) W_Nabellen incomplete dossiers#start(freq = 8.771929824561403E-5) = 8.771929824561403E-5
+W_Valideren aanvraag#complete(freq = 0.2771374287523749) W_Nabellen incomplete dossiers#start(freq = 0.1919298245614035) = 0.2345336266568892
+A_REGISTERED#complete(freq = 4.452359750667854E-4) W_Nabellen incomplete dossiers#start(freq = 8.771929824561403E-5) = 2.664776366561997E-4
+W_Nabellen incomplete dossiers#complete(freq = 0.8073989655474708) W_Nabellen incomplete dossiers#start(freq = 0.8078947368421052) = 0.8076468511947881
+W_Nabellen incomplete dossiers#start(freq = 8.771929824561403E-5) W_Nabellen incomplete dossiers#start(freq = 8.771929824561403E-5) = 8.771929824561403E-5
+W_Nabellen incomplete dossiers#start(freq = 0.7952631578947369) W_Nabellen incomplete dossiers#complete(freq = 0.794775138073113) = 0.7950191479839249
+W_Nabellen incomplete dossiers#start(freq = 0.003157894736842105) A_DECLINED#complete(freq = 0.004715127701375246) = 0.003936511219108676
+W_Nabellen incomplete dossiers#start(freq = 0.008684210526315789) O_SELECTED#complete(freq = 0.014082503556187767) = 0.011383357041251778
+W_Nabellen incomplete dossiers#start(freq = 0.0043859649122807015) O_DECLINED#complete(freq = 0.06234413965087282) = 0.03336505228157676
+W_Nabellen incomplete dossiers#start(freq = 0.01307017543859649) O_CANCELLED#complete(freq = 0.04076607387140903) = 0.02691812465500276
+W_Nabellen incomplete dossiers#start(freq = 0.13473684210526315) W_Valideren aanvraag#schedule(freq = 0.30579335058729845) = 0.2202650963462808
+W_Nabellen incomplete dossiers#start(freq = 0.00956140350877193) O_ACCEPTED#complete(freq = 0.04859563085153812) = 0.029078517180155024
+W_Nabellen incomplete dossiers#start(freq = 0.0061403508771929825) A_CANCELLED#complete(freq = 0.02493765586034913) = 0.015539003368771055
+W_Nabellen incomplete dossiers#start(freq = 0.0016666666666666668) A_REGISTERED#complete(freq = 0.008459483526268923) = 0.005063075096467795
+W_Nabellen incomplete dossiers#start(freq = 0.0037719298245614034) A_APPROVED#complete(freq = 0.01914514692787177) = 0.011458538376216586
+W_Nabellen incomplete dossiers#start(freq = 0.017543859649122806) O_SENT_BACK#complete(freq = 0.05790387955993052) = 0.03772386960452666
+W_Nabellen incomplete dossiers#start(freq = 0.0019298245614035089) A_ACTIVATED#complete(freq = 0.009795191451469279) = 0.005862508006436394
+
+
+W_Nabellen incomplete dossiers#start: number of predecessors = 4; number of successors =13
+
+
+W_Afhandelen leads#start(freq = 0.42648804476852636) A_PREACCEPTED#complete(freq = 0.341387267544455) = 0.38393765615649067
+A_PARTLYSUBMITTED#complete(freq = 0.3707495988385421) A_PREACCEPTED#complete(freq = 0.658612732455545) = 0.5146811656470436
+A_PREACCEPTED#complete(freq = 1.0) W_Completeren aanvraag#schedule(freq = 0.9994573327906662) = 0.9997286663953331
+
+
+A_PREACCEPTED#complete: number of predecessors = 2; number of successors =1
+
+
+A_SUBMITTED#complete(freq = 1.0) A_PARTLYSUBMITTED#complete(freq = 1.0) = 1.0
+A_PARTLYSUBMITTED#complete(freq = 0.36211507602964776) W_Afhandelen leads#schedule(freq = 0.9932928107315029) = 0.6777039433805754
+A_PARTLYSUBMITTED#complete(freq = 0.3707495988385421) A_PREACCEPTED#complete(freq = 0.658612732455545) = 0.5146811656470436
+A_PARTLYSUBMITTED#complete(freq = 0.2620157408114923) A_DECLINED#complete(freq = 0.4491159135559921) = 0.3555658271837422
+A_PARTLYSUBMITTED#complete(freq = 0.005119584320317873) W_Beoordelen fraude#schedule(freq = 0.5403225806451613) = 0.2727210824827396
+
+
+A_PARTLYSUBMITTED#complete: number of predecessors = 1; number of successors =4
+
+
+O_SELECTED#complete(freq = 0.4135135135135135) A_FINALIZED#complete(freq = 0.5796610169491525) = 0.496587265231333
+A_ACCEPTED#complete(freq = 0.40856639937414435) A_FINALIZED#complete(freq = 0.4165503489531406) = 0.4125583741636425
+W_Completeren aanvraag#start(freq = 8.080979925144607E-4) A_FINALIZED#complete(freq = 0.0037886340977068794) = 0.00229836604511067
+A_FINALIZED#complete(freq = 0.42033898305084744) O_SELECTED#complete(freq = 0.29985775248933144) = 0.3600983677700894
+A_FINALIZED#complete(freq = 0.5796610169491525) O_CREATED#complete(freq = 0.4135135135135135) = 0.496587265231333
+
+
+A_FINALIZED#complete: number of predecessors = 3; number of successors =2
+
+
+W_Beoordelen fraude#complete(freq = 0.5407407407407407) W_Beoordelen fraude#start(freq = 0.5407407407407407) = 0.5407407407407407
+W_Completeren aanvraag#complete(freq = 1.2517211165352359E-4) W_Beoordelen fraude#start(freq = 0.011111111111111112) = 0.005618141611382317
+W_Valideren aanvraag#complete(freq = 0.0039265357821405954) W_Beoordelen fraude#start(freq = 0.11481481481481481) = 0.059370675298477706
+W_Afhandelen leads#complete(freq = 0.003560528992878942) W_Beoordelen fraude#start(freq = 0.07777777777777778) = 0.04066915338532836
+W_Beoordelen fraude#schedule(freq = 0.5564516129032258) W_Beoordelen fraude#start(freq = 0.25555555555555554) = 0.40600358422939065
+W_Beoordelen fraude#start(freq = 0.562962962962963) W_Beoordelen fraude#complete(freq = 0.562962962962963) = 0.562962962962963
+W_Beoordelen fraude#start(freq = 0.11481481481481481) W_Afhandelen leads#schedule(freq = 0.006497589603856634) = 0.06065620220933572
+W_Beoordelen fraude#start(freq = 0.10740740740740741) W_Valideren aanvraag#schedule(freq = 0.0057734421660362335) = 0.05659042478672182
+W_Beoordelen fraude#start(freq = 0.2111111111111111) A_DECLINED#complete(freq = 0.007465618860510805) = 0.10928836498581096
+W_Beoordelen fraude#start(freq = 0.003703703703703704) W_Completeren aanvraag#schedule(freq = 1.35666802333469E-4) = 0.0019196852530185865
+
+
+W_Beoordelen fraude#start: number of predecessors = 5; number of successors =5
+
+
+W_Beoordelen fraude#complete(freq = 0.003703703703703704) W_Completeren aanvraag#schedule(freq = 1.35666802333469E-4) = 0.0019196852530185865
+A_PREACCEPTED#complete(freq = 1.0) W_Completeren aanvraag#schedule(freq = 0.9994573327906662) = 0.9997286663953331
+W_Afhandelen leads#complete(freq = 3.3909799932180403E-4) W_Completeren aanvraag#schedule(freq = 2.71333604666938E-4) = 3.0521580199437104E-4
+W_Beoordelen fraude#start(freq = 0.003703703703703704) W_Completeren aanvraag#schedule(freq = 1.35666802333469E-4) = 0.0019196852530185865
+W_Completeren aanvraag#schedule(freq = 1.35666802333469E-4) W_Beoordelen fraude#complete(freq = 0.003703703703703704) = 0.0019196852530185865
+W_Completeren aanvraag#schedule(freq = 1.35666802333469E-4) W_Completeren aanvraag#complete(freq = 4.17240372178412E-5) = 8.86954197756551E-5
+W_Completeren aanvraag#schedule(freq = 2.71333604666938E-4) W_Afhandelen leads#start(freq = 3.391555027980329E-4) = 3.0524455373248546E-4
+W_Completeren aanvraag#schedule(freq = 0.34120200786867455) W_Afhandelen leads#complete(freq = 0.42641573414716855) = 0.38380887100792155
+W_Completeren aanvraag#schedule(freq = 0.6582553249219916) W_Completeren aanvraag#start(freq = 0.2063627084042191) = 0.43230901666310534
+
+
+W_Completeren aanvraag#schedule: number of predecessors = 4; number of successors =5
+
+
+O_CANCELLED#complete(freq = 0.28481532147742816) O_SELECTED#complete(freq = 0.14807965860597438) = 0.21644749004170127
+W_Completeren aanvraag#complete(freq = 4.17240372178412E-5) O_SELECTED#complete(freq = 1.422475106685633E-4) = 9.198577394320226E-5
+W_Nabellen incomplete dossiers#start(freq = 0.008684210526315789) O_SELECTED#complete(freq = 0.014082503556187767) = 0.011383357041251778
+W_Nabellen offertes#start(freq = 0.03427653307149871) O_SELECTED#complete(freq = 0.10924608819345662) = 0.07176131063247766
+A_FINALIZED#complete(freq = 0.42033898305084744) O_SELECTED#complete(freq = 0.29985775248933144) = 0.3600983677700894
+A_ACCEPTED#complete(freq = 0.5630745159397614) O_SELECTED#complete(freq = 0.40953058321479374) = 0.4863025495772776
+W_Valideren aanvraag#start(freq = 0.013559751615764795) O_SELECTED#complete(freq = 0.015220483641536274) = 0.014390117628650535
+W_Completeren aanvraag#start(freq = 0.0011483497788363389) O_SELECTED#complete(freq = 0.003840682788051209) = 0.002494516283443774
+O_SELECTED#complete(freq = 0.13854907539118066) O_CANCELLED#complete(freq = 0.266484268125855) = 0.20251667175851784
+O_SELECTED#complete(freq = 0.4477951635846373) O_CREATED#complete(freq = 0.4477951635846373) = 0.4477951635846373
+O_SELECTED#complete(freq = 1.422475106685633E-4) W_Nabellen offertes#schedule(freq = 1.5073861923424781E-4) = 1.4649306495140556E-4
+O_SELECTED#complete(freq = 0.4135135135135135) A_FINALIZED#complete(freq = 0.5796610169491525) = 0.496587265231333
+
+
+O_SELECTED#complete: number of predecessors = 8; number of successors =4
+
+
+W_Nabellen incomplete dossiers#start(freq = 0.0043859649122807015) O_DECLINED#complete(freq = 0.06234413965087282) = 0.03336505228157676
+W_Nabellen offertes#start(freq = 9.372489511737927E-4) O_DECLINED#complete(freq = 0.026184538653366583) = 0.013560893802270189
+W_Valideren aanvraag#start(freq = 0.04410087441388924) O_DECLINED#complete(freq = 0.4339152119700748) = 0.23900804319198204
+A_DECLINED#complete(freq = 0.05016371971185331) O_DECLINED#complete(freq = 0.4775561097256858) = 0.2638599147187696
+O_DECLINED#complete(freq = 0.03366583541147132) W_Nabellen offertes#complete(freq = 0.0011751392757660168) = 0.01742048734361867
+O_DECLINED#complete(freq = 0.39900249376558605) W_Valideren aanvraag#complete(freq = 0.04053198226725776) = 0.2197672380164219
+O_DECLINED#complete(freq = 0.04488778054862843) W_Nabellen incomplete dossiers#complete(freq = 0.0031559568685894626) = 0.024021868708608948
+O_DECLINED#complete(freq = 0.5224438902743143) A_DECLINED#complete(freq = 0.05487884741322855) = 0.2886613688437714
+
+
+O_DECLINED#complete: number of predecessors = 4; number of successors =4
+
+
+W_Beoordelen fraude#complete(freq = 0.003703703703703704) W_Afhandelen leads#schedule(freq = 2.0959966464053657E-4) = 0.0019566516841721202
+A_PARTLYSUBMITTED#complete(freq = 0.36211507602964776) W_Afhandelen leads#schedule(freq = 0.9932928107315029) = 0.6777039433805754
+W_Beoordelen fraude#start(freq = 0.11481481481481481) W_Afhandelen leads#schedule(freq = 0.006497589603856634) = 0.06065620220933572
+W_Afhandelen leads#schedule(freq = 0.006497589603856634) W_Beoordelen fraude#complete(freq = 0.11481481481481481) = 0.06065620220933572
+W_Afhandelen leads#schedule(freq = 0.9935024103961434) W_Afhandelen leads#start(freq = 0.803798541631338) = 0.8986504760137407
+
+
+W_Afhandelen leads#schedule: number of predecessors = 3; number of successors =2
+
+
+W_Beoordelen fraude#complete(freq = 0.11481481481481481) W_Afhandelen leads#start(freq = 0.00525691029336951) = 0.06003586255409216
+W_Afhandelen leads#schedule(freq = 0.9935024103961434) W_Afhandelen leads#start(freq = 0.803798541631338) = 0.8986504760137407
+W_Afhandelen leads#complete(freq = 0.19057307561885384) W_Afhandelen leads#start(freq = 0.19060539257249448) = 0.19058923409567416
+W_Completeren aanvraag#schedule(freq = 2.71333604666938E-4) W_Afhandelen leads#start(freq = 3.391555027980329E-4) = 3.0524455373248546E-4
+W_Afhandelen leads#start(freq = 0.42648804476852636) A_PREACCEPTED#complete(freq = 0.341387267544455) = 0.38393765615649067
+W_Afhandelen leads#start(freq = 0.19111412582669154) W_Afhandelen leads#complete(freq = 0.19108172261783654) = 0.19109792422226404
+W_Afhandelen leads#start(freq = 0.37883669662540276) A_DECLINED#complete(freq = 0.2925998690242305) = 0.33571828282481664
+W_Afhandelen leads#start(freq = 0.0035611327793793456) W_Beoordelen fraude#schedule(freq = 0.1693548387096774) = 0.08645798574452837
+
+
+W_Afhandelen leads#start: number of predecessors = 4; number of successors =4
+
+
+W_Nabellen incomplete dossiers#schedule(freq = 0.9181703734788083) W_Valideren aanvraag#complete(freq = 0.2771374287523749) = 0.5976539011155916
+A_DECLINED#complete(freq = 0.04557956777996071) W_Valideren aanvraag#complete(freq = 0.044078530715642814) = 0.04482904924780176
+W_Beoordelen fraude#schedule(freq = 0.25) W_Valideren aanvraag#complete(freq = 0.0039265357821405954) = 0.1269632678910703
+O_DECLINED#complete(freq = 0.39900249376558605) W_Valideren aanvraag#complete(freq = 0.04053198226725776) = 0.2197672380164219
+O_CANCELLED#complete(freq = 0.003283173734610123) W_Valideren aanvraag#complete(freq = 0.0015199493350221659) = 0.0024015615348161445
+W_Nabellen offertes#complete(freq = 4.352367688022284E-5) W_Valideren aanvraag#complete(freq = 1.266624445851805E-4) = 8.509306073270167E-5
+W_Valideren aanvraag#complete(freq = 3.7998733375554147E-4) W_Valideren aanvraag#complete(freq = 3.7998733375554147E-4) = 3.7998733375554147E-4
+O_ACCEPTED#complete(freq = 0.10254123941150245) W_Valideren aanvraag#complete(freq = 0.029132362254591513) = 0.06583680083304698
+A_CANCELLED#complete(freq = 0.004987531172069825) W_Valideren aanvraag#complete(freq = 0.001773274224192527) = 0.0033804026981311764
+A_REGISTERED#complete(freq = 0.26892252894033836) W_Valideren aanvraag#complete(freq = 0.07650411652944902) = 0.1727133227348937
+A_APPROVED#complete(freq = 0.1219946571682992) W_Valideren aanvraag#complete(freq = 0.03470550981633946) = 0.07835008349231933
+W_Valideren aanvraag#start(freq = 0.37118235965023444) W_Valideren aanvraag#complete(freq = 0.3709943001899937) = 0.3710883299201141
+A_ACTIVATED#complete(freq = 0.41896705253784505) W_Valideren aanvraag#complete(freq = 0.11918936035465484) = 0.26907820644624997
+W_Valideren aanvraag#complete(freq = 5.06649778340722E-4) W_Wijzigen contractgegevens#schedule(freq = 0.3333333333333333) = 0.166919991555837
+W_Valideren aanvraag#complete(freq = 0.2771374287523749) W_Nabellen incomplete dossiers#start(freq = 0.1919298245614035) = 0.2345336266568892
+W_Valideren aanvraag#complete(freq = 3.7998733375554147E-4) W_Valideren aanvraag#complete(freq = 3.7998733375554147E-4) = 3.7998733375554147E-4
+W_Valideren aanvraag#complete(freq = 1.266624445851805E-4) W_Nabellen offertes#start(freq = 4.463090243684727E-5) = 8.564667351101389E-5
+W_Valideren aanvraag#complete(freq = 0.0039265357821405954) W_Beoordelen fraude#start(freq = 0.11481481481481481) = 0.059370675298477706
+W_Valideren aanvraag#complete(freq = 1.266624445851805E-4) A_CANCELLED#complete(freq = 3.562522265764161E-4) = 2.414573355807983E-4
+W_Valideren aanvraag#complete(freq = 0.3476884103863205) end(freq = 0.20975013372048598) = 0.27871927205340324
+W_Valideren aanvraag#complete(freq = 1.266624445851805E-4) A_REGISTERED#complete(freq = 4.452359750667854E-4) = 2.8594920982598295E-4
+W_Valideren aanvraag#complete(freq = 1.266624445851805E-4) A_APPROVED#complete(freq = 4.452359750667854E-4) = 2.8594920982598295E-4
+W_Valideren aanvraag#complete(freq = 0.3689677010766308) W_Valideren aanvraag#start(freq = 0.36915473324040043) = 0.3690612171585156
+W_Valideren aanvraag#complete(freq = 6.333122229259025E-4) W_Nabellen incomplete dossiers#schedule(freq = 0.00209819555182543) = 0.0013657538873756664
+W_Valideren aanvraag#complete(freq = 2.53324889170361E-4) W_Beoordelen fraude#schedule(freq = 0.016129032258064516) = 0.008191178573617439
+
+
+W_Valideren aanvraag#complete: number of predecessors = 13; number of successors =12
+
+
+W_Beoordelen fraude#complete(freq = 0.014814814814814815) W_Valideren aanvraag#schedule(freq = 7.963368504877563E-4) = 0.007805575832651286
+W_Nabellen incomplete dossiers#start(freq = 0.13473684210526315) W_Valideren aanvraag#schedule(freq = 0.30579335058729845) = 0.2202650963462808
+W_Beoordelen fraude#start(freq = 0.10740740740740741) W_Valideren aanvraag#schedule(freq = 0.0057734421660362335) = 0.05659042478672182
+O_SENT_BACK#complete(freq = 1.0) W_Valideren aanvraag#schedule(freq = 0.6876368703961776) = 0.8438184351980889
+W_Valideren aanvraag#schedule(freq = 0.0057734421660362335) W_Beoordelen fraude#complete(freq = 0.10740740740740741) = 0.05659042478672182
+W_Valideren aanvraag#schedule(freq = 0.6478200278717897) W_Nabellen offertes#complete(freq = 0.14162604456824512) = 0.3947230362200174
+W_Valideren aanvraag#schedule(freq = 0.3456101931116862) W_Nabellen incomplete dossiers#complete(freq = 0.15218725344086964) = 0.24889872327627793
+W_Valideren aanvraag#schedule(freq = 7.963368504877563E-4) W_Valideren aanvraag#start(freq = 5.06906602458497E-4) = 6.516217264731267E-4
+
+
+W_Valideren aanvraag#schedule: number of predecessors = 4; number of successors =4
+
+
+W_Afhandelen leads#start(freq = 0.19111412582669154) W_Afhandelen leads#complete(freq = 0.19108172261783654) = 0.19109792422226404
+W_Afhandelen leads#complete(freq = 1.6954899966090201E-4) W_Afhandelen leads#complete(freq = 1.6954899966090201E-4) = 1.6954899966090201E-4
+W_Completeren aanvraag#schedule(freq = 0.34120200786867455) W_Afhandelen leads#complete(freq = 0.42641573414716855) = 0.38380887100792155
+A_DECLINED#complete(freq = 0.2925998690242305) W_Afhandelen leads#complete(freq = 0.37877246524245506) = 0.33568616713334276
+W_Beoordelen fraude#schedule(freq = 0.1693548387096774) W_Afhandelen leads#complete(freq = 0.003560528992878942) = 0.08645768385127818
+W_Afhandelen leads#complete(freq = 0.19057307561885384) W_Afhandelen leads#start(freq = 0.19060539257249448) = 0.19058923409567416
+W_Afhandelen leads#complete(freq = 1.6954899966090201E-4) W_Afhandelen leads#complete(freq = 1.6954899966090201E-4) = 1.6954899966090201E-4
+W_Afhandelen leads#complete(freq = 0.003560528992878942) W_Beoordelen fraude#start(freq = 0.07777777777777778) = 0.04066915338532836
+W_Afhandelen leads#complete(freq = 1.6954899966090201E-4) A_CANCELLED#complete(freq = 3.562522265764161E-4) = 2.629006131186591E-4
+W_Afhandelen leads#complete(freq = 0.37877246524245506) end(freq = 0.17070375181477804) = 0.2747381085286166
+W_Afhandelen leads#complete(freq = 3.3909799932180403E-4) W_Completeren aanvraag#schedule(freq = 2.71333604666938E-4) = 3.0521580199437104E-4
+W_Afhandelen leads#complete(freq = 0.42641573414716855) W_Completeren aanvraag#start(freq = 0.10696665532494046) = 0.2666911947360545
+
+
+W_Afhandelen leads#complete: number of predecessors = 5; number of successors =7
+
+
+W_Nabellen incomplete dossiers#start(freq = 0.00956140350877193) O_ACCEPTED#complete(freq = 0.04859563085153812) = 0.029078517180155024
+A_REGISTERED#complete(freq = 0.14781834372217276) O_ACCEPTED#complete(freq = 0.14801604993312528) = 0.14791719682764903
+A_APPROVED#complete(freq = 0.21104185218165628) O_ACCEPTED#complete(freq = 0.2113241194828355) = 0.21118298583224587
+W_Valideren aanvraag#start(freq = 0.14396147509821317) O_ACCEPTED#complete(freq = 0.5064645563976817) = 0.3252130157479475
+A_ACTIVATED#complete(freq = 0.0854853072128228) O_ACCEPTED#complete(freq = 0.08559964333481944) = 0.08554247527382111
+O_ACCEPTED#complete(freq = 0.10254123941150245) W_Valideren aanvraag#complete(freq = 0.029132362254591513) = 0.06583680083304698
+O_ACCEPTED#complete(freq = 0.3437360677663843) A_REGISTERED#complete(freq = 0.3432769367764915) = 0.3435065022714379
+O_ACCEPTED#complete(freq = 0.2915737851092287) A_APPROVED#complete(freq = 0.29118432769367764) = 0.2913790564014532
+O_ACCEPTED#complete(freq = 0.00980829246544806) W_Nabellen incomplete dossiers#complete(freq = 0.0019286403085824494) = 0.005868466387015255
+O_ACCEPTED#complete(freq = 0.25234061524743645) A_ACTIVATED#complete(freq = 0.25200356188780054) = 0.2521720885676185
+
+
+O_ACCEPTED#complete: number of predecessors = 5; number of successors =5
+
+
+O_CREATED#complete(freq = 1.0) O_SENT#complete(freq = 1.0) = 1.0
+O_SENT#complete(freq = 1.422475106685633E-4) W_Completeren aanvraag#complete(freq = 4.17240372178412E-5) = 9.198577394320226E-5
+O_SENT#complete(freq = 0.9435277382645804) W_Nabellen offertes#schedule(freq = 0.9998492613807658) = 0.9716884998226731
+O_SENT#complete(freq = 0.05633001422475107) W_Nabellen incomplete dossiers#schedule(freq = 0.16617708770457407) = 0.11125355096466256
+
+
+O_SENT#complete: number of predecessors = 1; number of successors =3
+
+
+W_Nabellen incomplete dossiers#start(freq = 0.0037719298245614034) A_APPROVED#complete(freq = 0.01914514692787177) = 0.011458538376216586
+W_Valideren aanvraag#complete(freq = 1.266624445851805E-4) A_APPROVED#complete(freq = 4.452359750667854E-4) = 2.8594920982598295E-4
+O_ACCEPTED#complete(freq = 0.2915737851092287) A_APPROVED#complete(freq = 0.29118432769367764) = 0.2913790564014532
+A_REGISTERED#complete(freq = 0.25868210151380233) A_APPROVED#complete(freq = 0.25868210151380233) = 0.25868210151380233
+W_Valideren aanvraag#start(freq = 0.061842605499936636) A_APPROVED#complete(freq = 0.21727515583259127) = 0.13955888066626396
+W_Nabellen incomplete dossiers#complete(freq = 8.766546857192952E-5) A_APPROVED#complete(freq = 4.452359750667854E-4) = 2.6645072181935743E-4
+A_ACTIVATED#complete(freq = 0.21282279608192342) A_APPROVED#complete(freq = 0.21282279608192342) = 0.21282279608192342
+A_APPROVED#complete(freq = 0.1219946571682992) W_Valideren aanvraag#complete(freq = 0.03470550981633946) = 0.07835008349231933
+A_APPROVED#complete(freq = 0.21104185218165628) O_ACCEPTED#complete(freq = 0.2113241194828355) = 0.21118298583224587
+A_APPROVED#complete(freq = 0.30365093499554763) A_REGISTERED#complete(freq = 0.30365093499554763) = 0.30365093499554763
+A_APPROVED#complete(freq = 0.01157613535173642) W_Nabellen incomplete dossiers#complete(freq = 0.0022793021828701673) = 0.006927718767303294
+A_APPROVED#complete(freq = 4.452359750667854E-4) W_Valideren aanvraag#start(freq = 1.2672665061462426E-4) = 2.859813128407048E-4
+A_APPROVED#complete(freq = 0.3512911843276937) A_ACTIVATED#complete(freq = 0.3512911843276937) = 0.3512911843276937
+
+
+A_APPROVED#complete: number of predecessors = 7; number of successors =6
+
+
+W_Nabellen incomplete dossiers#start(freq = 0.0019298245614035089) A_ACTIVATED#complete(freq = 0.009795191451469279) = 0.005862508006436394
+O_ACCEPTED#complete(freq = 0.25234061524743645) A_ACTIVATED#complete(freq = 0.25200356188780054) = 0.2521720885676185
+A_REGISTERED#complete(freq = 0.2983081032947462) A_ACTIVATED#complete(freq = 0.2983081032947462) = 0.2983081032947462
+A_APPROVED#complete(freq = 0.3512911843276937) A_ACTIVATED#complete(freq = 0.3512911843276937) = 0.3512911843276937
+W_Valideren aanvraag#start(freq = 0.025091876821695603) A_ACTIVATED#complete(freq = 0.0881567230632235) = 0.05662429994245955
+W_Nabellen incomplete dossiers#complete(freq = 8.766546857192952E-5) A_ACTIVATED#complete(freq = 4.452359750667854E-4) = 2.6645072181935743E-4
+A_ACTIVATED#complete(freq = 0.41896705253784505) W_Valideren aanvraag#complete(freq = 0.11918936035465484) = 0.26907820644624997
+A_ACTIVATED#complete(freq = 0.0854853072128228) O_ACCEPTED#complete(freq = 0.08559964333481944) = 0.08554247527382111
+A_ACTIVATED#complete(freq = 0.24309884238646481) A_REGISTERED#complete(freq = 0.24309884238646481) = 0.24309884238646481
+A_ACTIVATED#complete(freq = 0.21282279608192342) A_APPROVED#complete(freq = 0.21282279608192342) = 0.21282279608192342
+A_ACTIVATED#complete(freq = 0.0396260017809439) W_Nabellen incomplete dossiers#complete(freq = 0.007802226702901727) = 0.023714114241922813
+
+
+A_ACTIVATED#complete: number of predecessors = 6; number of successors =5
+
+
+W_Wijzigen contractgegevens#schedule(freq = 0.4166666666666667) W_Wijzigen contractgegevens#schedule(freq = 0.4166666666666667) = 0.4166666666666667
+W_Nabellen offertes#complete(freq = 8.704735376044568E-5) W_Wijzigen contractgegevens#schedule(freq = 0.16666666666666666) = 0.08337685701021355
+W_Valideren aanvraag#complete(freq = 5.06649778340722E-4) W_Wijzigen contractgegevens#schedule(freq = 0.3333333333333333) = 0.166919991555837
+W_Nabellen incomplete dossiers#complete(freq = 8.766546857192952E-5) W_Wijzigen contractgegevens#schedule(freq = 0.08333333333333333) = 0.04171049940095263
+W_Wijzigen contractgegevens#schedule(freq = 0.4166666666666667) W_Wijzigen contractgegevens#schedule(freq = 0.4166666666666667) = 0.4166666666666667
+W_Wijzigen contractgegevens#schedule(freq = 0.08333333333333333) W_Nabellen offertes#start(freq = 4.463090243684727E-5) = 0.04168898211788509
+W_Wijzigen contractgegevens#schedule(freq = 0.3333333333333333) end(freq = 3.0564682509360435E-4) = 0.16681949007921346
+W_Wijzigen contractgegevens#schedule(freq = 0.16666666666666666) W_Valideren aanvraag#start(freq = 2.534533012292485E-4) = 0.08346005998394795
+
+
+W_Wijzigen contractgegevens#schedule: number of predecessors = 4; number of successors =4
+
+
+W_Afhandelen leads#schedule(freq = 0.006497589603856634) W_Beoordelen fraude#complete(freq = 0.11481481481481481) = 0.06065620220933572
+W_Valideren aanvraag#schedule(freq = 0.0057734421660362335) W_Beoordelen fraude#complete(freq = 0.10740740740740741) = 0.05659042478672182
+W_Beoordelen fraude#start(freq = 0.562962962962963) W_Beoordelen fraude#complete(freq = 0.562962962962963) = 0.562962962962963
+A_DECLINED#complete(freq = 0.007465618860510805) W_Beoordelen fraude#complete(freq = 0.2111111111111111) = 0.10928836498581096
+W_Completeren aanvraag#schedule(freq = 1.35666802333469E-4) W_Beoordelen fraude#complete(freq = 0.003703703703703704) = 0.0019196852530185865
+W_Beoordelen fraude#complete(freq = 0.11481481481481481) W_Afhandelen leads#start(freq = 0.00525691029336951) = 0.06003586255409216
+W_Beoordelen fraude#complete(freq = 0.003703703703703704) W_Afhandelen leads#schedule(freq = 2.0959966464053657E-4) = 0.0019566516841721202
+W_Beoordelen fraude#complete(freq = 0.014814814814814815) W_Valideren aanvraag#schedule(freq = 7.963368504877563E-4) = 0.007805575832651286
+W_Beoordelen fraude#complete(freq = 0.5407407407407407) W_Beoordelen fraude#start(freq = 0.5407407407407407) = 0.5407407407407407
+W_Beoordelen fraude#complete(freq = 0.2111111111111111) end(freq = 0.004355467257583862) = 0.10773328918434749
+W_Beoordelen fraude#complete(freq = 0.10740740740740741) W_Valideren aanvraag#start(freq = 0.0036750728678241035) = 0.05554124013761576
+W_Beoordelen fraude#complete(freq = 0.003703703703703704) W_Completeren aanvraag#schedule(freq = 1.35666802333469E-4) = 0.0019196852530185865
+W_Beoordelen fraude#complete(freq = 0.003703703703703704) W_Completeren aanvraag#start(freq = 4.253147329023477E-5) = 0.0018731175884969694
+
+
+W_Beoordelen fraude#complete: number of predecessors = 5; number of successors =8
+
+
+O_SELECTED#complete(freq = 0.4477951635846373) O_CREATED#complete(freq = 0.4477951635846373) = 0.4477951635846373
+O_CANCELLED#complete(freq = 0.266484268125855) O_CREATED#complete(freq = 0.13854907539118066) = 0.20251667175851784
+W_Nabellen offertes#schedule(freq = 1.5073861923424781E-4) O_CREATED#complete(freq = 1.422475106685633E-4) = 1.4649306495140556E-4
+A_FINALIZED#complete(freq = 0.5796610169491525) O_CREATED#complete(freq = 0.4135135135135135) = 0.496587265231333
+O_CREATED#complete(freq = 1.0) O_SENT#complete(freq = 1.0) = 1.0
+
+
+O_CREATED#complete: number of predecessors = 4; number of successors =1
+
+
+W_Wijzigen contractgegevens#schedule(freq = 0.08333333333333333) W_Nabellen offertes#start(freq = 4.463090243684727E-5) = 0.04168898211788509
+W_Completeren aanvraag#complete(freq = 0.2090374264613844) W_Nabellen offertes#start(freq = 0.22360082120860483) = 0.21631912383499463
+W_Nabellen offertes#complete(freq = 0.7570508356545961) W_Nabellen offertes#start(freq = 0.7763099169865215) = 0.7666803763205587
+W_Valideren aanvraag#complete(freq = 1.266624445851805E-4) W_Nabellen offertes#start(freq = 4.463090243684727E-5) = 8.564667351101389E-5
+W_Nabellen offertes#start(freq = 0.03427653307149871) O_SELECTED#complete(freq = 0.10924608819345662) = 0.07176131063247766
+W_Nabellen offertes#start(freq = 0.057350709631348744) O_CANCELLED#complete(freq = 0.35157318741450067) = 0.2044619485229247
+W_Nabellen offertes#start(freq = 9.372489511737927E-4) O_DECLINED#complete(freq = 0.026184538653366583) = 0.013560893802270189
+W_Nabellen offertes#start(freq = 0.7395340533785593) W_Nabellen offertes#complete(freq = 0.7211873259052924) = 0.7303606896419259
+W_Nabellen offertes#start(freq = 0.02142283316968669) A_CANCELLED#complete(freq = 0.17100106875667972) = 0.0962119509631832
+W_Nabellen offertes#start(freq = 4.463090243684727E-5) end(freq = 7.641170627340109E-5) = 6.052130435512418E-5
+W_Nabellen offertes#start(freq = 0.14522895652950102) O_SENT_BACK#complete(freq = 0.9420961204400695) = 0.5436625384847853
+W_Nabellen offertes#start(freq = 0.0012050343657948764) A_DECLINED#complete(freq = 0.003536345776031434) = 0.0023706900709131555
+
+
+W_Nabellen offertes#start: number of predecessors = 4; number of successors =8
+
+
+O_DECLINED#complete(freq = 0.04488778054862843) W_Nabellen incomplete dossiers#complete(freq = 0.0031559568685894626) = 0.024021868708608948
+O_CANCELLED#complete(freq = 0.019151846785225718) W_Nabellen incomplete dossiers#complete(freq = 0.006136582800035066) = 0.012644214792630393
+W_Nabellen incomplete dossiers#start(freq = 0.7952631578947369) W_Nabellen incomplete dossiers#complete(freq = 0.794775138073113) = 0.7950191479839249
+W_Valideren aanvraag#schedule(freq = 0.3456101931116862) W_Nabellen incomplete dossiers#complete(freq = 0.15218725344086964) = 0.24889872327627793
+O_ACCEPTED#complete(freq = 0.00980829246544806) W_Nabellen incomplete dossiers#complete(freq = 0.0019286403085824494) = 0.005868466387015255
+A_CANCELLED#complete(freq = 0.020306376914855716) W_Nabellen incomplete dossiers#complete(freq = 0.004996931708599982) = 0.01265165431172785
+A_REGISTERED#complete(freq = 0.025378450578806767) W_Nabellen incomplete dossiers#complete(freq = 0.004996931708599982) = 0.015187691143703375
+A_APPROVED#complete(freq = 0.01157613535173642) W_Nabellen incomplete dossiers#complete(freq = 0.0022793021828701673) = 0.006927718767303294
+W_Nabellen incomplete dossiers#complete(freq = 6.136582800035066E-4) W_Nabellen incomplete dossiers#complete(freq = 6.136582800035066E-4) = 6.136582800035066E-4
+A_DECLINED#complete(freq = 0.006548788474132285) W_Nabellen incomplete dossiers#complete(freq = 0.004383273428596476) = 0.005466030951364381
+W_Nabellen incomplete dossiers#schedule(freq = 0.08015107007973143) W_Nabellen incomplete dossiers#complete(freq = 0.016744104497238538) = 0.048447587288484986
+A_ACTIVATED#complete(freq = 0.0396260017809439) W_Nabellen incomplete dossiers#complete(freq = 0.007802226702901727) = 0.023714114241922813
+W_Nabellen incomplete dossiers#complete(freq = 8.766546857192952E-5) W_Wijzigen contractgegevens#schedule(freq = 0.08333333333333333) = 0.04171049940095263
+W_Nabellen incomplete dossiers#complete(freq = 1.7533093714385903E-4) O_CANCELLED#complete(freq = 5.471956224350205E-4) = 3.612632797894398E-4
+W_Nabellen incomplete dossiers#complete(freq = 0.8073989655474708) W_Nabellen incomplete dossiers#start(freq = 0.8078947368421052) = 0.8076468511947881
+W_Nabellen incomplete dossiers#complete(freq = 1.7533093714385903E-4) A_CANCELLED#complete(freq = 7.125044531528322E-4) = 4.439176951483456E-4
+W_Nabellen incomplete dossiers#complete(freq = 0.03962479179451214) end(freq = 0.034538091235577294) = 0.03708144151504472
+W_Nabellen incomplete dossiers#complete(freq = 8.766546857192952E-5) A_APPROVED#complete(freq = 4.452359750667854E-4) = 2.6645072181935743E-4
+W_Nabellen incomplete dossiers#complete(freq = 0.15174892609801) W_Valideren aanvraag#start(freq = 0.2193638322139146) = 0.1855563791559623
+W_Nabellen incomplete dossiers#complete(freq = 6.136582800035066E-4) W_Nabellen incomplete dossiers#complete(freq = 6.136582800035066E-4) = 6.136582800035066E-4
+W_Nabellen incomplete dossiers#complete(freq = 8.766546857192952E-5) A_ACTIVATED#complete(freq = 4.452359750667854E-4) = 2.6645072181935743E-4
+
+
+W_Nabellen incomplete dossiers#complete: number of predecessors = 12; number of successors =9
+
+
+O_DECLINED#complete(freq = 0.5224438902743143) A_DECLINED#complete(freq = 0.05487884741322855) = 0.2886613688437714
+W_Nabellen incomplete dossiers#start(freq = 0.003157894736842105) A_DECLINED#complete(freq = 0.004715127701375246) = 0.003936511219108676
+W_Afhandelen leads#start(freq = 0.37883669662540276) A_DECLINED#complete(freq = 0.2925998690242305) = 0.33571828282481664
+W_Nabellen offertes#start(freq = 0.0012050343657948764) A_DECLINED#complete(freq = 0.003536345776031434) = 0.0023706900709131555
+A_PARTLYSUBMITTED#complete(freq = 0.2620157408114923) A_DECLINED#complete(freq = 0.4491159135559921) = 0.3555658271837422
+W_Beoordelen fraude#start(freq = 0.2111111111111111) A_DECLINED#complete(freq = 0.007465618860510805) = 0.10928836498581096
+A_ACCEPTED#complete(freq = 0.004889497359671426) A_DECLINED#complete(freq = 0.0032743942370661427) = 0.004081945798368784
+W_Valideren aanvraag#start(freq = 0.04055252819667976) A_DECLINED#complete(freq = 0.04191224623444663) = 0.041232387215563195
+W_Completeren aanvraag#start(freq = 0.04627424293977543) A_DECLINED#complete(freq = 0.14250163719711853) = 0.09438794006844697
+A_DECLINED#complete(freq = 0.007465618860510805) W_Beoordelen fraude#complete(freq = 0.2111111111111111) = 0.10928836498581096
+A_DECLINED#complete(freq = 0.1457760314341847) W_Completeren aanvraag#complete(freq = 0.04643885342345725) = 0.09610744242882097
+A_DECLINED#complete(freq = 0.05016371971185331) O_DECLINED#complete(freq = 0.4775561097256858) = 0.2638599147187696
+A_DECLINED#complete(freq = 0.00275049115913556) W_Nabellen offertes#complete(freq = 9.139972144846796E-4) = 0.00183224418681012
+A_DECLINED#complete(freq = 0.04557956777996071) W_Valideren aanvraag#complete(freq = 0.044078530715642814) = 0.04482904924780176
+A_DECLINED#complete(freq = 0.2925998690242305) W_Afhandelen leads#complete(freq = 0.37877246524245506) = 0.33568616713334276
+A_DECLINED#complete(freq = 0.4491159135559921) end(freq = 0.2620157408114923) = 0.3555658271837422
+A_DECLINED#complete(freq = 0.006548788474132285) W_Nabellen incomplete dossiers#complete(freq = 0.004383273428596476) = 0.005466030951364381
+
+
+A_DECLINED#complete: number of predecessors = 9; number of successors =8
+
+
+W_Valideren aanvraag#complete(freq = 6.333122229259025E-4) W_Nabellen incomplete dossiers#schedule(freq = 0.00209819555182543) = 0.0013657538873756664
+O_SENT#complete(freq = 0.05633001422475107) W_Nabellen incomplete dossiers#schedule(freq = 0.16617708770457407) = 0.11125355096466256
+W_Valideren aanvraag#start(freq = 0.2511722215181853) W_Nabellen incomplete dossiers#schedule(freq = 0.8317247167436005) = 0.541448469130893
+W_Nabellen incomplete dossiers#schedule(freq = 0.9181703734788083) W_Valideren aanvraag#complete(freq = 0.2771374287523749) = 0.5976539011155916
+W_Nabellen incomplete dossiers#schedule(freq = 0.08015107007973143) W_Nabellen incomplete dossiers#complete(freq = 0.016744104497238538) = 0.048447587288484986
+W_Nabellen incomplete dossiers#schedule(freq = 0.001678556441460344) W_Valideren aanvraag#start(freq = 5.06906602458497E-4) = 0.0010927315219594206
+
+
+W_Nabellen incomplete dossiers#schedule: number of predecessors = 3; number of successors =3
+
+
+W_Afhandelen leads#start(freq = 0.0035611327793793456) W_Beoordelen fraude#schedule(freq = 0.1693548387096774) = 0.08645798574452837
+W_Valideren aanvraag#complete(freq = 2.53324889170361E-4) W_Beoordelen fraude#schedule(freq = 0.016129032258064516) = 0.008191178573617439
+A_PARTLYSUBMITTED#complete(freq = 0.005119584320317873) W_Beoordelen fraude#schedule(freq = 0.5403225806451613) = 0.2727210824827396
+W_Valideren aanvraag#start(freq = 0.003928526169053352) W_Beoordelen fraude#schedule(freq = 0.25) = 0.12696426308452669
+W_Completeren aanvraag#start(freq = 1.275944198707043E-4) W_Beoordelen fraude#schedule(freq = 0.024193548387096774) = 0.01216057140348374
+W_Beoordelen fraude#schedule(freq = 0.024193548387096774) W_Completeren aanvraag#complete(freq = 1.2517211165352359E-4) = 0.012159360249375148
+W_Beoordelen fraude#schedule(freq = 0.25) W_Valideren aanvraag#complete(freq = 0.0039265357821405954) = 0.1269632678910703
+W_Beoordelen fraude#schedule(freq = 0.1693548387096774) W_Afhandelen leads#complete(freq = 0.003560528992878942) = 0.08645768385127818
+W_Beoordelen fraude#schedule(freq = 0.5564516129032258) W_Beoordelen fraude#start(freq = 0.25555555555555554) = 0.40600358422939065
+
+
+W_Beoordelen fraude#schedule: number of predecessors = 5; number of successors =4
+
+
+O_SELECTED#complete(freq = 0.13854907539118066) O_CANCELLED#complete(freq = 0.266484268125855) = 0.20251667175851784
+W_Nabellen incomplete dossiers#start(freq = 0.01307017543859649) O_CANCELLED#complete(freq = 0.04076607387140903) = 0.02691812465500276
+W_Nabellen offertes#complete(freq = 0.011751392757660167) O_CANCELLED#complete(freq = 0.07387140902872777) = 0.04281140089319397
+W_Nabellen offertes#start(freq = 0.057350709631348744) O_CANCELLED#complete(freq = 0.35157318741450067) = 0.2044619485229247
+A_CANCELLED#complete(freq = 0.30780192376202353) O_CANCELLED#complete(freq = 0.23638850889192886) = 0.2720952163269762
+W_Valideren aanvraag#start(freq = 0.014066658218223293) O_CANCELLED#complete(freq = 0.03036935704514364) = 0.022218007631683467
+W_Nabellen incomplete dossiers#complete(freq = 1.7533093714385903E-4) O_CANCELLED#complete(freq = 5.471956224350205E-4) = 3.612632797894398E-4
+O_CANCELLED#complete(freq = 0.28481532147742816) O_SELECTED#complete(freq = 0.14807965860597438) = 0.21644749004170127
+O_CANCELLED#complete(freq = 0.14008207934336525) W_Nabellen offertes#complete(freq = 0.022284122562674095) = 0.08118310095301967
+O_CANCELLED#complete(freq = 0.266484268125855) O_CREATED#complete(freq = 0.13854907539118066) = 0.20251667175851784
+O_CANCELLED#complete(freq = 0.003283173734610123) W_Valideren aanvraag#complete(freq = 0.0015199493350221659) = 0.0024015615348161445
+O_CANCELLED#complete(freq = 0.20984952120383038) A_CANCELLED#complete(freq = 0.27324545778411113) = 0.24154748949397076
+O_CANCELLED#complete(freq = 0.07633378932968536) end(freq = 0.0213188660502789) = 0.04882632768998213
+O_CANCELLED#complete(freq = 0.019151846785225718) W_Nabellen incomplete dossiers#complete(freq = 0.006136582800035066) = 0.012644214792630393
+
+
+O_CANCELLED#complete: number of predecessors = 7; number of successors =7
+
+
+start(freq = 1.0) A_SUBMITTED#complete(freq = 1.0) = 1.0
+A_SUBMITTED#complete(freq = 1.0) A_PARTLYSUBMITTED#complete(freq = 1.0) = 1.0
+
+
+A_SUBMITTED#complete: number of predecessors = 1; number of successors =1
+
+
+O_DECLINED#complete(freq = 0.03366583541147132) W_Nabellen offertes#complete(freq = 0.0011751392757660168) = 0.01742048734361867
+O_CANCELLED#complete(freq = 0.140082079343365
