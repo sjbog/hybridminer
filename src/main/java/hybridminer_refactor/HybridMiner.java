@@ -58,7 +58,7 @@ public class HybridMiner {
 				rootLogPrefix = ".\\level2";
 				//String declarativeLogPrefix = "C:\\Users\\fabrizio\\Desktop\\declarative";
 				
-				//private static HashMap<Integer,Set<String>> groupsOfEvents = new HashMap<Integer,Set<String>>();
+				//private static HashMap<Integer,Set<String>> procedural_event_groups = new HashMap<Integer,Set<String>>();
 			//	private static int groupID = 1;
 				level = 2;
 				maximumSuccessors = 4;
@@ -72,7 +72,7 @@ public class HybridMiner {
 			PrintStream pw = new PrintStream (outputFileName);
 
 			inputLogFileName	= "data/l1.mxml";
-			inputLogFileName	= "data/financial_log.mxml.gz";
+//			inputLogFileName	= "data/financial_log.mxml.gz";
 			LogProcessor lp = new LogProcessor ( inputLogFileName );
 
 			if ( lp.flag )

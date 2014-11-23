@@ -1,5 +1,4 @@
 import ee.ut.StructuredSequences;
-import ee.ut.XLogReader;
 import org.deckfour.xes.model.XLog;
 import org.deckfour.xes.model.XTrace;
 
@@ -80,8 +79,8 @@ public class Main {
 	public static void main ( String args[] ) {
 
 		try {
-//			XLog log = ee.ut.XLogReader.openLog ( "L1.mxml" );
-			XLog log = XLogReader.openLog ( "data/financial_log.mxml.gz" );
+			XLog log = ee.ut.XLogReader.openLog ( "data/L1.mxml" );
+//			XLog log = XLogReader.openLog ( "data/financial_log.mxml.gz" );
 
 //			last 20 traces
 //			List< XTrace >	log_chunk	= log.subList ( log.size ( ) - 20, log.size () );

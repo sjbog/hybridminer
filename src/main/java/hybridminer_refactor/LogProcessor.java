@@ -22,11 +22,11 @@ public class LogProcessor {
 	HashSet<String> analyzed_events	= new HashSet<> ( );
 	ArrayList<String>	groupAdded	= new ArrayList<> ( );
 
-	HashMap< Integer, Set< String > >	groupsOfEvents	= new HashMap<> ( );
+	HashMap< Integer, Set< String > > procedural_event_groups = new HashMap<> ( );
 
 	PrintStream print_out = System.out ;
 
-	public boolean flag;
+	public boolean flag = false;
 	public String	trace_start_pseudo_name	= "__start__";
 	public String	trace_end_pseudo_name	= "__end__";
 
@@ -53,7 +53,7 @@ public class LogProcessor {
 		try {
 
 			log = XLogReader.openLog ( file_path );
-//			log = slice_last_n ( log, 200 );
+			log = slice_last_n ( log, 20 );
 
 			print_out = new PrintStream (".\\output_mod\\output.txt");
 
@@ -64,7 +64,7 @@ public class LogProcessor {
 
 		analyze_events ( log );
 		group_events ();
-		sx ( log );
+		split_log ( log );
 	}
 
 	public void update_event_counters ( String curr_event_name, String next_event_name )	{
@@ -130,10 +130,10 @@ public class LogProcessor {
 	public int maximumSuccessors = 4;
 	public int maximumPredecessors = 4;
 
-	HashMap<Integer,XLog> sublogsProcedural = new HashMap <>();
+	HashMap<String,XLog> sublogsProcedural = new HashMap <>();
 	HashMap<Integer,XLog> sublogsDeclarative = new HashMap<>();
 
-	Set< String > proceduralEvents = new HashSet<> ( );
+	HashMap< String, Integer > eventToGroup = new HashMap<> ( );
 
 	public static XConceptExtension xConceptExtentionInstance	= XConceptExtension.instance();
 
@@ -143,16 +143,11 @@ public class LogProcessor {
 //		visit all start events
 //		build groups of events
 		for ( String event_name : successors.get ( trace_start_pseudo_name ).keySet ( ) ) {
-			visit ( event_name, new HashSet< String > ( ) );
-		}
-
-		for ( int groupId : groupsOfEvents.keySet ( ) ) {
-			sublogsProcedural.put ( groupId, factory.createLog ( ) );
-			proceduralEvents.addAll ( groupsOfEvents.get ( groupId ) );
+			visit ( event_name, new HashSet<> ( ) );
 		}
 
 		print_out.println ( "Groups of structured events:" );
-		print_out.println ( groupsOfEvents );
+		print_out.println ( procedural_event_groups );
 	}
 
 	protected void visit ( String event_name, HashSet< String > value ) {
@@ -201,196 +196,132 @@ public class LogProcessor {
 		}
 		if ( ! groupAdded.contains ( event_name ) && ! found && ! value.isEmpty ( ) ) {
 			groupAdded.addAll ( value );
-			groupsOfEvents.put ( groupID, value );
+			procedural_event_groups.put ( groupID, value );
 			groupID++;
 		}
 		groupAdded.add ( event_name );
 	}
 
-	public void sx ( XLog log )	{
 
-		int traceId = 1;
+	public XTrace filter_trace ( XTrace trace )	{
+//				Trace 1
+//				s1, s1, un, s1, un2 ->
+// 					structured		: [ s1, s1 ], [ s1 ]
+//					unstructured	: [ un ], [ un2 ]
 
-		XLog declarativeLog = factory.createLog();
-		Integer maxDecTraceSize = 0;
-		int declIndex = 1;
-		boolean declActive = false;
-		XTrace cTrace = null;
-		XEvent rootEvent = null;
-		XTrace decTrace = null;
-		XEvent decEvent = null;
-		XEvent cEvent = null;
-		XLog cLog = null;
-		XLog root = factory.createLog();
-		decTrace = factory.createTrace();
-		XConceptExtension.instance ( ).assignName(decTrace, ""+declIndex);
+//				Trace 2
+//				s1, s2, s1, un, un2 ->
+// 					structured		: [ s1 ], [ s2 ], [ s1 ]
+//					unstructured	: [ un, un2 ]
 
-		int subprocessIndex	= -1;
-		int currentProcessedGroupId	= -1;
+//				T1)		  s1	s1		un		s1		un2
+//				id1		: [ s1, s1 ]	[		s1 ]	[]
+//				id2		: [],	[] 		[]		[]		[]
+//				id_un	: [],	[ 		un ]	[		un2 ]
+
+//				T2)		  s1		s2		s1		un		un2
+//				id1		: [ s1 ]	[		s1 ]	[]		[]
+//				id2		: [			s2 ]	[]		[]		[]
+//				id_un	: []		[]		[ 		un, 	un2 ]
+
+		XExtendedEvent	event;
+		String	event_name, event_groupName ;
+
+		int prev_event_groupId = -1, event_groupId ;
+
+		XTrace filtered_trace	= factory.createTrace ( trace.getAttributes () );
+
+		Map < String, List < XTrace >  >	procedural_traces	= new HashMap<> (  );
+
+//			fill with empty initial array
+		for ( int group_id : this.procedural_event_groups.keySet () )	{
+
+			List < XTrace > v	= new ArrayList<> ( );
+			v.add ( factory.createTrace ( trace.getAttributes () ) );
+
+			procedural_traces.put ( String.format ( "P%d.%d", level, group_id ), v );
+		}
+
+
+		for ( int i = 0, size = trace.size () ; i < size ; i ++ )	{
+			event	= XExtendedEvent.wrap ( trace.get ( i ) );
+			event_name	= fetch_name ( event );
+
+			event_groupId	= eventToGroup.getOrDefault ( event_name, -1 );
+
+			for ( String group_name : procedural_traces.keySet () )
+				procedural_traces.get ( group_name ).add ( factory.createTrace ( trace.getAttributes () ) );
+
+			if	( event_groupId != -1 )	{
+
+				event_groupName	= String.format ( "P%d.%d", level, event_groupId );
+
+				procedural_traces.get ( event_groupName ).remove ( procedural_traces.get ( event_groupName ).size ( ) - 1 );
+				procedural_traces.get ( event_groupName )
+//						get last item
+						.get ( procedural_traces.get ( event_groupName ).size ( ) - 1 )
+						.add ( ( XExtendedEvent ) event.clone () );
+
+				if ( prev_event_groupId != event_groupId ) {
+
+					event.setName ( event_groupName );
+					filtered_trace.add ( event );
+				}
+			}
+//				unstructured event
+			else	{
+				filtered_trace.add ( event );
+			}
+
+			prev_event_groupId	= event_groupId;
+		}
+
+		for ( String group_name : procedural_traces.keySet () )	{
+			XTrace	v;
+
+			for ( int i = 0, len = procedural_traces.get ( group_name ).size (); i < len ; i ++ )	{
+
+				v	= procedural_traces.get ( group_name ).get ( i );
+
+				if	( v.size () > 0 )	{
+					this.sublogsProcedural.get ( group_name ).add ( v );
+				}
+			}
+		}
+
+		return filtered_trace;
+	}
+
+	public void split_log ( XLog log )	{
+
+		XLog filtered_log = factory.createLog ( log.getAttributes () );
+
+//		map events to procedural group ID
+		for ( int group_id : procedural_event_groups.keySet ( ) ) {
+			sublogsProcedural.put (
+					String.format ( "P%d.%d", level, group_id ),
+					factory.createLog ( log.getAttributes () )
+			);
+
+			for ( String event_name : procedural_event_groups.get ( group_id ) ) {
+				eventToGroup.put ( event_name, group_id );
+			}
+		}
 
 		for ( XTrace trace : log ) {
-
-			XExtendedEvent	event, last = null;
-			String	event_name = null;
-
-			XTrace rootTrace	= factory.createTrace();
-
-			int oldProcessedGroupId		= -1;
-
-			boolean added	= false;
-
-
-			for ( int i = 0, size = trace.size () ; i < size ; i ++ )	{
-				event	= XExtendedEvent.wrap ( trace.get ( i ) );
-				event_name	= fetch_name ( event );
-
-				last = event;
-
-				if ( proceduralEvents.contains ( event_name ) && ! added ) {
-					rootEvent	= factory.createEvent ( );
-					declActive	= false;
-
-//					find group index of the event
-					for ( int group : groupsOfEvents.keySet ( ) ) {
-						if ( groupsOfEvents.get ( group ).contains ( event_name ) ) {
-							subprocessIndex = group;
-							break;
-						}
-					}
-
-//					if(!added){
-//						System.out.println();
-//					}
-
-					xConceptExtentionInstance.assignName ( rootEvent, "P" + level + "." + subprocessIndex );
-					rootTrace.add(rootEvent);
-					added = true;
-				}
-
-				if ( proceduralEvents.contains ( event_name ) && declActive ) {
-					declActive = false;
-					added = false;
-					declarativeLog.add ( decTrace );
-					if ( decTrace.size ( ) > maxDecTraceSize ) {
-						maxDecTraceSize = decTrace.size ( );
-					}
-					declIndex++;
-					decTrace = factory.createTrace ( );
-
-					xConceptExtentionInstance.assignName ( decTrace, "" + declIndex );
-				}
-
-
-				boolean found = false;
-
-				for ( int group : groupsOfEvents.keySet ( ) ) {
-					if ( groupsOfEvents.get ( group ).contains ( event_name ) ) {
-						currentProcessedGroupId = group;
-						found = true;
-//						break;
-					}
-				}
-				if ( ! found ) {
-					currentProcessedGroupId = 0;
-				}
-
-				if ( ! proceduralEvents.contains ( event_name ) ) {
-					//added = false;
-					declActive = true;
-					decEvent = ( XEvent ) event.clone ( );
-					XConceptExtension.instance ( ).assignName ( decEvent, event_name );
-					decTrace.add ( decEvent );
-					rootEvent = ( XEvent ) event.clone ( );
-					rootTrace.add ( rootEvent );
-				} else {
-					declActive = false;
-					if ( ( currentProcessedGroupId != oldProcessedGroupId ) && oldProcessedGroupId != - 1 ) {
-						rootEvent = factory.createEvent ( );
-						//	added = false;
-						for ( int group : groupsOfEvents.keySet ( ) ) {
-							if ( groupsOfEvents.get ( group ).contains ( event_name ) ) {
-								subprocessIndex = group;
-								//		added = true;
-//								break;
-							}
-						}
-						//if(!added){
-						//	System.out.println();
-						//	}
-						XConceptExtension.instance ( ).assignName ( rootEvent, "P" + level + "." + subprocessIndex );
-						rootTrace.add ( rootEvent );
-						added = true;
-					}
-				}
-
-				if(oldProcessedGroupId!=currentProcessedGroupId){
-					if(oldProcessedGroupId!= -1 && oldProcessedGroupId!= 0){
-						XTrace toAdd = (XTrace) cTrace.clone();
-						XConceptExtension.instance().assignName(toAdd, traceId+"");
-						traceId++;
-						cLog.add(toAdd);
-					}
-					cTrace = factory.createTrace();
-					cEvent = (XEvent) event.clone();
-					cTrace.add(cEvent);
-					cLog = sublogsProcedural.get(currentProcessedGroupId);
-				}else{
-					if(cTrace==null){
-						cTrace = factory.createTrace();
-					}
-					cEvent = (XEvent) event.clone();
-					cTrace.add(cEvent);
-				}
-				oldProcessedGroupId = currentProcessedGroupId;
-				//	String beforeEvent;
-				//	String afterEvent;
-			}
-			if(!declActive){
-				cTrace = factory.createTrace();
-				cEvent = (XEvent) last.clone();
-				cTrace.add(cEvent);
-				XTrace toAdd = (XTrace) cTrace.clone();
-				XConceptExtension.instance().assignName(toAdd, traceId+"");
-				traceId++;
-				cLog.add(toAdd);
-				//cLog.add(cTrace);
-			}
-			if(!added && !declActive){
-				rootEvent = factory.createEvent();
-				//	added = true;
-				for(int group : groupsOfEvents.keySet()){
-					if(groupsOfEvents.get(group).contains(event_name)){
-						subprocessIndex = group;
-						//		added = false;
-					}
-				}
-				//				if(added){
-				//					System.out.println();
-				//				}
-				XConceptExtension.instance().assignName(rootEvent, "P"+level+"."+subprocessIndex);
-				rootTrace.add(rootEvent);
-			}
-			if(declActive){
-				declarativeLog.add(decTrace);
-				if(decTrace.size()>maxDecTraceSize){
-					maxDecTraceSize = decTrace.size();
-				}
-			}
-			xConceptExtentionInstance.assignName ( rootTrace, xConceptExtentionInstance.extractName ( trace ) );
-			root.add(rootTrace);
+			filtered_log.add ( filter_trace ( trace ) );
 		}
 
 		print_out.println (  );
 		print_out.println ( "root log" );
-		print_log ( root, print_out );
+		print_log ( filtered_log, print_out );
 
-//		print_out.println (  );
-//		print_out.println ( "clog" );
-//		print_log ( cLog, print_out );
+		for ( String group_name : sublogsProcedural.keySet ()  )	{
 
-		print_out.println (  );
-		print_out.println ( "declarativeLog" );
-		print_log ( declarativeLog, print_out );
+			print_out.println (  );
+			print_out.println ( group_name );
+			print_log ( sublogsProcedural.get ( group_name ), print_out );
+		}
 	}
 
 	static public void print_log ( XLog log, PrintStream out )	{
@@ -400,7 +331,12 @@ public class LogProcessor {
 			for ( XEvent event : trace ) {
 
 				XExtendedEvent extended_event = XExtendedEvent.wrap ( event );
-				out.println ( "\t" + extended_event.getName () );
+				out.println ( String.format ( "\t[ %s # %s, %s ]\t%s"
+						, extended_event.getResource ( )
+						, extended_event.getTransition ( )
+						, extended_event.getAttributes ().get ( "time:timestamp" )
+						, extended_event.getName ()
+				));
 			}
 		}
 	}
