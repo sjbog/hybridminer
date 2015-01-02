@@ -204,88 +204,48 @@ public class LogProcessor {
 
 
 	public XTrace filter_trace ( XTrace trace )	{
-//				Trace 1
-//				s1, s1, un, s1, un2 ->
-// 					structured		: [ s1, s1 ], [ s1 ]
-//					unstructured	: [ un ], [ un2 ]
 
-//				Trace 2
-//				s1, s2, s1, un, un2 ->
-// 					structured		: [ s1 ], [ s2 ], [ s1 ]
-//					unstructured	: [ un, un2 ]
+		XTrace 	filtered_trace	= factory.createTrace ( trace.getAttributes () );
+		Map < String, XTrace >	procedural_traces	= new HashMap<> (  );
 
-//				T1)		  s1	s1		un		s1		un2
-//				id1		: [ s1, s1 ]	[		s1 ]	[]
-//				id2		: [],	[] 		[]		[]		[]
-//				id_un	: [],	[ 		un ]	[		un2 ]
-
-//				T2)		  s1		s2		s1		un		un2
-//				id1		: [ s1 ]	[		s1 ]	[]		[]
-//				id2		: [			s2 ]	[]		[]		[]
-//				id_un	: []		[]		[ 		un, 	un2 ]
-
-		XExtendedEvent	event;
-		String	event_name, event_groupName ;
-
-		int prev_event_groupId = -1, event_groupId ;
-
-		XTrace filtered_trace	= factory.createTrace ( trace.getAttributes () );
-
-		Map < String, List < XTrace >  >	procedural_traces	= new HashMap<> (  );
-
-//			fill with empty initial array
-		for ( int group_id : this.procedural_event_groups.keySet () )	{
-
-			List < XTrace > v	= new ArrayList<> ( );
-			v.add ( factory.createTrace ( trace.getAttributes () ) );
-
-			procedural_traces.put ( String.format ( "P%d.%d", level, group_id ), v );
+		for	( String key : this.sublogsProcedural.keySet () )	{
+			procedural_traces.put ( key,factory.createTrace ( trace.getAttributes () ) );
 		}
 
 
-		for ( int i = 0, size = trace.size () ; i < size ; i ++ )	{
-			event	= XExtendedEvent.wrap ( trace.get ( i ) );
-			event_name	= fetch_name ( event );
+		for ( int i = 0, size = trace.size (), prev_event_group_id = -1 ; i < size ; i ++ )	{
 
-			event_groupId	= eventToGroup.getOrDefault ( event_name, -1 );
+			XExtendedEvent	event		= XExtendedEvent.wrap ( trace.get ( i ) );
+			String			event_name	= fetch_name ( event );
 
-			for ( String group_name : procedural_traces.keySet () )
-				procedural_traces.get ( group_name ).add ( factory.createTrace ( trace.getAttributes () ) );
+			int event_group_id	= eventToGroup.getOrDefault ( event_name, -1 );
 
-			if	( event_groupId != -1 )	{
+//			unstructured event
+			if	( event_group_id == -1 )	{
+				filtered_trace.add ( event );
+			}
+//			procedural / structured event
+			else	{
+				String event_group_name	= String.format ( "P%d.%d", level, event_group_id );
 
-				event_groupName	= String.format ( "P%d.%d", level, event_groupId );
+				procedural_traces.get ( event_group_name ).add ( ( XExtendedEvent ) event.clone ( ) );
 
-				procedural_traces.get ( event_groupName ).remove ( procedural_traces.get ( event_groupName ).size ( ) - 1 );
-				procedural_traces.get ( event_groupName )
-//						get last item
-						.get ( procedural_traces.get ( event_groupName ).size ( ) - 1 )
-						.add ( ( XExtendedEvent ) event.clone () );
+				if ( prev_event_group_id != event_group_id ) {
 
-				if ( prev_event_groupId != event_groupId ) {
-
-					event.setName ( event_groupName );
+					event.setName ( event_group_name );
 					filtered_trace.add ( event );
 				}
 			}
-//				unstructured event
-			else	{
-				filtered_trace.add ( event );
-			}
 
-			prev_event_groupId	= event_groupId;
+			prev_event_group_id	= event_group_id;
 		}
 
+//		add non-empty procedural groups' trace to sublogsProcedural
 		for ( String group_name : procedural_traces.keySet () )	{
-			XTrace	v;
+			XTrace	procedural_group_trace	= procedural_traces.get ( group_name );
 
-			for ( int i = 0, len = procedural_traces.get ( group_name ).size (); i < len ; i ++ )	{
-
-				v	= procedural_traces.get ( group_name ).get ( i );
-
-				if	( v.size () > 0 )	{
-					this.sublogsProcedural.get ( group_name ).add ( v );
-				}
+			if	( 0 < procedural_group_trace.size () )	{
+				this.sublogsProcedural.get ( group_name ).add ( procedural_group_trace );
 			}
 		}
 
