@@ -1,7 +1,7 @@
 package hybridminer_refactor;
 
 import ee.ut.XLogReader;
-import hybridminer.*;
+import hybridminer_old.*;
 import org.deckfour.xes.extension.std.XConceptExtension;
 import org.deckfour.xes.extension.std.XLifecycleExtension;
 import org.deckfour.xes.factory.XFactory;
@@ -16,9 +16,6 @@ import java.io.*;
 import java.util.*;
 
 public class HybridMiner {
-
-	//ESPERIMENTONE   LIVELLO 1    0.5  3
-	// LIVELLO 2    0.5    3
 
 	//	private static boolean all = true;
 	private static HashMap<Integer,Set<String>> groupsOfEvents = new HashMap<Integer,Set<String>>();
@@ -41,23 +38,18 @@ public class HybridMiner {
 		fi.mkdir();
 		String inputLogFileName = "./financial_log.mxml.gz";
 		String outputFileName = ".\\output_mod\\output.txt";
-		//String proceduralLogPrefix = args[0]+"\\procedural";
+
+		String rootLogPrefix = ".\\output_mod\\root";
 		String proceduralLogPrefix = ".\\output_mod\\procedural";
-//		String rootLogPrefix = args[0]+"\\level1";
-		String rootLogPrefix = ".\\output_mod\\level1";
-	//	String declarativeLogPrefix = args[0]+"\\declarative";
-		String declarativeLogPrefix = ".\\output_mod\\declarative";
-		
-		for(int g=1; g<=1; g++){
+		String declarativeLogPrefix = ".\\output_mod\\";
+
+		for ( int g=1; g<=1; g++ ) {
 			
 			if(g==2){
 				
 				inputLogFileName = ".\\level11.xes.gz";
-				//String outputFileName = "C:\\Users\\fabrizio\\Desktop\\output.txt";
-				//String proceduralLogPrefix = "C:\\Users\\fabrizio\\Desktop\\procedural";
 				rootLogPrefix = ".\\level2";
-				//String declarativeLogPrefix = "C:\\Users\\fabrizio\\Desktop\\declarative";
-				
+
 				//private static HashMap<Integer,Set<String>> procedural_event_groups = new HashMap<Integer,Set<String>>();
 			//	private static int groupID = 1;
 				level = 2;
@@ -87,16 +79,13 @@ public class HybridMiner {
 			String currentEvent = null;
 			Integer maxDecTraceSize = 0;
 
-
-
-
-
 			//int h= 1;
 			for (int groupId : groupsOfEvents.keySet()){
 				try {
 					if(!sublogsProcedural.get(groupId).isEmpty() && sublogsProcedural.get(groupId).size()>1){
 						FileOutputStream out = new FileOutputStream(proceduralLogPrefix+level+"_"+groupId+".xes.gz");
 						XesXmlGZIPSerializer xesGzipSerializer = new XesXmlGZIPSerializer();
+
 						xesGzipSerializer.serialize(sublogsProcedural.get(groupId), out);
 						out.close();
 					}
@@ -106,25 +95,14 @@ public class HybridMiner {
 					//JOptionPane.showMessageDialog(new JFrame(), e.getMessage());
 				}
 			}
-			//	try {
-			//	FileOutputStream out = new FileOutputStream(rootLogPrefix+level+"_"+".xes.gz");
-			//	XesXmlGZIPSerializer xesGzipSerializer = new XesXmlGZIPSerializer();
-			//	xesGzipSerializer.serialize(root, out);
-			//	out.close();
-			//} catch (FileNotFoundException e) {
-			//	} catch (IOException e) {
-			//	}
-
-
 
 
 			int declGroupIndex = 1;
 
-
-			if(true){
+			if ( true ) {
 
 				//	for(int i=maxDecTraceSize; i>1; i--){
-				//FindItemSets f = new FindItemSets(declarativeLog);
+//				FindItemSets f = new FindItemSets(declarativeLog);
 				//Map<Set<String>, Float> items = f.findItemSets(declarativeLog, i, minDeclSupportPercentage , false);
 				AlgoINDIRECT indirect = new AlgoINDIRECT();
 				StringSequenceDatabaseMaxSP db = SequenceMiner.convertIntoStringSequenceDatabaseMaxSP(declarativeLog);

@@ -1,333 +1,2403 @@
-{Send Notification by e-mail#complete=9.0, __start__=20.0, Skip Questionnaire#complete=10.0, High Insurance Check#complete=9.0, Archive#complete=20.0, Send Notification by Phone#complete=10.0, Register#complete=20.0, Prepare Notification Content#complete=20.0, Send Notification by Post#complete=14.0, Send Questionnaire#complete=20.0, Low Medical History#complete=11.0, Receive Questionnaire Response#complete=10.0, Create Questionnaire#complete=20.0, __end__=20.0, Contact Hospital#complete=9.0, High Medical History#complete=9.0, Low Insurance Check#complete=11.0}
-Groups of structured events:
-{1=[High Insurance Check#complete, Contact Hospital#complete, High Medical History#complete], 2=[Send Notification by e-mail#complete, Receive Questionnaire Response#complete, __end__, Archive#complete, Send Notification by Phone#complete, Send Notification by Post#complete], 3=[Low Insurance Check#complete, Low Medical History#complete]}
+{__start__=200.0, Archive=200.0, High Medical History=69.0, Prepare Notification Content=200.0, Send Questionnaire=200.0, Contact Hospital=69.0, Send Notification by Post=117.0, Low Medical History=131.0, __end__=200.0, Register=200.0, Send Notification by Phone=114.0, Create Questionnaire=200.0, Send Notification by e-mail=97.0, Skip Questionnaire=93.0, High Insurance Check=69.0, Low Insurance Check=131.0, Receive Questionnaire Response=107.0}
 
-root log
-Trace name : 981
-	[ PR2 # complete, 2011-09-22T20:15:00+03:00 ]	Register
-	[ IA2 # complete, 2011-09-22T22:22:00+03:00 ]	P1.1
-	[ Mgr1 # complete, 2011-09-23T06:01:00+03:00 ]	Prepare Notification Content
-	[ PR4 # complete, 2011-09-23T17:39:00+03:00 ]	P1.2
-	[ Mgr1 # complete, 2011-09-24T09:32:00+03:00 ]	Create Questionnaire
-	[ PR4 # complete, 2011-12-23T20:35:00+02:00 ]	Send Questionnaire
-	[ PR3 # complete, 2011-12-23T23:37:00+02:00 ]	Skip Questionnaire
-	[ PR3 # complete, 2011-12-29T07:09:00+02:00 ]	P1.2
-Trace name : 982
-	[ PR4 # complete, 2011-10-14T20:21:00+03:00 ]	Register
-	[ Mgr1 # complete, 2011-10-14T20:51:00+03:00 ]	Create Questionnaire
-	[ IA1 # complete, 2011-10-15T02:22:00+03:00 ]	P1.1
-	[ Mgr1 # complete, 2011-10-15T03:20:00+03:00 ]	Prepare Notification Content
-	[ PR1 # complete, 2011-10-15T13:41:00+03:00 ]	P1.2
-	[ PR1 # complete, 2011-12-07T01:54:00+02:00 ]	Send Questionnaire
-	[ PR4 # complete, 2011-12-08T17:59:00+02:00 ]	Skip Questionnaire
-	[ PR2 # complete, 2011-12-27T18:19:00+02:00 ]	P1.2
-Trace name : 983
-	[ PR3 # complete, 2011-05-18T20:03:00+03:00 ]	Register
-	[ Mgr1 # complete, 2011-05-18T20:18:00+03:00 ]	Create Questionnaire
-	[ IB1 # complete, 2011-05-18T21:45:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-05-18T22:26:00+03:00 ]	Prepare Notification Content
-	[ PR2 # complete, 2011-05-19T14:29:00+03:00 ]	P1.2
-	[ PR2 # complete, 2011-06-19T04:28:00+03:00 ]	Send Questionnaire
-	[ PR4 # complete, 2011-06-20T23:13:00+03:00 ]	P1.2
-Trace name : 984
-	[ PR3 # complete, 2011-10-04T20:26:00+03:00 ]	Register
-	[ IB1 # complete, 2011-10-04T22:22:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-10-04T22:28:00+03:00 ]	Create Questionnaire
-	[ IB1 # complete, 2011-10-04T23:47:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-10-05T00:35:00+03:00 ]	Prepare Notification Content
-	[ PR4 # complete, 2011-10-06T11:22:00+03:00 ]	P1.2
-	[ PR3 # complete, 2011-11-16T07:16:00+02:00 ]	Send Questionnaire
-	[ PR4 # complete, 2011-11-17T06:59:00+02:00 ]	P1.2
-Trace name : 985
-	[ PR3 # complete, 2011-05-20T14:16:00+03:00 ]	Register
-	[ IA2 # complete, 2011-05-20T16:27:00+03:00 ]	P1.1
-	[ Mgr1 # complete, 2011-05-21T00:02:00+03:00 ]	Create Questionnaire
-	[ Mgr1 # complete, 2011-05-21T03:44:00+03:00 ]	Prepare Notification Content
-	[ PR4 # complete, 2011-05-22T17:58:00+03:00 ]	Send Questionnaire
-	[ PR2 # complete, 2011-05-22T19:35:00+03:00 ]	P1.2
-Trace name : 986
-	[ PR4 # complete, 2011-05-04T09:18:00+03:00 ]	Register
-	[ IB2 # complete, 2011-05-04T12:14:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-05-04T18:27:00+03:00 ]	Prepare Notification Content
-	[ PR1 # complete, 2011-05-05T02:08:00+03:00 ]	P1.2
-	[ Mgr1 # complete, 2011-05-05T12:38:00+03:00 ]	Create Questionnaire
-	[ PR4 # complete, 2011-05-06T22:18:00+03:00 ]	Send Questionnaire
-	[ PR4 # complete, 2011-05-07T01:19:00+03:00 ]	P1.2
-Trace name : 987
-	[ PR3 # complete, 2011-05-11T00:04:00+03:00 ]	Register
-	[ IB2 # complete, 2011-05-11T02:34:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-05-11T02:36:00+03:00 ]	Create Questionnaire
-	[ IB1 # complete, 2011-05-11T02:47:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-05-11T06:26:00+03:00 ]	Prepare Notification Content
-	[ PR4 # complete, 2011-05-12T08:39:00+03:00 ]	P1.2
-	[ PR4 # complete, 2011-05-31T05:28:00+03:00 ]	Send Questionnaire
-	[ PR4 # complete, 2011-05-31T20:08:00+03:00 ]	P1.2
-Trace name : 988
-	[ PR1 # complete, 2011-12-29T16:13:00+02:00 ]	Register
-	[ Mgr1 # complete, 2011-12-29T17:24:00+02:00 ]	Create Questionnaire
-	[ IB1 # complete, 2011-12-29T18:15:00+02:00 ]	P1.3
-	[ Mgr1 # complete, 2011-12-30T01:48:00+02:00 ]	Prepare Notification Content
-	[ PR1 # complete, 2011-12-30T22:39:00+02:00 ]	P1.2
-	[ PR4 # complete, 2012-02-06T15:38:00+02:00 ]	Send Questionnaire
-	[ PR4 # complete, 2012-02-06T19:00:00+02:00 ]	Skip Questionnaire
-	[ PR3 # complete, 2012-02-11T04:43:00+02:00 ]	P1.2
-Trace name : 989
-	[ PR4 # complete, 2011-05-25T19:05:00+03:00 ]	Register
-	[ IB1 # complete, 2011-05-25T20:59:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-05-25T22:28:00+03:00 ]	Create Questionnaire
-	[ Mgr1 # complete, 2011-05-25T22:48:00+03:00 ]	Prepare Notification Content
-	[ PR2 # complete, 2011-05-26T06:13:00+03:00 ]	P1.2
-	[ PR4 # complete, 2011-12-03T21:13:00+02:00 ]	Send Questionnaire
-	[ PR4 # complete, 2011-12-05T08:37:00+02:00 ]	P1.2
-Trace name : 99
-	[ PR4 # complete, 2011-07-11T10:39:00+03:00 ]	Register
-	[ IB1 # complete, 2011-07-11T12:45:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-07-11T15:12:00+03:00 ]	Create Questionnaire
-	[ Mgr1 # complete, 2011-07-11T16:27:00+03:00 ]	Prepare Notification Content
-	[ PR1 # complete, 2011-08-09T19:04:00+03:00 ]	Send Questionnaire
-	[ PR4 # complete, 2011-08-11T05:28:00+03:00 ]	Skip Questionnaire
-	[ PR1 # complete, 2011-10-01T16:12:00+03:00 ]	P1.2
-Trace name : 990
-	[ PR3 # complete, 2011-07-16T17:00:00+03:00 ]	Register
-	[ Mgr1 # complete, 2011-07-16T18:00:00+03:00 ]	Create Questionnaire
-	[ IB1 # complete, 2011-07-16T19:04:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-07-16T23:40:00+03:00 ]	Prepare Notification Content
-	[ PR3 # complete, 2011-07-17T04:49:00+03:00 ]	P1.2
-	[ PR1 # complete, 2012-02-02T21:57:00+02:00 ]	Send Questionnaire
-	[ PR1 # complete, 2012-02-03T00:12:00+02:00 ]	Skip Questionnaire
-	[ PR4 # complete, 2012-02-09T15:48:00+02:00 ]	P1.2
-Trace name : 991
-	[ PR1 # complete, 2011-07-30T12:49:00+03:00 ]	Register
-	[ IA1 # complete, 2011-07-30T15:16:00+03:00 ]	P1.1
-	[ Mgr1 # complete, 2011-07-31T03:02:00+03:00 ]	Prepare Notification Content
-	[ PR1 # complete, 2011-07-31T06:09:00+03:00 ]	P1.2
-	[ Mgr1 # complete, 2011-08-01T08:04:00+03:00 ]	Create Questionnaire
-	[ PR1 # complete, 2011-09-01T07:56:00+03:00 ]	Send Questionnaire
-	[ PR2 # complete, 2011-09-02T13:31:00+03:00 ]	Skip Questionnaire
-	[ PR1 # complete, 2011-10-09T07:35:00+03:00 ]	P1.2
-Trace name : 992
-	[ PR2 # complete, 2011-09-25T20:45:00+03:00 ]	Register
-	[ Mgr1 # complete, 2011-09-25T21:10:00+03:00 ]	Create Questionnaire
-	[ IA1 # complete, 2011-09-25T22:35:00+03:00 ]	P1.1
-	[ Mgr1 # complete, 2011-09-26T01:05:00+03:00 ]	Prepare Notification Content
-	[ PR4 # complete, 2011-09-29T03:19:00+03:00 ]	P1.2
-	[ PR3 # complete, 2011-11-04T21:06:00+02:00 ]	Send Questionnaire
-	[ PR2 # complete, 2011-11-05T08:33:00+02:00 ]	Skip Questionnaire
-	[ PR3 # complete, 2011-12-16T05:38:00+02:00 ]	P1.2
-Trace name : 993
-	[ PR2 # complete, 2011-08-02T05:05:00+03:00 ]	Register
-	[ IA2 # complete, 2011-08-02T07:19:00+03:00 ]	P1.1
-	[ Mgr1 # complete, 2011-08-03T06:11:00+03:00 ]	Create Questionnaire
-	[ Mgr1 # complete, 2011-08-03T19:25:00+03:00 ]	Prepare Notification Content
-	[ PR4 # complete, 2011-08-04T02:03:00+03:00 ]	P1.2
-	[ PR2 # complete, 2011-08-16T02:32:00+03:00 ]	Send Questionnaire
-	[ PR3 # complete, 2011-08-16T12:59:00+03:00 ]	Skip Questionnaire
-	[ PR2 # complete, 2011-09-13T20:02:00+03:00 ]	P1.2
-Trace name : 994
-	[ PR3 # complete, 2011-09-27T01:03:00+03:00 ]	Register
-	[ Mgr1 # complete, 2011-09-27T02:06:00+03:00 ]	Create Questionnaire
-	[ IA2 # complete, 2011-09-27T04:19:00+03:00 ]	P1.1
-	[ Mgr1 # complete, 2011-09-27T09:46:00+03:00 ]	Prepare Notification Content
-	[ PR1 # complete, 2011-09-29T20:53:00+03:00 ]	P1.2
-	[ PR3 # complete, 2011-11-15T07:15:00+02:00 ]	Send Questionnaire
-	[ PR1 # complete, 2011-11-16T10:00:00+02:00 ]	P1.2
-Trace name : 995
-	[ PR2 # complete, 2011-03-22T11:29:00+02:00 ]	Register
-	[ IA1 # complete, 2011-03-22T13:20:00+02:00 ]	P1.1
-	[ Mgr1 # complete, 2011-03-23T00:45:00+02:00 ]	Prepare Notification Content
-	[ Mgr1 # complete, 2011-03-23T01:06:00+02:00 ]	Create Questionnaire
-	[ PR2 # complete, 2011-03-23T09:51:00+02:00 ]	P1.2
-	[ PR4 # complete, 2011-04-21T06:29:00+03:00 ]	Send Questionnaire
-	[ PR3 # complete, 2011-04-21T23:58:00+03:00 ]	Skip Questionnaire
-	[ PR4 # complete, 2011-04-23T21:44:00+03:00 ]	P1.2
-Trace name : 996
-	[ PR2 # complete, 2011-05-29T14:45:00+03:00 ]	Register
-	[ Mgr1 # complete, 2011-05-29T16:53:00+03:00 ]	Create Questionnaire
-	[ IA2 # complete, 2011-05-29T17:09:00+03:00 ]	P1.1
-	[ Mgr1 # complete, 2011-05-29T21:18:00+03:00 ]	Prepare Notification Content
-	[ PR3 # complete, 2011-05-30T17:25:00+03:00 ]	P1.2
-	[ PR2 # complete, 2011-08-17T08:26:00+03:00 ]	Send Questionnaire
-	[ PR3 # complete, 2011-08-18T01:09:00+03:00 ]	P1.2
-Trace name : 997
-	[ PR1 # complete, 2011-09-25T07:25:00+03:00 ]	Register
-	[ Mgr1 # complete, 2011-09-25T09:00:00+03:00 ]	Create Questionnaire
-	[ IB2 # complete, 2011-09-25T09:35:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-09-25T11:15:00+03:00 ]	Prepare Notification Content
-	[ PR2 # complete, 2011-09-28T03:13:00+03:00 ]	P1.2
-	[ PR3 # complete, 2011-11-13T04:33:00+02:00 ]	Send Questionnaire
-	[ PR2 # complete, 2011-11-13T08:29:00+02:00 ]	P1.2
-Trace name : 998
-	[ PR2 # complete, 2011-05-20T10:25:00+03:00 ]	Register
-	[ IB1 # complete, 2011-05-20T12:28:00+03:00 ]	P1.3
-	[ Mgr1 # complete, 2011-05-20T22:25:00+03:00 ]	Create Questionnaire
-	[ Mgr1 # complete, 2011-05-20T22:33:00+03:00 ]	Prepare Notification Content
-	[ PR2 # complete, 2011-05-21T14:27:00+03:00 ]	P1.2
-	[ PR1 # complete, 2011-09-03T00:40:00+03:00 ]	Send Questionnaire
-	[ PR1 # complete, 2011-09-03T02:31:00+03:00 ]	Skip Questionnaire
-	[ PR1 # complete, 2011-10-19T00:41:00+03:00 ]	P1.2
-Trace name : 999
-	[ PR3 # complete, 2011-03-20T07:20:00+02:00 ]	Register
-	[ IB2 # complete, 2011-03-20T09:07:00+02:00 ]	P1.3
-	[ Mgr1 # complete, 2011-03-20T11:53:00+02:00 ]	Create Questionnaire
-	[ Mgr1 # complete, 2011-03-20T14:06:00+02:00 ]	Prepare Notification Content
-	[ PR4 # complete, 2011-03-28T05:24:00+03:00 ]	P1.2
-	[ PR2 # complete, 2011-04-21T03:04:00+03:00 ]	Send Questionnaire
-	[ PR4 # complete, 2011-04-21T23:19:00+03:00 ]	P1.2
+AND blocks : [[High Medical History, Contact Hospital, High Insurance Check, Low Medical History, Low Insurance Check], [Create Questionnaire]]
 
-P1.2
-Trace name : 981
-	[ PR4 # complete, 2011-09-23T17:39:00+03:00 ]	Send Notification by Post
-	[ PR3 # complete, 2011-12-29T07:09:00+02:00 ]	Archive
-Trace name : 982
-	[ PR1 # complete, 2011-10-15T13:41:00+03:00 ]	Send Notification by Phone
-	[ PR3 # complete, 2011-10-16T03:48:00+03:00 ]	Send Notification by Post
-	[ PR2 # complete, 2011-12-27T18:19:00+02:00 ]	Archive
-Trace name : 983
-	[ PR2 # complete, 2011-05-19T14:29:00+03:00 ]	Send Notification by e-mail
-	[ PR4 # complete, 2011-06-20T23:13:00+03:00 ]	Receive Questionnaire Response
-	[ PR2 # complete, 2011-06-24T21:27:00+03:00 ]	Archive
-Trace name : 984
-	[ PR4 # complete, 2011-10-06T11:22:00+03:00 ]	Send Notification by e-mail
-	[ PR3 # complete, 2011-10-06T20:11:00+03:00 ]	Send Notification by Post
-	[ PR4 # complete, 2011-11-17T06:59:00+02:00 ]	Receive Questionnaire Response
-	[ PR1 # complete, 2011-12-15T01:14:00+02:00 ]	Archive
-Trace name : 985
-	[ PR2 # complete, 2011-05-22T19:35:00+03:00 ]	Send Notification by e-mail
-	[ PR4 # complete, 2011-05-22T20:45:00+03:00 ]	Receive Questionnaire Response
-	[ PR1 # complete, 2011-06-01T06:37:00+03:00 ]	Archive
-Trace name : 986
-	[ PR1 # complete, 2011-05-05T02:08:00+03:00 ]	Send Notification by e-mail
-	[ PR1 # complete, 2011-05-05T02:56:00+03:00 ]	Send Notification by Post
-	[ PR4 # complete, 2011-05-07T01:19:00+03:00 ]	Receive Questionnaire Response
-	[ PR2 # complete, 2011-05-15T06:56:00+03:00 ]	Archive
-Trace name : 987
-	[ PR4 # complete, 2011-05-12T08:39:00+03:00 ]	Send Notification by Phone
-	[ PR2 # complete, 2011-05-14T07:48:00+03:00 ]	Send Notification by Post
-	[ PR4 # complete, 2011-05-31T20:08:00+03:00 ]	Receive Questionnaire Response
-	[ PR3 # complete, 2011-07-07T22:33:00+03:00 ]	Archive
-Trace name : 988
-	[ PR1 # complete, 2011-12-30T22:39:00+02:00 ]	Send Notification by Post
-	[ PR2 # complete, 2012-01-02T05:52:00+02:00 ]	Send Notification by e-mail
-	[ PR3 # complete, 2012-02-11T04:43:00+02:00 ]	Archive
-Trace name : 989
-	[ PR2 # complete, 2011-05-26T06:13:00+03:00 ]	Send Notification by e-mail
-	[ PR3 # complete, 2011-05-26T09:32:00+03:00 ]	Send Notification by Phone
-	[ PR4 # complete, 2011-12-05T08:37:00+02:00 ]	Receive Questionnaire Response
-	[ PR1 # complete, 2011-12-15T14:23:00+02:00 ]	Archive
-Trace name : 99
-	[ PR1 # complete, 2011-10-01T16:12:00+03:00 ]	Archive
-Trace name : 990
-	[ PR3 # complete, 2011-07-17T04:49:00+03:00 ]	Send Notification by Phone
-	[ PR4 # complete, 2012-02-09T15:48:00+02:00 ]	Archive
-Trace name : 991
-	[ PR1 # complete, 2011-07-31T06:09:00+03:00 ]	Send Notification by Post
-	[ PR1 # complete, 2011-10-09T07:35:00+03:00 ]	Archive
-Trace name : 992
-	[ PR4 # complete, 2011-09-29T03:19:00+03:00 ]	Send Notification by Post
-	[ PR3 # complete, 2011-12-16T05:38:00+02:00 ]	Archive
-Trace name : 993
-	[ PR4 # complete, 2011-08-04T02:03:00+03:00 ]	Send Notification by Post
-	[ PR3 # complete, 2011-08-08T05:47:00+03:00 ]	Send Notification by Phone
-	[ PR2 # complete, 2011-09-13T20:02:00+03:00 ]	Archive
-Trace name : 994
-	[ PR1 # complete, 2011-09-29T20:53:00+03:00 ]	Send Notification by Phone
-	[ PR1 # complete, 2011-11-16T10:00:00+02:00 ]	Receive Questionnaire Response
-	[ PR2 # complete, 2011-12-14T04:51:00+02:00 ]	Archive
-Trace name : 995
-	[ PR2 # complete, 2011-03-23T09:51:00+02:00 ]	Send Notification by Post
-	[ PR3 # complete, 2011-03-27T05:14:00+03:00 ]	Send Notification by Phone
-	[ PR1 # complete, 2011-03-27T19:56:00+03:00 ]	Send Notification by e-mail
-	[ PR4 # complete, 2011-04-23T21:44:00+03:00 ]	Archive
-Trace name : 996
-	[ PR3 # complete, 2011-05-30T17:25:00+03:00 ]	Send Notification by e-mail
-	[ PR1 # complete, 2011-05-31T13:47:00+03:00 ]	Send Notification by Post
-	[ PR3 # complete, 2011-05-31T19:57:00+03:00 ]	Send Notification by Phone
-	[ PR3 # complete, 2011-08-18T01:09:00+03:00 ]	Receive Questionnaire Response
-	[ PR2 # complete, 2011-08-23T02:43:00+03:00 ]	Archive
-Trace name : 997
-	[ PR2 # complete, 2011-09-28T03:13:00+03:00 ]	Send Notification by Post
-	[ PR2 # complete, 2011-09-30T23:53:00+03:00 ]	Send Notification by e-mail
-	[ PR2 # complete, 2011-11-13T08:29:00+02:00 ]	Receive Questionnaire Response
-	[ PR4 # complete, 2012-01-16T07:17:00+02:00 ]	Archive
-Trace name : 998
-	[ PR2 # complete, 2011-05-21T14:27:00+03:00 ]	Send Notification by Post
-	[ PR2 # complete, 2011-05-21T18:32:00+03:00 ]	Send Notification by Phone
-	[ PR1 # complete, 2011-10-19T00:41:00+03:00 ]	Archive
-Trace name : 999
-	[ PR4 # complete, 2011-03-28T05:24:00+03:00 ]	Send Notification by Phone
-	[ PR3 # complete, 2011-04-03T09:38:00+03:00 ]	Send Notification by Post
-	[ PR4 # complete, 2011-04-21T23:19:00+03:00 ]	Receive Questionnaire Response
-	[ PR1 # complete, 2011-05-06T17:23:00+03:00 ]	Archive
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
 
-P1.1
-Trace name : 981
-	[ IA2 # complete, 2011-09-22T22:22:00+03:00 ]	High Medical History
-	[ IA2 # complete, 2011-09-22T22:38:00+03:00 ]	High Insurance Check
-	[ IA1 # complete, 2011-09-22T22:48:00+03:00 ]	Contact Hospital
-Trace name : 982
-	[ IA1 # complete, 2011-10-15T02:22:00+03:00 ]	High Medical History
-	[ IA2 # complete, 2011-10-15T02:35:00+03:00 ]	High Insurance Check
-	[ IA1 # complete, 2011-10-15T02:38:00+03:00 ]	Contact Hospital
-Trace name : 985
-	[ IA2 # complete, 2011-05-20T16:27:00+03:00 ]	Contact Hospital
-	[ IA1 # complete, 2011-05-20T16:45:00+03:00 ]	High Insurance Check
-	[ IA2 # complete, 2011-05-20T16:46:00+03:00 ]	High Medical History
-Trace name : 991
-	[ IA1 # complete, 2011-07-30T15:16:00+03:00 ]	Contact Hospital
-	[ IA2 # complete, 2011-07-30T15:19:00+03:00 ]	High Medical History
-	[ IA1 # complete, 2011-07-30T16:27:00+03:00 ]	High Insurance Check
-Trace name : 992
-	[ IA1 # complete, 2011-09-25T22:35:00+03:00 ]	High Insurance Check
-	[ IA2 # complete, 2011-09-25T23:03:00+03:00 ]	High Medical History
-	[ IA1 # complete, 2011-09-26T00:27:00+03:00 ]	Contact Hospital
-Trace name : 993
-	[ IA2 # complete, 2011-08-02T07:19:00+03:00 ]	High Insurance Check
-	[ IA1 # complete, 2011-08-02T07:21:00+03:00 ]	High Medical History
-	[ IA2 # complete, 2011-08-02T07:32:00+03:00 ]	Contact Hospital
-Trace name : 994
-	[ IA2 # complete, 2011-09-27T04:19:00+03:00 ]	Contact Hospital
-	[ IA2 # complete, 2011-09-27T05:05:00+03:00 ]	High Medical History
-	[ IA1 # complete, 2011-09-27T05:19:00+03:00 ]	High Insurance Check
-Trace name : 995
-	[ IA1 # complete, 2011-03-22T13:20:00+02:00 ]	High Insurance Check
-	[ IA2 # complete, 2011-03-22T13:22:00+02:00 ]	High Medical History
-	[ IA2 # complete, 2011-03-22T16:28:00+02:00 ]	Contact Hospital
-Trace name : 996
-	[ IA2 # complete, 2011-05-29T17:09:00+03:00 ]	Contact Hospital
-	[ IA2 # complete, 2011-05-29T17:40:00+03:00 ]	High Insurance Check
-	[ IA1 # complete, 2011-05-29T20:01:00+03:00 ]	High Medical History
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
 
-P1.3
-Trace name : 983
-	[ IB1 # complete, 2011-05-18T21:45:00+03:00 ]	Low Medical History
-	[ IB2 # complete, 2011-05-18T22:15:00+03:00 ]	Low Insurance Check
-Trace name : 984
-	[ IB1 # complete, 2011-10-04T22:22:00+03:00 ]	Low Insurance Check
-	[ IB1 # complete, 2011-10-04T23:47:00+03:00 ]	Low Medical History
-Trace name : 986
-	[ IB2 # complete, 2011-05-04T12:14:00+03:00 ]	Low Medical History
-	[ IB1 # complete, 2011-05-04T12:34:00+03:00 ]	Low Insurance Check
-Trace name : 987
-	[ IB2 # complete, 2011-05-11T02:34:00+03:00 ]	Low Medical History
-	[ IB1 # complete, 2011-05-11T02:47:00+03:00 ]	Low Insurance Check
-Trace name : 988
-	[ IB1 # complete, 2011-12-29T18:15:00+02:00 ]	Low Insurance Check
-	[ IB2 # complete, 2011-12-29T21:29:00+02:00 ]	Low Medical History
-Trace name : 989
-	[ IB1 # complete, 2011-05-25T20:59:00+03:00 ]	Low Insurance Check
-	[ IB2 # complete, 2011-05-25T21:04:00+03:00 ]	Low Medical History
-Trace name : 99
-	[ IB1 # complete, 2011-07-11T12:45:00+03:00 ]	Low Medical History
-	[ IB2 # complete, 2011-07-11T14:17:00+03:00 ]	Low Insurance Check
-Trace name : 990
-	[ IB1 # complete, 2011-07-16T19:04:00+03:00 ]	Low Medical History
-	[ IB2 # complete, 2011-07-16T21:57:00+03:00 ]	Low Insurance Check
-Trace name : 997
-	[ IB2 # complete, 2011-09-25T09:35:00+03:00 ]	Low Medical History
-	[ IB1 # complete, 2011-09-25T10:08:00+03:00 ]	Low Insurance Check
-Trace name : 998
-	[ IB1 # complete, 2011-05-20T12:28:00+03:00 ]	Low Insurance Check
-	[ IB2 # complete, 2011-05-20T16:10:00+03:00 ]	Low Medical History
-Trace name : 999
-	[ IB2 # complete, 2011-03-20T09:07:00+02:00 ]	Low Medical History
-	[ IB1 # complete, 2011-03-20T10:57:00+02:00 ]	Low Insurance Check
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{High Medical History=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by Phone
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Send Notification by Phone=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] Contact Hospital
+[ -1 ] High Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Send Notification by Post
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Contact Hospital
+[ -1 ] High Insurance Check
+[ -1 ] High Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Contact Hospital=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] High Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] High Medical History
+[ -1 ] Contact Hospital
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] High Medical History
+[ -1 ] Contact Hospital
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by Phone
+[ 0 ] Send Notification by e-mail
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Send Notification by Phone=0, Send Notification by e-mail=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Contact Hospital
+[ -1 ] High Medical History
+[ -1 ] High Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] High Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] Contact Hospital
+[ -1 ] High Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] Contact Hospital
+[ -1 ] High Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Send Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] High Medical History
+[ -1 ] Contact Hospital
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Medical History
+[ -1 ] Contact Hospital
+[ -1 ] High Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by e-mail
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Send Notification by e-mail=0, Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] Contact Hospital
+[ -1 ] High Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Contact Hospital
+[ -1 ] High Medical History
+[ -1 ] High Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by e-mail
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, Send Notification by e-mail=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Send Notification by Post
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Send Notification by e-mail
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] High Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Contact Hospital=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by Post
+[ 0 ] Send Notification by Phone
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Send Notification by Phone=0, Send Notification by Post=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Contact Hospital
+[ -1 ] High Medical History
+[ -1 ] High Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by Phone
+[ 0 ] Send Notification by Post
+[ 0 ] Send Notification by e-mail
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, Send Notification by Phone=0, Send Notification by e-mail=0, Contact Hospital=0, Send Notification by Post=0}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] High Medical History
+[ -1 ] Contact Hospital
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Medical History
+[ -1 ] High Insurance Check
+[ -1 ] Contact Hospital
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by e-mail
+[ 0 ] Send Notification by Phone
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, Send Notification by Phone=0, Send Notification by e-mail=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by Phone
+[ 0 ] Send Notification by e-mail
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Send Notification by Phone=0, Send Notification by e-mail=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by Phone
+[ 0 ] Send Notification by Post
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Send Notification by Phone=0, Contact Hospital=0, Send Notification by Post=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Contact Hospital=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Contact Hospital
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by Post
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Prepare Notification Content=0, Contact Hospital=0, Send Notification by Post=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Medical History
+[ -1 ] High Insurance Check
+[ -1 ] Contact Hospital
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Send Notification by e-mail
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{High Medical History=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by e-mail
+[ 0 ] Send Notification by Post
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Prepare Notification Content=0, Send Notification by e-mail=0, Send Notification by Post=0, Low Insurance Check=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Insurance Check
+[ -1 ] Low Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Contact Hospital
+[ 0 ] High Medical History
+[ 0 ] High Insurance Check
+[ 0 ] Prepare Notification Content
+[ 0 ] Send Notification by Post
+[ -1 ] Create Questionnaire
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, Send Notification by Post=0, High Insurance Check=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] High Insurance Check
+[ -1 ] High Medical History
+[ -1 ] Contact Hospital
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Contact Hospital
+[ -1 ] High Medical History
+[ -1 ] High Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] High Insurance Check
+[ 0 ] High Medical History
+[ 0 ] Contact Hospital
+[ 0 ] Prepare Notification Content
+[ -1 ] Create Questionnaire
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{High Medical History=0, Prepare Notification Content=0, Contact Hospital=0}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Contact Hospital
+[ -1 ] High Insurance Check
+[ -1 ] High Medical History
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 1 ] Create Questionnaire
+[ -1 ] Low Medical History
+[ -1 ] Low Insurance Check
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by e-mail
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{}
+
+[ -1 ] Register
+[ 0 ] Low Insurance Check
+[ 0 ] Low Medical History
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Post
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Questionnaire
+[ -1 ] Skip Questionnaire
+[ -1 ] Archive
+{Low Medical History=0}
+
+[ -1 ] Register
+[ 0 ] Low Medical History
+[ 0 ] Low Insurance Check
+[ -1 ] Create Questionnaire
+[ -1 ] Prepare Notification Content
+[ -1 ] Send Notification by Phone
+[ -1 ] Send Notification by Post
+[ -1 ] Send Questionnaire
+[ -1 ] Receive Questionnaire Response
+[ -1 ] Archive
+{Low Insurance Check=0}
+
+
+{High Medical History=0, Prepare Notification Content=0, Send Notification by Phone=0, Send Notification by e-mail=0, Contact Hospital=0, Send Notification by Post=0, High Insurance Check=0, Low Insurance Check=0, Low Medical History=0}

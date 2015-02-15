@@ -84,7 +84,7 @@ public class Main {
 
 //			last 20 traces
 //			List< XTrace >	log_chunk	= log.subList ( log.size ( ) - 20, log.size () );
-			List< XTrace >	log_chunk	= log.subList ( log.size ( ) - 200, log.size () );
+			List< XTrace >	log_chunk	= log.subList ( log.size ( ) - 100, log.size () );
 //
 //			List< Set< String > > events_result = ee.ut.Graph.contextAnalysis ( log_chunk, 4, 4 );
 //			List< List< List<String> > > events_result2 = ee.ut.XLogReader.divideLog ( log_chunk, events_result.get ( 0 ), events_result.get ( 1 ) );

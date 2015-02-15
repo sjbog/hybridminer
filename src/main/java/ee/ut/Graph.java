@@ -64,6 +64,25 @@ public class Graph {
 		predecessors	= ( HashMap< String, Set< String > > ) tmp [ 0 ];
 		successors		= ( HashMap< String, Set< String > > ) tmp [ 1 ];
 
+/*
+		JSONObject jo = new JSONObject ( );
+
+		for ( String key : predecessors.keySet () )	{
+			jo.put ( key, predecessors.get ( key ) );
+		}
+
+		System.out.println ( jo ) ;
+
+		jo	= new JSONObject ( );
+
+		for ( String key : successors.keySet () )	{
+			jo.put ( key, successors.get ( key ) );
+		}
+
+		System.out.println ( jo );
+
+		System.exit ( 1 );*/
+
 
 		Map< String, String >	structured_events	= new HashMap<> ( );
 
