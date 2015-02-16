@@ -1,32 +1,38 @@
 package hybridminer_refactor;
 
 
-import edu.fcse.alphaalgorithm.Utils;
-import edu.fcse.alphaalgorithm.WorkflowNetCreator;
-import ee.ut.AlphaMiner;
 import ee.ut.XLogReader;
-import org.deckfour.xes.classification.XEventClass;
 import org.deckfour.xes.extension.std.XConceptExtension;
 import org.deckfour.xes.extension.std.XExtendedEvent;
 import org.deckfour.xes.factory.XFactory;
 import org.deckfour.xes.factory.XFactoryRegistry;
-import org.deckfour.xes.info.XLogInfo;
-import org.deckfour.xes.info.XLogInfoFactory;
 import org.deckfour.xes.model.XEvent;
 import org.deckfour.xes.model.XLog;
 import org.deckfour.xes.model.XTrace;
 import org.deckfour.xes.out.XSerializer;
 import org.deckfour.xes.out.XesXmlGZIPSerializer;
-import org.deckfour.xes.out.XesXmlSerializer;
 import org.processmining.contexts.cli.CLIContext;
-import org.processmining.contexts.cli.CLIPluginContext;
+import org.processmining.contexts.cli.CLIPluginContext2;
 import org.processmining.framework.plugin.GlobalContext;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.framework.util.Pair;
+import org.processmining.models.flexiblemodel.Flex;
 import org.processmining.plugins.InductiveMiner.mining.MiningParametersIM;
 import org.processmining.plugins.InductiveMiner.plugins.IMProcessTree;
-import org.processmining.plugins.log.logabstraction.LogRelations;
-import org.processmining.plugins.log.logabstraction.factories.LogRelationsFactory;
+import org.processmining.plugins.causalnet.miner.settings.HeuristicsMinerSettings;
+import org.processmining.plugins.causalnet.temp.aggregation.AggregationFunction;
+import org.processmining.plugins.causalnet.temp.cube.EventCube;
+import org.processmining.plugins.causalnet.temp.elements.Dimension;
+import org.processmining.plugins.causalnet.temp.elements.Perspective;
+import org.processmining.plugins.causalnet.temp.index.InvertedIndex;
+import org.processmining.plugins.causalnet.temp.measures.*;
+import org.processmining.plugins.heuristicsnet.AnnotatedHeuristicsNet;
+import org.processmining.plugins.heuristicsnet.SimpleHeuristicsNet;
+import org.processmining.plugins.heuristicsnet.miner.heuristics.converter.HeuristicsNetToFlexConverter;
+import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.FlexibleHeuristicsMiner;
+import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.HeuristicsMiner;
+import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.operators.Operator;
+import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.operators.Stats;
 import org.processmining.processtree.Block;
 import org.processmining.processtree.Node;
 import org.processmining.processtree.Task;
@@ -85,7 +91,7 @@ public class LogProcessor {
 		try {
 
 			log = XLogReader.openLog ( file_path );
-			log = slice_last_n ( log, 200 );
+//			log = slice_last_n ( log, 200 );
 
 			print_out = new PrintStream (".\\output_mod\\output.txt");
 
@@ -462,62 +468,34 @@ public class LogProcessor {
 
 	public void find_structure ( String event_name, XLog log ) {
 
-//		visit all successor events
-		print_out.println ();
-		print_out.println ( "Root event: " + event_name );
-
-		Set<String>	target_events	= new HashSet<> ( successors.get ( event_name ).keySet () );
-		XLog	filtered_log	= factory.createLog ( log.getAttributes () );
-
-		for ( XTrace trace : log ) {
-			filtered_log.add ( filter_trace_by_events ( trace, target_events ) );
-		}
-
-		print_out.println (  );
-		print_out.println ( "filtered log" );
-		print_log ( filtered_log, print_out );
-
-		String xes_filename	= ".\\output_mod\\filtered.xes";
-
-		try {
-			OutputStream save_stream = new FileOutputStream ( xes_filename );
-//			new XesXmlGZIPSerializer ( ).serialize ( filtered_log, save_stream );
-			new XesXmlSerializer ( ).serialize ( filtered_log, save_stream );
-
-			WorkflowNetCreator.takeInAccountLoopsLengthTwo = true;
-			WorkflowNetCreator workflow = new WorkflowNetCreator ( Utils.parseXESFile ( xes_filename ) );
-			print_out.println ( workflow.prepareWFforPrint () );
-
-
-
-		}
-		catch ( Exception e ) {
-			e.printStackTrace ();
-		}
-
-
-//		if ( true )
-//			return;
-
 		GlobalContext global_context	= new CLIContext ();
-		PluginContext plugin_context	= new CLIPluginContext ( global_context, "test label" );
+		PluginContext plugin_context	= new CLIPluginContext2( global_context, "test label" );
 
-		XLogInfo	summary_info	= XLogInfoFactory.createLogInfo ( filtered_log );
-		LogRelations	relations	= LogRelationsFactory.constructAlphaLogRelations ( filtered_log, summary_info );
-		LogRelations	relations2	= LogRelationsFactory.constructHeuristicsLogRelations ( filtered_log );
-		Map< Pair< XEventClass, XEventClass >, Double > parallel_events = relations.getParallelRelations ( );
+//		XLogInfo	summary_info	= XLogInfoFactory.createLogInfo ( log );
 
 //		PluginManagerImpl.initialize ( plugin_context.getClass () );
 //		PluginExecutionResult execution_result = new PluginExecutionResultImpl ( new Class<?>[] { String.class }, new String[] { "Return 1" }, null );
 //
 //		plugin_context.setFuture ( null );
 
-		AlphaMiner alpha_miner	= new AlphaMiner ();
+		FlexibleHeuristicsMiner fhMiner	= new FlexibleHeuristicsMiner( plugin_context, log );
+		HeuristicsMiner hMiner	= new HeuristicsMiner( plugin_context, log );
+
+		AnnotatedHeuristicsNet annotatedHeuristicsNet = ( AnnotatedHeuristicsNet ) fhMiner.mine( );
+		SimpleHeuristicsNet simpleHeuristicsNet = ( SimpleHeuristicsNet ) hMiner.mine( );
 
 		try {
-//			print_out.println ( alpha_miner.doMining ( plugin_context, log, summary_info ).toString ( ) );
-			Object[] result = alpha_miner.doMining ( plugin_context, summary_info, relations );
-			print_out.println ( result.toString ( ) );
+//			print_out.println( miner.mine( plugin_context, log, summary_info ).toString() );
+			Object[] result = HeuristicsNetToFlexConverter.converter( plugin_context, annotatedHeuristicsNet );
+			Flex flex		= ( Flex ) result[ 0 ];
+
+			initTables( annotatedHeuristicsNet.getSplit( "13" ), annotatedHeuristicsNet.getInvertedKeys() );
+			initTables( annotatedHeuristicsNet.getJoin( "13" ), annotatedHeuristicsNet.getInvertedKeys() );
+
+			Object[] result2 = buildCausalNet( log );
+			print_out.println( fhMiner.mine( ) );
+			print_out.println( hMiner.mine( ) );
+//			print_out.println ( result.toString ( ) );
 		}
 		catch ( Exception e )	{
 			print_out.println ( "Exception : " + e.getMessage () );
@@ -536,6 +514,195 @@ public class LogProcessor {
 //			print_out.println ( group_name );
 //			print_log ( sublogsProcedural.get ( group_name ), print_out );
 //		}
+	}
+
+	public void initTables(Operator op, HashMap<String, String> keys) {
+
+		if ( op == null )	return;
+
+		int elements_size = op.getElements().size();
+		int patterns_size = op.getLearnedPatterns().size();
+
+		// ------------------
+
+		int sum = 0;
+		ArrayList<Integer> stackC = new ArrayList<>(elements_size);
+		for (int i = 0; i < elements_size; i++)
+			stackC.add( 0 );
+
+		ArrayList<String> stackP = new ArrayList<String>(patterns_size);
+		ArrayList<Integer> stackV = new ArrayList<Integer>(patterns_size);
+
+		for (java.util.Map.Entry<String, Stats > entry : op.getLearnedPatterns().entrySet()) {
+
+			int occurrences = entry.getValue().getOccurrences();
+
+			boolean isInserted = false;
+			for (int i = 0; i < stackP.size(); i++) {
+
+				if (occurrences > stackV.get(i)) {
+
+					stackP.add(i, entry.getKey());
+					stackV.add(i, occurrences);
+					isInserted = true;
+					break;
+				}
+			}
+			if (!isInserted) {
+
+				stackP.add(entry.getKey());
+				stackV.add(occurrences);
+			}
+
+			sum += occurrences;
+		}
+
+		Boolean[][] p = new Boolean[elements_size][patterns_size];
+		String[][] m = new String[2][patterns_size];
+
+		for (int i = 0; i < stackP.size(); i++) {
+
+			String code = stackP.get(i);
+			int occurrences = stackV.get(i);
+
+			float percentage = Math.round((float) occurrences / (float) sum
+					* 10000) / 100f;
+
+			for (int j = 0; j < elements_size; j++) {
+
+				if (code.charAt(j) == '1') {
+
+					p[j][i] = true;
+
+					Integer temp = stackC.remove(j);
+					temp += occurrences;
+					stackC.add(j, temp);
+				} else
+					p[j][i] = false;
+			}
+			m[0][i] = " " + String.valueOf(occurrences);
+			m[1][i] = percentage + "%";
+		}
+
+		// ------------------
+		// connections
+
+
+		ArrayList<Integer> stackI = new ArrayList<Integer>(elements_size);
+		for (int i = 0; i < stackC.size(); i++) {
+
+			int value = stackC.get(i);
+
+			boolean isInserted = false;
+			for (int j = 0; j < stackI.size(); j++) {
+
+				int temp = stackC.get(stackI.get(j));
+
+				if (value > temp) {
+
+					stackI.add(j, new Integer(i));
+					isInserted = true;
+					break;
+				}
+			}
+			if (!isInserted) {
+
+				stackI.add(new Integer(i));
+			}
+		}
+
+		String[][] m3 = new String[3][elements_size];
+
+		for (int i = 0; i < stackC.size(); i++) {
+
+			int element = op.getElements().get(stackI.get(i));
+			String elementID = convertID( keys.get( String
+					.valueOf( element ) ) );
+			int occurrences = stackC.get(stackI.get(i));
+
+			float percentage = Math.round((float) occurrences / (float) sum
+					* 10000) / 100f;
+
+			m3[0][i] = elementID;
+			m3[1][i] = String.valueOf(occurrences);
+			m3[2][i] = percentage + "%";
+		}
+	}
+
+	public static String convertID(String id) {
+
+		int index = id.indexOf("+");
+
+		if (index == -1) {
+			return id;
+		}
+		else {
+			return id.substring(0, index) + " (" + id.substring(index + 1) + ")";
+		}
+	}
+
+	public Object[] buildCausalNet( XLog log ) {
+		HeuristicsMinerSettings settings = new HeuristicsMinerSettings( );
+		InvertedIndex index = new InvertedIndex( );
+		index.createCompleteIndex(log);
+
+		//CREATING DEFAULT PERSPECTIVE
+		Perspective perspective;
+
+		LinkedList<Dimension > modelDimensions = new LinkedList<Dimension>();
+		LinkedList<Pair<Measure, AggregationFunction<?>> > measures = new LinkedList<Pair<Measure, AggregationFunction<?>>>();
+
+		Dimension mainDim = index.getDimension("Event:Name");
+		if (mainDim != null) {
+			Dimension d1 = mainDim.instance();
+			d1.addValues(mainDim.getValues());
+			modelDimensions.add(d1);
+		}
+
+		Dimension secondDim = index.getDimension("Event:Type");
+		if(secondDim != null && secondDim.getCardinality() > 1){
+
+			Dimension d2 = secondDim.instance();
+			d2.addValues(secondDim.getValues());
+			modelDimensions.add(d2);
+		}
+
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new EventEntry(), null));
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new InstanceEntry(), null));
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new EventStart(), null));
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new EventEnd(), null));
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new EventDirectSuccessor(), null));
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new EventIndirectSuccessor(), null));
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new EventDirectDependencyMeasure(), null));
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new EventLenghtTwoDependencyMeasure(), null));
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new EventLongDistanceDependencyMeasure(), null));
+		measures.add(new Pair<Measure, AggregationFunction<?>>(new EventLengthTwoLoop(), null));
+
+		perspective =
+				new Perspective(modelDimensions, new LinkedList<Dimension>(), measures);
+
+		//BUILDING EVENT CUBE
+		EventCube cube;
+
+		cube = new EventCube(index, perspective.getFirstSpace(), perspective.getMeasures());
+		cube.processValues(perspective);
+
+		//COMPUTING CAUSAL NET
+		String logID = XConceptExtension.instance().extractName(log);
+
+		Object[] cnet = cube.computeCausalNet(logID, perspective, settings);
+		Flex flexDiagram = (Flex) cnet[0];
+
+//		context.getFutureResult(0).setLabel(flexDiagram.getLabel());
+//		context.getFutureResult(1).setLabel("Start tasks node of " + flexDiagram.getLabel());
+//		context.getFutureResult(2).setLabel("End tasks node of " + flexDiagram.getLabel());
+//		context.getFutureResult(3).setLabel("Annotations of " + flexDiagram.getLabel());
+//
+//		context.addConnection(new FlexStartTaskNodeConnection("Start tasks node of " + flexDiagram.getLabel() + " connection", flexDiagram, (StartTaskNodesSet ) cnet[1]));
+//		context.addConnection(new FlexEndTaskNodeConnection("End tasks node of " + flexDiagram.getLabel() + " connection", flexDiagram, (EndTaskNodesSet ) cnet[2]));
+//		context.addConnection(new CausalNetAnnotationsConnection("Annotations of " + flexDiagram.getLabel()  + " connection", flexDiagram, (CausalNetAnnotations ) cnet[3]));
+
+		return cnet;
 	}
 
 	public XTrace filter_trace_by_events ( XTrace trace, Set<String> target_events )	{
