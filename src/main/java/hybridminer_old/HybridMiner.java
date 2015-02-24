@@ -1,7 +1,7 @@
 package hybridminer_old;
 
 import ee.ut.XLogReader;
-import hybridminer_refactor.LogProcessor;
+import ee.ut.XLogWriter;
 import org.deckfour.xes.extension.std.XConceptExtension;
 import org.deckfour.xes.extension.std.XLifecycleExtension;
 import org.deckfour.xes.factory.XFactory;
@@ -96,7 +96,7 @@ public class HybridMiner {
 			PrintStream pw = new PrintStream (outputFileName);
 
 			XLog log = XLogReader.openLog ( inputLogFileName );
-//			log	= LogProcessor.slice_last_n ( log, 200 );
+//			log	= LogProcessor.sliceLastN ( log, 200 );
 
 
 			//	HashMap<String, ArrayList<String>> possiblePredecessors = new HashMap<String, ArrayList<String>>();
@@ -525,7 +525,7 @@ public class HybridMiner {
 
 			pw.println ( );
 			pw.println ( "root log" );
-			LogProcessor.print_log ( root, pw );
+			XLogWriter.print( root, pw );
 
 //			pw.println (  );
 //			pw.println ( "clog" );
@@ -533,7 +533,7 @@ public class HybridMiner {
 
 			pw.println (  );
 			pw.println ( "declarativeLog" );
-			LogProcessor.print_log ( declarativeLog, pw );
+			XLogWriter.print( declarativeLog, pw );
 
 			boolean x = true;
 			if ( x )

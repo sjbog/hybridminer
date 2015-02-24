@@ -1,0 +1,30 @@
+1) Let A1, B1, C1 (from inductive miner) are known starting events of AND split, consider the trace:
+
+Trace	:	S	C1	C2	C3	B1	C4	B2	A1	A2	B3	C5	End
+Branch 1:								A1	A2
+Branch 2:					B1		B2			B3
+Branch 3:	S	C1	C2	C3		C4					C5
+
+Everything between [ C1 .. B1 ] belongs to C*, but not to A or B ( not any other branch ), because only C branch have been opened. Thus:
+	[ C1 .. B1 ] belongs only to C branch
+	[ B1 .. A1 ] belongs either to C or B branches, but not to A
+	[ A1 ... ] could belong to any branch
+
+2) How to deduce when event belongs to any parallel branch and doesn't go after AND join ?
+Chaining parallelism property : every predecessor of known parallel event is also parallel.
+
+For example we have next traces (unrelated to first example)
+
+Trace #0:	S	A1	B1	B2	B3	B4	A2	A3	End
+Branch 1:		A1					A2	A3
+Branch 2:			B1	B2	B3	B4
+
+Trace #1:	S	B1	B2	B3	A1	A2	A3	B4	End
+Branch 1:					A1	A2	A3
+Branch 2:		B1	B2	B3				B4
+
+Trace #2:	S	B1	B2	B3	B4	A1	A2	A3	End
+Branch 1:						A1	A2	A3
+Branch 2:		B1	B2	B3	B4
+
+We know that B4 for sure belongs to a parallel branch ( from Trace #2 ), thus A3 is also parallel event (A3 is predecessor of B4 from Trace #1). Applying chaining (recursive iteration) we can say that A2 is parallel event, because A2 is a predecessor of A3.

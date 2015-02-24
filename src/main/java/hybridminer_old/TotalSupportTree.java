@@ -507,7 +507,7 @@ public class TotalSupportTree extends AssocRuleMining {
 	 * <P>
 	 * Thus given a candidate large itemsets whose size-1 subsets are contained
 	 * (supported) in the current branch of the T-tree, tests whether size-1
-	 * subsets contained in other branches are supported. Proceed as follows:
+	 * subsets contained in other parallelBranches are supported. Proceed as follows:
 	 * <OL>
 	 * <LI>Using current item set split this into two subsets:
 	 * <P>
