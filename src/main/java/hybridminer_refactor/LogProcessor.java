@@ -331,10 +331,10 @@ public class LogProcessor {
 
 //		XLogInfo	summary_info	= XLogInfoFactory.createLogInfo ( log );
 
-//		PluginManagerImpl.initialize ( plugin_context.getClass () );
+//		PluginManagerImpl.initialize ( pluginContext.getClass () );
 //		PluginExecutionResult execution_result = new PluginExecutionResultImpl ( new Class<?>[] { String.class }, new String[] { "Return 1" }, null );
 //
-//		plugin_context.setFuture ( null );
+//		pluginContext.setFuture ( null );
 
 		FlexibleHeuristicsMiner fhMiner	= new FlexibleHeuristicsMiner( plugin_context, log );
 		HeuristicsMiner hMiner	= new HeuristicsMiner( plugin_context, log );
@@ -343,7 +343,7 @@ public class LogProcessor {
 		SimpleHeuristicsNet simpleHeuristicsNet = ( SimpleHeuristicsNet ) hMiner.mine( );
 
 		try {
-//			print_out.println( miner.mine( plugin_context, log, summary_info ).toString() );
+//			print_out.println( miner.mine( pluginContext, log, summary_info ).toString() );
 			Object[] result = HeuristicsNetToFlexConverter.converter( plugin_context, annotatedHeuristicsNet );
 			Flex flex		= ( Flex ) result[ 0 ];
 

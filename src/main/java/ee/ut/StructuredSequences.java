@@ -188,9 +188,9 @@ public class StructuredSequences extends LinkedList< Set< String > > {
 
 
 //				XExtendedEvent prefixEvent = new XExtendedEvent (
-//						new XEventImpl ( ( XAttributeMap ) new XExtendedEvent ( trace.get ( 0 ) ).getAttributes ().clone () )
+//						new XEventImpl ( ( XAttributeMap ) new XExtendedEvent ( trace.get ( 0 ) ).getAttributes ().deepcopy () )
 //				);
-//				XExtendedEvent suffixEvent = ( XExtendedEvent ) prefixEvent.clone ();
+//				XExtendedEvent suffixEvent = ( XExtendedEvent ) prefixEvent.deepcopy ();
 //
 //				prefixEvent.setName ( "Prefix event" );
 //				suffixEvent.setName ( "Suffix event" );

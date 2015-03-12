@@ -95,6 +95,27 @@ public class XLogReader {
 		return filteredLog;
 	}
 
+	public static XLog deepcopy( XLog log ) {
+		XLog logCopy	= factory.createLog(  );
+		logCopy.setAttributes( log.getAttributes() );
+		XTrace traceCopy;
+
+		for ( XTrace trace : log ) {
+			traceCopy	= factory.createTrace ();
+			traceCopy.setAttributes( trace.getAttributes() );
+
+			for ( XEvent event : trace ) {
+				XEvent eventCopy = factory.createEvent( );
+				eventCopy.setAttributes( event.getAttributes() );
+				traceCopy.add( eventCopy );
+			}
+
+			if ( traceCopy.size() > 0 )
+				logCopy.add( traceCopy );
+		}
+		return logCopy;
+	}
+
 	public static XLog filterRemoveByEvents( XLog log, Set< String > targetEvents, String eventNameReplacement ) {
 		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes().clone() );
 		XLogInfo logInfo	= XLogInfoImpl.create( log, TreeProcessor.defaultXEventClassifier );

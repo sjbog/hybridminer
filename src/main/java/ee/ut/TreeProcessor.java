@@ -14,7 +14,7 @@ import org.processmining.contexts.cli.CLIContext;
 import org.processmining.contexts.cli.CLIPluginContext;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.plugins.InductiveMiner.mining.MiningParameters;
-import org.processmining.plugins.InductiveMiner.mining.MiningParametersIMin;
+import org.processmining.plugins.InductiveMiner.mining.MiningParametersIM;
 import org.processmining.plugins.InductiveMiner.plugins.IMProcessTree;
 import org.processmining.plugins.heuristicsnet.AnnotatedHeuristicsNet;
 import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.FlexibleHeuristicsMiner;
@@ -23,8 +23,8 @@ import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.operators.
 import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.settings.HeuristicsMinerSettings;
 import org.processmining.processtree.Block;
 import org.processmining.processtree.Node;
+import org.processmining.processtree.ProcessTree;
 import org.processmining.processtree.Task;
-import org.processmining.processtree.impl.AbstractBlock;
 
 import java.io.PrintStream;
 import java.util.*;
@@ -36,13 +36,14 @@ public class TreeProcessor {
 	public String traceEndPseudoEvent = "__end__";
 
 //	Inductive Miner - incompleteness
-	public MiningParameters inductiveMinerParams = new MiningParametersIMin( );
+	public MiningParameters inductiveMinerParams = new MiningParametersIM( );
 	public static XEventClassifier defaultXEventClassifier = new XEventAndClassifier( new XEventNameClassifier(), new XEventLifeTransClassifier() );
 	public XEventClassifier xEventClassifier = defaultXEventClassifier;
 	public XLogInfo logInfo;
 	public Map< String, Set< String > > predecessors;
 	public Map< String, Set< String > > successors;
 	public PrintStream printStream = System.out;
+	public PluginContext pluginContext;
 
 	//	Holds events which for sure belong to the branch
 	public List< Set< String > > parallelBranches;
@@ -50,15 +51,18 @@ public class TreeProcessor {
 	public Map< String, Set< Integer > > eventToBranch;
 
 	public XLog log;
-	public Map< String, XLog > sublogs	= new HashMap<>(  );
+	public String SublogNamePrefix	= "Block";
+	public Map< String, TreeProcessor > childBlocks = new HashMap<>(  );
 
 	public TreeProcessor( XLog log ) {
 		this.log = log;
+		this.pluginContext = new CLIPluginContext( new CLIContext(), "Hybrid Miner" );
 		inductiveMinerParams.setClassifier( xEventClassifier );
 	}
 
 	public TreeProcessor( XLog log, PrintStream printStream ) {
 		this.log = log;
+		this.pluginContext = new CLIPluginContext( new CLIContext(), "Hybrid Miner" );
 
 		if ( printStream == null )
 			printStream = System.out;
@@ -87,7 +91,7 @@ public class TreeProcessor {
 				XAttributeLiteralImpl nameAttr = ( XAttributeLiteralImpl ) startEventsLog.getAttributes( ).get( "concept:name" );
 				nameAttr.setValue( String.format( "%s Start Events", nameAttr.getValue( ) ) );
 
-				XLogWriter.saveXesGz( startEventsLog, "output/startEvents" );
+//				XLogWriter.saveXesGz( startEventsLog, "output/startEvents" );
 
 				if ( divideLogIntoSublogs( event ) ) {
 					for ( Set< String > branchEvents : parallelBranches )
@@ -134,18 +138,21 @@ public class TreeProcessor {
 		if ( parallelBranches == null ) return false;
 
 		parallelBranches	= findBranchEvents( log, parallelBranches );
-		printStream.println( "Found Parallel branches:" );
+		printStream.println( "Found parallel branches:" );
 
 		for ( int i = 0, andBranchesSize = parallelBranches.size( ) ; i < andBranchesSize ; i++ ) {
 			printStream.println( String.format( "%s: %s", i, parallelBranches.get( i ) ) );
 
 			if ( parallelBranches.get( i ).size() > 1 ) {
-				String name	= String.format( "Sublog_%d", sublogs.size() );
+				String name	= String.format( "%s_%d", SublogNamePrefix, childBlocks.size( ) );
 				XLog sublog	= XLogReader.filterRemoveByEvents( log, parallelBranches.get( i ), name );
+
+				childBlocks.put( name, new TreeProcessor( sublog, printStream ) );
+				childBlocks.get( name ).SublogNamePrefix	= name;
+				childBlocks.get( name ).mine();
 
 				XAttributeLiteralImpl nameAttr = ( XAttributeLiteralImpl ) sublog.getAttributes( ).get( "concept:name" );
 				nameAttr.setValue( String.format( "%s %s", nameAttr.getValue( ), name ) );
-				sublogs.put( name, sublog );
 			}
 		}
 		return true;
@@ -162,11 +169,11 @@ public class TreeProcessor {
 			if ( trace.size( ) < 1 )
 				continue;
 
-			String prevEvent, currEvent = fetchName( trace.get( 0 ) );
+			String prevEvent, currEvent = traceStartPseudoEvent;
 
-			successors.get( traceStartPseudoEvent ).add( currEvent );
+//			successors.get( traceStartPseudoEvent ).add( currEvent );
 
-			for ( int i = 1, size = trace.size( ) ; i < size ; i++ ) {
+			for ( int i = 0, size = trace.size( ) ; i < size ; i++ ) {
 				prevEvent = currEvent;
 				currEvent = fetchName( trace.get( i ) );
 
@@ -176,7 +183,7 @@ public class TreeProcessor {
 				predecessors.putIfAbsent( currEvent, new HashSet<>( ) );
 				predecessors.get( currEvent ).add( prevEvent );
 			}
-			predecessors.get( currEvent ).add( currEvent );
+			predecessors.get( traceEndPseudoEvent ).add( currEvent );
 		}
 	}
 
@@ -186,7 +193,7 @@ public class TreeProcessor {
 		if ( ! ( treeRoot instanceof Block.And ) ) {
 			return null;
 		}
-		return (( AbstractBlock ) treeRoot ).getChildren( ).stream( ).map( TreeProcessor:: getNodeTasks ).collect( Collectors.toCollection( ArrayList::new ) );
+		return (( Block ) treeRoot ).getChildren( ).stream( ).map( TreeProcessor:: getNodeTasks ).collect( Collectors.toCollection( ArrayList::new ) );
 	}
 
 	public static Set< String > getNodeTasks( Node node ) {
@@ -300,10 +307,16 @@ public class TreeProcessor {
 	}
 
 	public void mapEventsToBranches( XLog log, Map< String, Set< Integer > > eventToBranch, Set< String > unknownBranchEvents ) {
-		PluginContext plugin_context	= new CLIPluginContext( new CLIContext(), "Hybrid Miner" );
+
 		HeuristicsMinerSettings hmSettings = new HeuristicsMinerSettings( );
 		hmSettings.setClassifier( xEventClassifier );
-		FlexibleHeuristicsMiner fhMiner	= new FlexibleHeuristicsMiner( plugin_context, log, hmSettings );
+
+		Set<String> events	= new HashSet<>( eventToBranch.keySet() );
+		events.addAll( unknownBranchEvents );
+
+		FlexibleHeuristicsMiner fhMiner	= new FlexibleHeuristicsMiner( pluginContext,
+				XLogReader.filterByEvents( log, events ),
+				hmSettings );
 		AnnotatedHeuristicsNet annotatedHeuristicsNet = ( AnnotatedHeuristicsNet ) fhMiner.mine( );
 
 //		TODO: order of events might be critical
@@ -341,5 +354,44 @@ public class TreeProcessor {
 					) )
 			);
 		}
+	}
+
+	public ProcessTree toProcessTree() {
+		ProcessTree result = IMProcessTree.mineProcessTree( log, inductiveMinerParams );
+		if ( result.getRoot( ) instanceof Block )
+			ProcessTreeIterator( ( Block ) result.getRoot( ), childBlocks );
+		return result;
+	}
+
+//	Recursively iterates over Block's children, replacing childBlocks' keys with IMProcessTree
+	public static void ProcessTreeIterator( Block root, Map< String, TreeProcessor > sublogs ) {
+		int i = 0;
+		for (Iterator< Node > nodeIterator = root.iterator(); nodeIterator.hasNext( ); i ++ ) {
+			Node node = nodeIterator.next();
+			String nodeName	= node.getName();
+
+//			Remove +complete suffix
+			if ( nodeName.endsWith( "+complete" ))
+				nodeName	= nodeName.substring( 0, nodeName.indexOf( "+complete" ) );
+
+			if ( node instanceof Task.Manual && sublogs.containsKey( nodeName ) ) {
+				( ( Block ) node.getParents().toArray()[ 0 ] ).swapChildAt(
+						sublogs.get( nodeName ).toProcessTree( ).getRoot( ), i
+				);
+			}
+			else if ( node instanceof Block && ( ( Block ) node ).numChildren() > 0 ) {
+				ProcessTreeIterator( ( Block ) node, sublogs );
+			}
+		}
+	}
+
+	public Map< String, XLog > getChildLogs() {
+		HashMap< String, XLog > result = new HashMap<>();
+
+		for( String name : this.childBlocks.keySet() ) {
+			result.put( name, childBlocks.get( name ).log );
+			result.putAll( childBlocks.get( name ).getChildLogs() );
+		}
+		return	result;
 	}
 }

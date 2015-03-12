@@ -2,7 +2,13 @@
 
 Reconstructs hybrid process models from logs.
 
-Maven doesn't have OpenXES. Need to add manually lib/OpenXES-2.0 to project lib / dependencies
+To build a jar, include to project dependencies:
+ 
+ 1) ./lib
+ 
+ 2) ProM/ProM___.jar
+ 
+ 3) ProM/lib
 
 
 ### License
