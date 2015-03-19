@@ -78,7 +78,7 @@ public class XLogReader {
 	}
 
 	public static XLog filterByEvents( XLog log, Set< String > targetEvents ) {
-		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes().clone() );
+		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes( ).clone( ) );
 		XLogInfo logInfo	= XLogInfoImpl.create( log, TreeProcessor.defaultXEventClassifier );
 		XTrace filteredTrace;
 
@@ -90,6 +90,49 @@ public class XLogReader {
 					filteredTrace.add( event );
 			}
 			if ( filteredTrace.size() > 0 )
+				filteredLog.add( filteredTrace );
+		}
+		return filteredLog;
+	}
+
+	public static XLog filterWithoutEvents( XLog log, Set< String > targetEvents ) {
+		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes().clone() );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, TreeProcessor.defaultXEventClassifier );
+		XTrace filteredTrace;
+
+		for ( XTrace trace : log ) {
+			filteredTrace	= factory.createTrace ( ( XAttributeMap ) trace.getAttributes ().clone() );
+			boolean addTrace	= true;
+
+			for ( XEvent event : trace ) {
+				if ( targetEvents.contains( fetchName( event, logInfo ) ) ) {
+					addTrace	= false;
+					break;
+				}
+				filteredTrace.add( event );
+			}
+			addTrace	= addTrace && ( filteredTrace.size() > 0 );
+			if ( addTrace )
+				filteredLog.add( filteredTrace );
+		}
+		return filteredLog;
+	}
+
+	public static XLog filterContainingEvents( XLog log, Set< String > targetEvents ) {
+		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes().clone() );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, TreeProcessor.defaultXEventClassifier );
+		XTrace filteredTrace;
+
+		for ( XTrace trace : log ) {
+			filteredTrace	= factory.createTrace ( ( XAttributeMap ) trace.getAttributes ().clone() );
+			boolean addTrace	= false;
+
+			for ( XEvent event : trace ) {
+				addTrace	= addTrace || ( targetEvents.contains( fetchName( event, logInfo ) ) );
+				filteredTrace.add( event );
+			}
+			addTrace	= addTrace && ( filteredTrace.size() > 0 );
+			if ( addTrace )
 				filteredLog.add( filteredTrace );
 		}
 		return filteredLog;

@@ -9,10 +9,11 @@ import org.processmining.models.graphbased.directed.bpmn.BPMNDiagram;
 import org.processmining.plugins.bpmn.plugins.BpmnExportPlugin;
 import org.processmining.processtree.ProcessTree;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class HybridMiner {
 
@@ -24,13 +25,10 @@ public class HybridMiner {
 		try {
 			if ( args.length == 0 )
 				log = XLogReader.openLog ( "data/L1.mxml" );
+//				log = XLogReader.openLog ( "data/provaH.xes" );
+//				log = XLogReader.openLog ( "data/s12.mxml" );
 			else
 				log = XLogReader.openLog ( args[ 0 ] );
-
-//			log = XLogReader.openLog ( "data/provaH.xes" );
-//			log = XLogReader.openLog ( "data/financial_log.mxml.gz" );
-
-//			log = XLogReader.sliceLastN( log, 200 );
 
 			printStream	= new PrintStream( outputPath + "output.txt" );
 
@@ -40,7 +38,68 @@ public class HybridMiner {
 			return;
 		}
 
+
 		TreeProcessor treeProcessor = new TreeProcessor( log, printStream );
+		treeProcessor.analyzeSuccPred( treeProcessor.log );
+
+		Set<String> allEvents	= new HashSet<>(  );
+		allEvents.addAll( treeProcessor.successors.keySet() );
+		allEvents.addAll( treeProcessor.predecessors.keySet( ) );
+
+		Set<String>  events	= new HashSet<>(  );
+
+		for ( String event : allEvents ) {
+			if ( event.startsWith( "Send Notification" ) )
+				events.add( event );
+		}
+
+		XLogWriter.saveXesGz( XLogReader.filterWithoutEvents( log, events ), outputPath + "L1_wo_Send_Notification" );
+		XLogWriter.saveXesGz( XLogReader.filterByEvents( log, events ), outputPath + "L1_only_Send_Notification" );
+
+		/*
+		events	= new HashSet<>(  );
+
+		for ( String event : allEvents ) {
+			if ( event.startsWith( "W_Afhandelen leads" ) )
+				events.add( event );
+		}
+
+		XLogWriter.saveXesGz( XLogReader.filterByEvents( log, events ), outputPath + "W_Afhandelen leads" );
+
+		events	= new HashSet<>(  );
+
+		for ( String event : allEvents ) {
+			if ( event.startsWith( "W_Beoordelen" ) )
+				events.add( event );
+		}
+
+		XLogWriter.saveXesGz( XLogReader.filterByEvents( log, events ), outputPath + "W_Beoordelen" );
+
+		events	= new HashSet<>(  );
+
+		for ( String event : allEvents ) {
+			if ( event.startsWith( "W_Completeren" ) )
+				events.add( event );
+		}
+
+		XLogWriter.saveXesGz( XLogReader.filterByEvents( log, events ), outputPath + "W_Completeren" );
+
+		events	= new HashSet<>(  );
+
+		for ( String event : allEvents ) {
+			if ( event.startsWith( "A_" ) )
+				events.add( event );
+		}
+
+		XLogWriter.saveXesGz( XLogReader.filterByEvents( log, events ), outputPath + "A_" );
+		*/
+
+//		XLogWriter.saveXesGz(
+//				XLogReader.filterContainingEvents(
+//						log, new HashSet<>( Arrays.asList( "A_APPROVED+complete", "A_REGISTERED+complete", "A_ACTIVATED+complete" ))
+//				), outputPath + "financial_log_successful"
+//		);
+
 		treeProcessor.mine( );
 
 		XLogWriter.saveXesGz( treeProcessor.log, outputPath + "root" );
@@ -53,7 +112,7 @@ public class HybridMiner {
 				treeProcessor.toProcessTree( ), true
 		)[ 0 ];
 		try {
-			new BpmnExportPlugin().export( treeProcessor.pluginContext, bpmn, new File( outputPath + "model.bpmn" ) );
+			new BpmnExportPlugin().export( treeProcessor.pluginContext, bpmn, new java.io.File( outputPath + "model.bpmn" ) );
 		} catch ( IOException e ) {
 			printStream.println( e.getMessage( ) );
 //			e.printStackTrace( );

@@ -1,5 +1,6 @@
 package ee.ut;
 
+import ee.ut.classifiers.HeuristicEventsClassifier;
 import org.deckfour.xes.classification.XEventAndClassifier;
 import org.deckfour.xes.classification.XEventClassifier;
 import org.deckfour.xes.classification.XEventLifeTransClassifier;
@@ -16,11 +17,6 @@ import org.processmining.framework.plugin.PluginContext;
 import org.processmining.plugins.InductiveMiner.mining.MiningParameters;
 import org.processmining.plugins.InductiveMiner.mining.MiningParametersIM;
 import org.processmining.plugins.InductiveMiner.plugins.IMProcessTree;
-import org.processmining.plugins.heuristicsnet.AnnotatedHeuristicsNet;
-import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.FlexibleHeuristicsMiner;
-import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.operators.Join;
-import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.operators.Stats;
-import org.processmining.plugins.heuristicsnet.miner.heuristics.miner.settings.HeuristicsMinerSettings;
 import org.processmining.processtree.Block;
 import org.processmining.processtree.Node;
 import org.processmining.processtree.ProcessTree;
@@ -75,6 +71,14 @@ public class TreeProcessor {
 		analyzeSuccPred( log );
 		LinkedList< String > fringe = walkPreorder( traceStartPseudoEvent, successors );
 		HashSet< String > processed	= new HashSet<>();
+
+		printStream.println( "Predecessors:" );
+		for ( Map.Entry< String, Set< String >> entry : predecessors.entrySet() )
+			printStream.println( "\t" + entry.getKey() + ": " + entry.getValue().toString() );
+
+		printStream.println( "Successors:" );
+		for ( Map.Entry< String, Set< String >> entry : successors.entrySet() )
+			printStream.println( "\t" + entry.getKey() + ": " + entry.getValue().toString() );
 
 		while ( ! fringe.isEmpty() ) {
 			String event	= fringe.pop();
@@ -265,8 +269,13 @@ public class TreeProcessor {
 			else if ( eventToBranch.get( event ).isEmpty( ) )
 				eventToBranch.remove( event );
 		}
-		mapEventsToBranches( log, eventToBranch,
-				findParallelEvents( eventToBranch, tailEvents, predecessors )
+
+		eventToBranch.putAll(
+				new HeuristicEventsClassifier( xEventClassifier, pluginContext )
+					.mapEventsToBranches(
+							log, eventToBranch
+							, findParallelEvents( eventToBranch, tailEvents, predecessors )
+					)
 		);
 
 //		tail events which have all the predecessors in the same branch should also belong to that branch
@@ -304,56 +313,6 @@ public class TreeProcessor {
 		}
 		processedEvents.retainAll( tailEvents );
 		return processedEvents;
-	}
-
-	public void mapEventsToBranches( XLog log, Map< String, Set< Integer > > eventToBranch, Set< String > unknownBranchEvents ) {
-
-		HeuristicsMinerSettings hmSettings = new HeuristicsMinerSettings( );
-		hmSettings.setClassifier( xEventClassifier );
-
-		Set<String> events	= new HashSet<>( eventToBranch.keySet() );
-		events.addAll( unknownBranchEvents );
-
-		FlexibleHeuristicsMiner fhMiner	= new FlexibleHeuristicsMiner( pluginContext,
-				XLogReader.filterByEvents( log, events ),
-				hmSettings );
-		AnnotatedHeuristicsNet annotatedHeuristicsNet = ( AnnotatedHeuristicsNet ) fhMiner.mine( );
-
-//		TODO: order of events might be critical
-//		"Receive Questionnaire Response", "Submit Questionnaire" vs "Submit Questionnaire", "Receive Questionnaire Response"
-//
-		for ( String event : unknownBranchEvents ) {
-			Join join = annotatedHeuristicsNet.getJoin( String.valueOf( annotatedHeuristicsNet.getKey( event ) ) );
-
-			HashMap<Integer, Integer> elementOccurrences	= new HashMap<>(  );
-			for ( int i = 0, size = join.getElements().size(); i < size; i ++ )
-				elementOccurrences.put( join.getElements().get( i ), 0 );
-
-//			Each pattern is a "binary" string "101001" of elements' presence
-			for ( Map.Entry< String, Stats > entry : join.getLearnedPatterns().entrySet() ) {
-				for ( int i = 0, element, size = entry.getKey().length() ; i < size ; i ++ ) {
-					if ( entry.getKey().charAt( i ) == '1' ) {
-						element = join.getElements( ).get( i );
-						elementOccurrences.put( element,
-								elementOccurrences.get( element ) + entry.getValue( ).getDistinctOccurrences( )
-						);
-					}
-				}
-			}
-			PriorityQueue<Map.Entry< Integer, Integer>> priorityQueue	= new PriorityQueue<>( elementOccurrences.size(),
-					new Comparator<Map.Entry<Integer, Integer>>() {
-						public int compare( Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2 ) {
-							return (o2.getValue()).compareTo( o1.getValue() );
-						}
-					}
-			);
-			priorityQueue.addAll( elementOccurrences.entrySet( ) );
-			eventToBranch.put( event,
-					eventToBranch.get( annotatedHeuristicsNet.getInvertedKeys( ).get(
-							String.valueOf( priorityQueue.poll( ).getKey( ) )
-					) )
-			);
-		}
 	}
 
 	public ProcessTree toProcessTree() {
