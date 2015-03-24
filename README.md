@@ -11,5 +11,14 @@ To build a jar, include to project dependencies:
  3) ProM/lib
 
 
+### Algorithm limitations:
+ loops
+ unique event names (duplicate activities aren't allowed)
+ log completeness (all edge cases are present in the log at least once)
+ ambiguously assigned activities to an incorrect branch
+ noise-free
+
+
+
 ### License
 Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)

@@ -1,128 +1,71 @@
-import ee.ut.StructuredSequences;
+import ee.ut.ProcessTree2BPMNConverter;
+import ee.ut.LogProcessor;
+import ee.ut.XLogReader;
+import ee.ut.XLogWriter;
 import org.deckfour.xes.model.XLog;
-import org.deckfour.xes.model.XTrace;
+import org.processmining.contexts.uitopia.annotations.UITopiaVariant;
+import org.processmining.framework.plugin.PluginContext;
+import org.processmining.framework.plugin.annotations.Plugin;
+import org.processmining.framework.plugin.annotations.PluginVariant;
+import org.processmining.models.graphbased.directed.bpmn.BPMNDiagram;
+import org.processmining.plugins.bpmn.plugins.BpmnExportPlugin;
+import org.processmining.processtree.ProcessTree;
 
-import java.util.*;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Map;
 
 public class Main {
 
-	static List< String > Find_start_nodes (
-			Map< String, Set< String > > predecessors,
-			Map< String, Set< String > > successors,
-			int threshold,
-			Set< String > structured_events )	{
-
-		List< String > start_nodes	= new LinkedList<> (  );
-
-		for	( String event : structured_events )	{
-
-			int	predecessors_count	= predecessors.getOrDefault ( event, new HashSet< String > () ).size ();
-
-			if	( predecessors_count == 0	|| predecessors_count > threshold )	{
-				start_nodes.add ( event );
-			}
-
-//			Check if there is a start node before
-			else	{
-				boolean	has_start_node	= false;
-
-				for ( String predecessor : predecessors.get ( event ) )	{
-
-					has_start_node	|= ( threshold >= successors.get ( predecessor ).size () );
-				}
-
-				if	( ! has_start_node )	{
-					start_nodes.add ( event );
-				}
-			}
-		}
-
-		return	start_nodes;
-	}
-
-	static void Group_structured_events (
-			Map< String, Set< String > > predecessors,
-			Map< String, Set< String > > successors,
-			int threshold	)	{
-
-		Set < String >	structured_events	= new HashSet<> ( );
-
-		for	( Map.Entry< String, Set< String > > entry : predecessors.entrySet () )	{
-
-			if ( threshold >= entry.getValue ().size () )	{
-				structured_events.add ( entry.getKey () );
-			}
-		}
-
-		for	( Map.Entry< String, Set< String > > entry : successors.entrySet () )	{
-
-			if ( threshold >= entry.getValue ().size () )	{
-				structured_events.add ( entry.getKey () );
-			}
-		}
-
-		System.out.println ( structured_events );
-		System.out.println ( );
-
-		Map < String, Set < String > >	groups	= new HashMap<> ();
-
-		for ( String node : Find_start_nodes ( predecessors, successors, threshold, structured_events ) )	{
-
-			groups.put ( node, new HashSet< String > (  ) );
-		}
-
-
-		System.out.println ( groups.keySet () );
-	}
-
-
 	public static void main ( String args[] ) {
+		String	outputPath	= "./output/";
+		PrintStream	printStream;
+		XLog log;
 
 		try {
-			XLog log = ee.ut.XLogReader.openLog ( "data/L1.mxml" );
-//			XLog log = XLogReader.openLog ( "data/financial_log.mxml.gz" );
+			if ( args.length == 0 )
+				log = XLogReader.openLog( "data/L1.mxml" );
+//				log = XLogReader.openLog ( "data/provaH.xes" );
+//				log = XLogReader.openLog ( "data/s12.mxml" );
+			else
+				log = XLogReader.openLog ( args[ 0 ] );
 
-//			last 20 traces
-//			List< XTrace >	log_chunk	= log.subList ( log.size ( ) - 20, log.size () );
-			List< XTrace >	log_chunk	= log.subList ( log.size ( ) - 100, log.size () );
-//
-//			List< Set< String > > events_result = ee.ut.Graph.contextAnalysis ( log_chunk, 4, 4 );
-//			List< List< List<String> > > events_result2 = ee.ut.XLogReader.divideLog ( log_chunk, events_result.get ( 0 ), events_result.get ( 1 ) );
-//
-//			System.out.println ( events_result2.get ( 0 ));
-//			System.out.println ();
-//			System.out.println ( events_result2.get ( 1 ));
-
-
-			StructuredSequences structured_sequences	= StructuredSequences.from_traces ( log_chunk, 3 );
-
-			System.out.println ();
-
-			for ( Set < String > key : structured_sequences )	{
-
-				System.out.println ( String.format ( "%s %s", key.hashCode (), key ) );
-
-//				for ( List<String> row : structured_sequences.get ( key ) ) {
-//					System.out.println ( "\t" + row );
-//				}
-			}
-			structured_sequences.filter_log ( log_chunk );
+			printStream	= new PrintStream( outputPath + "output.txt" );
 
 		} catch ( Exception e ) {
-			e.printStackTrace ( );
+			System.out.println( "Exception : " + e.getMessage( ) );
+//			e.printStackTrace( );
+			return;
 		}
 
-	}
+		LogProcessor logProcessor = new LogProcessor( log, printStream );
+		logProcessor.mine( );
 
-	static Map< String, Set<String> > filterByThreshold ( Map< String, Set<String> > dataSet, int threshold )	{
-		Map<String, Set<String>> result	= new HashMap<> ();
+		XLogWriter.saveXesGz( logProcessor.log, outputPath + "root" );
+		for ( Map.Entry< String, XLog > entry : logProcessor.getChildLogs().entrySet() )
+			XLogWriter.saveXesGz( entry.getValue(), outputPath + entry.getKey() );
 
-		for ( String key : dataSet.keySet () )	{
-			if ( dataSet.get ( key ).size () <= threshold )	{
-				result.put ( key, dataSet.get ( key ) );
-			}
+		printStream.println( "\nProcess tree:" );
+		printStream.println( logProcessor.toProcessTree() );
+
+		BPMNDiagram bpmn = ( BPMNDiagram ) new ProcessTree2BPMNConverter( ).convertToBPMN(
+				logProcessor.toProcessTree( ), true
+		)[ 0 ];
+		try {
+			new BpmnExportPlugin().export( logProcessor.pluginContext, bpmn, new java.io.File( outputPath + "model.bpmn" ) );
+		} catch ( IOException e ) {
+			printStream.println( "Exception : " + e.getMessage( ) );
+//			e.printStackTrace( );
 		}
-		return	result;
 	}
 
+	@Plugin (name = "Mine process tree with Hybrid Miner", returnLabels = { "Process Tree" }, returnTypes = { ProcessTree.class }, parameterLabels = { "Log" }, userAccessible = true)
+	@UITopiaVariant (affiliation = UITopiaVariant.EHV, author = "Bogdan S", email = "bogdan89@ut.ee")
+	@PluginVariant (variantLabel = "Mine a Process Tree, dialog", requiredParameterLabels = { 0 })
+	public ProcessTree mineGuiProcessTree(PluginContext context, XLog log) {
+		LogProcessor logProcessor = new LogProcessor( XLogReader.deepcopy( log ), System.out );
+		logProcessor.pluginContext	= context;
+		logProcessor.mine( );
+		return logProcessor.toProcessTree( );
+	}
 }

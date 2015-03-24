@@ -15,7 +15,7 @@ import org.processmining.contexts.cli.CLIContext;
 import org.processmining.contexts.cli.CLIPluginContext;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.plugins.InductiveMiner.mining.MiningParameters;
-import org.processmining.plugins.InductiveMiner.mining.MiningParametersIM;
+import org.processmining.plugins.InductiveMiner.mining.MiningParametersIMin;
 import org.processmining.plugins.InductiveMiner.plugins.IMProcessTree;
 import org.processmining.processtree.Block;
 import org.processmining.processtree.Node;
@@ -26,13 +26,13 @@ import java.io.PrintStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class TreeProcessor {
+public class LogProcessor {
 
 	public String traceStartPseudoEvent = "__start__";
 	public String traceEndPseudoEvent = "__end__";
 
 //	Inductive Miner - incompleteness
-	public MiningParameters inductiveMinerParams = new MiningParametersIM( );
+	public MiningParameters inductiveMinerParams = new MiningParametersIMin( );
 	public static XEventClassifier defaultXEventClassifier = new XEventAndClassifier( new XEventNameClassifier(), new XEventLifeTransClassifier() );
 	public XEventClassifier xEventClassifier = defaultXEventClassifier;
 	public XLogInfo logInfo;
@@ -47,16 +47,16 @@ public class TreeProcessor {
 	public Map< String, Set< Integer > > eventToBranch;
 
 	public XLog log;
-	public String SublogNamePrefix	= "Block";
-	public Map< String, TreeProcessor > childBlocks = new HashMap<>(  );
+	public String SubprocessNamePrefix = "Block";
+	public Map< String, LogProcessor > childBlocks = new HashMap<>(  );
 
-	public TreeProcessor( XLog log ) {
+	public LogProcessor( XLog log ) {
 		this.log = log;
 		this.pluginContext = new CLIPluginContext( new CLIContext(), "Hybrid Miner" );
 		inductiveMinerParams.setClassifier( xEventClassifier );
 	}
 
-	public TreeProcessor( XLog log, PrintStream printStream ) {
+	public LogProcessor( XLog log, PrintStream printStream ) {
 		this.log = log;
 		this.pluginContext = new CLIPluginContext( new CLIContext(), "Hybrid Miner" );
 
@@ -67,18 +67,46 @@ public class TreeProcessor {
 		inductiveMinerParams.setClassifier( xEventClassifier );
 	}
 
+	/*public void mine() {
+		analyzeSuccPred( log );
+
+		HashSet< String > processedEvents = new HashSet<>( );
+		HashSet< String > edgeEvents = new HashSet<>( successors.get( traceStartPseudoEvent ) );
+		boolean newEdgeEventsAdded	= ( edgeEvents.size() > 0 );
+
+		while ( newEdgeEventsAdded ) {
+			newEdgeEventsAdded	= false;
+
+//			Straight Sequence - only 1 immediate successor
+			if ( edgeEvents.size() == 1 ) {
+				String event = edgeEvents.iterator().next();
+				processedEvents.add( event );
+
+				edgeEvents.clear( );
+				edgeEvents.addAll( successors.get( event ) );
+
+				newEdgeEventsAdded	= ( edgeEvents.size() > 0 );
+				continue;
+			}
+
+//			There is more than 1 immediate successor
+			HashSet< String > oldEdgeEvents = new HashSet<>( edgeEvents );
+
+			new StructureProcessor( log, successors, predecessors )
+					.IsolateParallelBranches( processedEvents, edgeEvents );
+
+
+		}
+
+
+		XAttributeLiteralImpl nameAttr = ( XAttributeLiteralImpl ) log.getAttributes( ).get( "concept:name" );
+		nameAttr.setValue( String.format( "%s Root", nameAttr.getValue( ) ) );
+	}*/
+
 	public void mine( ) {
 		analyzeSuccPred( log );
 		LinkedList< String > fringe = walkPreorder( traceStartPseudoEvent, successors );
 		HashSet< String > processed	= new HashSet<>();
-
-		printStream.println( "Predecessors:" );
-		for ( Map.Entry< String, Set< String >> entry : predecessors.entrySet() )
-			printStream.println( "\t" + entry.getKey() + ": " + entry.getValue().toString() );
-
-		printStream.println( "Successors:" );
-		for ( Map.Entry< String, Set< String >> entry : successors.entrySet() )
-			printStream.println( "\t" + entry.getKey() + ": " + entry.getValue().toString() );
 
 		while ( ! fringe.isEmpty() ) {
 			String event	= fringe.pop();
@@ -86,17 +114,6 @@ public class TreeProcessor {
 				continue;
 
 			if ( successors.getOrDefault( event, new HashSet<>(  ) ).size() > 1 ) {
-				Set< String > events = successors.get( event );
-//				for ( String xEvent : new HashSet<String>( successors.get( event ) ) )
-//					events.addAll( predecessors.getOrDefault( xEvent, new HashSet<>(  ) ) );
-
-				XLog startEventsLog = XLogReader.filterByEvents( log, events );
-
-				XAttributeLiteralImpl nameAttr = ( XAttributeLiteralImpl ) startEventsLog.getAttributes( ).get( "concept:name" );
-				nameAttr.setValue( String.format( "%s Start Events", nameAttr.getValue( ) ) );
-
-//				XLogWriter.saveXesGz( startEventsLog, "output/startEvents" );
-
 				if ( divideLogIntoSublogs( event ) ) {
 					for ( Set< String > branchEvents : parallelBranches )
 						processed.addAll( branchEvents );
@@ -148,12 +165,12 @@ public class TreeProcessor {
 			printStream.println( String.format( "%s: %s", i, parallelBranches.get( i ) ) );
 
 			if ( parallelBranches.get( i ).size() > 1 ) {
-				String name	= String.format( "%s_%d", SublogNamePrefix, childBlocks.size( ) );
+				String name	= String.format( "%s_%d", SubprocessNamePrefix, childBlocks.size( ) );
 				XLog sublog	= XLogReader.filterRemoveByEvents( log, parallelBranches.get( i ), name );
 
-				childBlocks.put( name, new TreeProcessor( sublog, printStream ) );
-				childBlocks.get( name ).SublogNamePrefix	= name;
-				childBlocks.get( name ).mine();
+				childBlocks.put( name, new LogProcessor( sublog, printStream ) );
+				childBlocks.get( name ).SubprocessNamePrefix = name;
+//				childBlocks.get( name ).mine();
 
 				XAttributeLiteralImpl nameAttr = ( XAttributeLiteralImpl ) sublog.getAttributes( ).get( "concept:name" );
 				nameAttr.setValue( String.format( "%s %s", nameAttr.getValue( ), name ) );
@@ -197,7 +214,7 @@ public class TreeProcessor {
 		if ( ! ( treeRoot instanceof Block.And ) ) {
 			return null;
 		}
-		return (( Block ) treeRoot ).getChildren( ).stream( ).map( TreeProcessor:: getNodeTasks ).collect( Collectors.toCollection( ArrayList::new ) );
+		return (( Block ) treeRoot ).getChildren( ).stream( ).map( LogProcessor:: getNodeTasks ).collect( Collectors.toCollection( ArrayList::new ) );
 	}
 
 	public static Set< String > getNodeTasks( Node node ) {
@@ -323,7 +340,7 @@ public class TreeProcessor {
 	}
 
 //	Recursively iterates over Block's children, replacing childBlocks' keys with IMProcessTree
-	public static void ProcessTreeIterator( Block root, Map< String, TreeProcessor > sublogs ) {
+	public static void ProcessTreeIterator( Block root, Map< String, LogProcessor > subProcesses ) {
 		int i = 0;
 		for (Iterator< Node > nodeIterator = root.iterator(); nodeIterator.hasNext( ); i ++ ) {
 			Node node = nodeIterator.next();
@@ -333,13 +350,13 @@ public class TreeProcessor {
 			if ( nodeName.endsWith( "+complete" ))
 				nodeName	= nodeName.substring( 0, nodeName.indexOf( "+complete" ) );
 
-			if ( node instanceof Task.Manual && sublogs.containsKey( nodeName ) ) {
+			if ( node instanceof Task.Manual && subProcesses.containsKey( nodeName ) ) {
 				( ( Block ) node.getParents().toArray()[ 0 ] ).swapChildAt(
-						sublogs.get( nodeName ).toProcessTree( ).getRoot( ), i
+						subProcesses.get( nodeName ).toProcessTree( ).getRoot( ), i
 				);
 			}
 			else if ( node instanceof Block && ( ( Block ) node ).numChildren() > 0 ) {
-				ProcessTreeIterator( ( Block ) node, sublogs );
+				ProcessTreeIterator( ( Block ) node, subProcesses );
 			}
 		}
 	}

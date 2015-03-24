@@ -79,7 +79,7 @@ public class XLogReader {
 
 	public static XLog filterByEvents( XLog log, Set< String > targetEvents ) {
 		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes( ).clone( ) );
-		XLogInfo logInfo	= XLogInfoImpl.create( log, TreeProcessor.defaultXEventClassifier );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
 		XTrace filteredTrace;
 
 		for ( XTrace trace : log ) {
@@ -97,7 +97,7 @@ public class XLogReader {
 
 	public static XLog filterWithoutEvents( XLog log, Set< String > targetEvents ) {
 		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes().clone() );
-		XLogInfo logInfo	= XLogInfoImpl.create( log, TreeProcessor.defaultXEventClassifier );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
 		XTrace filteredTrace;
 
 		for ( XTrace trace : log ) {
@@ -120,7 +120,7 @@ public class XLogReader {
 
 	public static XLog filterContainingEvents( XLog log, Set< String > targetEvents ) {
 		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes().clone() );
-		XLogInfo logInfo	= XLogInfoImpl.create( log, TreeProcessor.defaultXEventClassifier );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
 		XTrace filteredTrace;
 
 		for ( XTrace trace : log ) {
@@ -161,7 +161,7 @@ public class XLogReader {
 
 	public static XLog filterRemoveByEvents( XLog log, Set< String > targetEvents, String eventNameReplacement ) {
 		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes().clone() );
-		XLogInfo logInfo	= XLogInfoImpl.create( log, TreeProcessor.defaultXEventClassifier );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
 		XTrace filteredTrace;
 
 		for ( XTrace trace : log ) {
