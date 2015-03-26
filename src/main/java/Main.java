@@ -1,5 +1,5 @@
-import ee.ut.ProcessTree2BPMNConverter;
 import ee.ut.LogProcessor;
+import ee.ut.ProcessTree2BPMNConverter;
 import ee.ut.XLogReader;
 import ee.ut.XLogWriter;
 import org.deckfour.xes.model.XLog;
@@ -11,7 +11,6 @@ import org.processmining.models.graphbased.directed.bpmn.BPMNDiagram;
 import org.processmining.plugins.bpmn.plugins.BpmnExportPlugin;
 import org.processmining.processtree.ProcessTree;
 
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Map;
 
@@ -25,7 +24,6 @@ public class Main {
 		try {
 			if ( args.length == 0 )
 				log = XLogReader.openLog( "data/L1.mxml" );
-//				log = XLogReader.openLog ( "data/provaH.xes" );
 //				log = XLogReader.openLog ( "data/s12.mxml" );
 			else
 				log = XLogReader.openLog ( args[ 0 ] );
@@ -53,7 +51,7 @@ public class Main {
 		)[ 0 ];
 		try {
 			new BpmnExportPlugin().export( logProcessor.pluginContext, bpmn, new java.io.File( outputPath + "model.bpmn" ) );
-		} catch ( IOException e ) {
+		} catch ( Exception e ) {
 			printStream.println( "Exception : " + e.getMessage( ) );
 //			e.printStackTrace( );
 		}

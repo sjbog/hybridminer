@@ -95,7 +95,25 @@ public class XLogReader {
 		return filteredLog;
 	}
 
-	public static XLog filterWithoutEvents( XLog log, Set< String > targetEvents ) {
+	public static XLog filterSkipEvents( XLog log, Set< String > targetEvents ) {
+		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes( ).clone( ) );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
+		XTrace filteredTrace;
+
+		for ( XTrace trace : log ) {
+			filteredTrace	= factory.createTrace ( ( XAttributeMap ) trace.getAttributes ().clone() );
+
+			for ( XEvent event : trace ) {
+				if ( ! targetEvents.contains( fetchName( event, logInfo ) ) )
+					filteredTrace.add( event );
+			}
+			if ( filteredTrace.size() > 0 )
+				filteredLog.add( filteredTrace );
+		}
+		return filteredLog;
+	}
+
+	public static XLog filterTracesWithoutEvents( XLog log, Set< String > targetEvents ) {
 		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes().clone() );
 		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
 		XTrace filteredTrace;
