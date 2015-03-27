@@ -40,7 +40,10 @@ public class BlockProcessor {
 	public List< Set< String >> FindParallelBranches( HashSet< String > processedEvents, HashSet< String > edgeEvents ) throws Exception {
 		XLog xLog = XLogReader.filterSkipEvents( this.log, processedEvents );
 		Block treeRoot = this.MineProcessTreeRoot( xLog );
-		Node treeRootEdgeEvents = IMProcessTree.mineProcessTree(
+		if ( treeRoot instanceof Block.Seq )
+			treeRoot = FindFirstBlock( treeRoot );
+
+		Block treeRootEdgeEvents = ( Block ) IMProcessTree.mineProcessTree(
 				XLogReader.filterByEvents( this.log, edgeEvents )
 				, this.inductiveMinerParams
 		).getRoot( );
@@ -55,8 +58,6 @@ public class BlockProcessor {
 			return eventsList;
 		}
 
-		if ( treeRoot instanceof Block.Seq )
-			treeRoot = FindFirstBlock( treeRoot );
 		this.updateFringeEvents( processedEvents, edgeEvents, GetNodeTasks( treeRoot ) );
 		return null;
 	}
@@ -93,21 +94,21 @@ public class BlockProcessor {
 
 	public Block FindFirstBlock( Node node ) throws Exception {
 		if ( ! ( node instanceof Block ) )
-			throw new Exception( "Tree root is not a Block" );
+			throw new Exception( "Tree root is not a Block\n" + node.getProcessTree().toString() );
 
 		if ( ( ( Block ) node ).getChildren( ).isEmpty( ) )
-			throw new Exception( "Tree doesn't have children" );
+			throw new Exception( "Tree doesn't have children" + node.getProcessTree().toString() );
 
 		Node firstChild = ( ( Block ) node ).getChildren( ).iterator( ).next( );
 
 		if ( ! ( firstChild instanceof Block ) )
-			throw new Exception( "First child is not a Block" );
+			throw new Exception( "First child is not a Block\n" + node.getProcessTree().toString() );
 
 		return ( Block ) firstChild;
 	}
 
 	public void updateFringeEvents( HashSet< String > processedEvents, HashSet< String > edgeEvents, List< Set< String > > eventsList ) {
-		HashSet< String > allEvents = new HashSet<>(  );
+		HashSet< String > allEvents = new HashSet< >(  );
 
 		for ( Set< String > events : eventsList )
 			allEvents.addAll( events );

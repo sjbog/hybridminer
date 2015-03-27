@@ -11,6 +11,7 @@ import org.processmining.models.graphbased.directed.bpmn.BPMNDiagram;
 import org.processmining.plugins.bpmn.plugins.BpmnExportPlugin;
 import org.processmining.processtree.ProcessTree;
 
+import java.io.File;
 import java.io.PrintStream;
 import java.util.Map;
 
@@ -24,7 +25,8 @@ public class Main {
 		try {
 			if ( args.length == 0 )
 				log = XLogReader.openLog( "data/L1.mxml" );
-//				log = XLogReader.openLog ( "data/s12.mxml" );
+//				log = XLogReader.openLog ( "data/s1_py.xes" );
+//				log = XLogReader.openLog ( "data/s2_wo_prefix_events_py.xes" );
 			else
 				log = XLogReader.openLog ( args[ 0 ] );
 
@@ -43,18 +45,22 @@ public class Main {
 		for ( Map.Entry< String, XLog > entry : logProcessor.getChildLogs().entrySet() )
 			XLogWriter.saveXesGz( entry.getValue(), outputPath + entry.getKey() );
 
-		printStream.println( "\nProcess tree:" );
-		printStream.println( logProcessor.toProcessTree() );
+		ProcessTree pt = logProcessor.toProcessTree( );
+		printStream.println( "\nProcess tree:" + pt.toString() );
+		System.out.println( "\nProcess tree:" + pt.toString() );
 
-		BPMNDiagram bpmn = ( BPMNDiagram ) new ProcessTree2BPMNConverter( ).convertToBPMN(
-				logProcessor.toProcessTree( ), true
-		)[ 0 ];
+		BPMNDiagram bpmn = ( BPMNDiagram ) new ProcessTree2BPMNConverter( ).convertToBPMN( pt, true )[ 0 ];
 		try {
-			new BpmnExportPlugin().export( logProcessor.pluginContext, bpmn, new java.io.File( outputPath + "model.bpmn" ) );
+			new BpmnExportPlugin().export(
+					logProcessor.pluginContext
+					, bpmn, new File( outputPath + "model.bpmn" )
+			);
 		} catch ( Exception e ) {
+			System.out.println( "Exception : " + e.getMessage( ) );
 			printStream.println( "Exception : " + e.getMessage( ) );
 //			e.printStackTrace( );
 		}
+		printStream.close();
 	}
 
 	@Plugin (name = "Mine process tree with Hybrid Miner", returnLabels = { "Process Tree" }, returnTypes = { ProcessTree.class }, parameterLabels = { "Log" }, userAccessible = true)

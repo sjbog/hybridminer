@@ -34,10 +34,10 @@ public class LogProcessor {
 
 	public LogProcessor( XLog log ) {
 		this.log = log;
+		this.inductiveMinerParams.setClassifier( defaultXEventClassifier );
 	}
 	public LogProcessor( XLog log, PrintStream ps ) {
-		this.log = log;
-
+		this( log );
 		if ( ps != null )
 			this.printStream = ps;
 	}
@@ -101,7 +101,7 @@ public class LogProcessor {
 				nodeName	= nodeName.substring( 0, nodeName.indexOf( "+complete" ) );
 
 			if ( node instanceof Task.Manual && subProcesses.containsKey( nodeName ) ) {
-				( ( Block ) node.getParents().toArray()[ 0 ] ).swapChildAt(
+				node.getParents().iterator().next().swapChildAt(
 						subProcesses.get( nodeName ).toProcessTree( ).getRoot( ), i
 				);
 			}

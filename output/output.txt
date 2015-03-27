@@ -3,3 +3,20 @@ Events to branches:
 Found parallel branches:
 0: [Create Questionnaire+complete, Send Questionnaire+complete, Receive Questionnaire Response+complete, Skip Questionnaire+complete]
 1: [Low Insurance Check+complete, High Insurance Check+complete, Send Notification by Phone+complete, Send Notification by Post+complete, Send Notification by e-mail+complete, Low Medical History+complete, Prepare Notification Content+complete, Contact Hospital+complete, High Medical History+complete]
+Events to branches:
+{Low Insurance Check+complete=[0], Low Medical History+complete=[1]}
+Events to branches:
+{High Insurance Check+complete=[0], Contact Hospital+complete=[1], High Medical History+complete=[2]}
+Events to branches:
+{Send Notification by Phone+complete=[0], Send Notification by Post+complete=[1], Send Notification by e-mail+complete=[2]}
+Found parallel branches:
+0: [Low Insurance Check+complete]
+1: [Low Medical History+complete]
+2: [High Insurance Check+complete]
+3: [Contact Hospital+complete]
+4: [High Medical History+complete]
+5: [Send Notification by Phone+complete]
+6: [Send Notification by Post+complete]
+7: [Send Notification by e-mail+complete]
+
+Process tree:Seq(Register+complete, And(Seq(Xor(And(Low Insurance Check+complete, Low Medical History+complete), And(High Insurance Check+complete, Contact Hospital+complete, High Medical History+complete)), Prepare Notification Content+complete, And(Xor(tau, Send Notification by Phone+complete), Xor(tau, Send Notification by Post+complete), Xor(tau, Send Notification by e-mail+complete))), Seq(Create Questionnaire+complete, Send Questionnaire+complete, Xor(Receive Questionnaire Response+complete, Skip Questionnaire+complete))), Archive+complete)

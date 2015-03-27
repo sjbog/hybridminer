@@ -97,8 +97,12 @@ public class ContextAnalysis {
 			BlockProcessor blockProcessor = new BlockProcessor( this.log, this.successors );
 			blockProcessor.printStream = printStream;
 
-//			processedEvents and edgeEvents are updated by ref
-			result = blockProcessor.FindParallelBranches( processedEvents, edgeEvents );
+			try {
+//				processedEvents and edgeEvents are updated by ref
+				result = blockProcessor.FindParallelBranches( processedEvents, edgeEvents );
+			} catch ( Exception e ) {
+				result = null;
+			}
 
 			if ( result == null || result.isEmpty( ) ) {
 //				Force further analysis
