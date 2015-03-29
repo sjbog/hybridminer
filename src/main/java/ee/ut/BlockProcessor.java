@@ -15,7 +15,7 @@ import java.util.*;
 public class BlockProcessor {
 
 	public XLog log;
-	public PrintStream printStream = System.out;
+	public PrintStream printStream;
 	public Map< String, Set< String > > successors;
 
 	public MiningParameters inductiveMinerParams;
@@ -23,6 +23,7 @@ public class BlockProcessor {
 
 	public BlockProcessor( XLog xLog, Map< String, Set< String > > successors ) {
 		this.log	= xLog;
+		this.printStream = System.out;
 		this.successors	= successors;
 		this.xEventClassifier = LogProcessor.defaultXEventClassifier;
 
@@ -48,13 +49,21 @@ public class BlockProcessor {
 				, this.inductiveMinerParams
 		).getRoot( );
 
+		printStream.println( "Edge tree:\t" + treeRootEdgeEvents.toString() );
+		printStream.println( "Whole tree:\t" + treeRoot.toString() );
+
 		if ( this.IsParallelGatewayPresent( treeRootEdgeEvents ) ) {
 
-			List< Set< String > > eventsList = ( treeRootEdgeEvents instanceof Block.And )
-					? new BranchProcessor( xLog, printStream ).ExtractParallelBranches()
-					: this.FindParallelBranches( treeRoot )
-					;
-			this.updateFringeEvents( processedEvents, edgeEvents, eventsList );
+			List< Set< String > > eventsList;
+
+			if ( treeRootEdgeEvents instanceof Block.And ) {
+				eventsList = new BranchProcessor( xLog, printStream ).ExtractParallelBranches( );
+				this.updateFringeEvents( processedEvents, edgeEvents, eventsList );
+			}
+			else {
+				eventsList = this.FindParallelBranches( treeRoot );
+				this.updateFringeEvents( processedEvents, edgeEvents, GetNodeTasks( treeRoot ) );
+			}
 			return eventsList;
 		}
 

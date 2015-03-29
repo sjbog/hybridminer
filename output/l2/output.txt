@@ -1,0 +1,27 @@
+Edge tree:	And(Xor(High Insurance Check+complete, And(Low Insurance Check+complete, Low Medical History+complete)), Create Questionnaire+complete)
+Whole tree:	And(Seq(Create Questionnaire+complete, Send Questionnaire+complete), Seq(Xor(tau, And(Low Insurance Check+complete, Low Medical History+complete)), And(Xor(tau, Receive Questionnaire Response+complete), Seq(Xor(tau, High Insurance Check+complete), Xor(tau, High Medical History+complete), Xor(tau, Contact Hospital+complete), Prepare Notification Content+complete, And(Xor(tau, Send Notification by Phone+complete), Xor(tau, Send Notification by Post+complete), Xor(tau, Send Notification by e-mail+complete))))))
+Events to branches:
+{High Insurance Check+complete=[0], Archive+complete=[0, 1], Send Notification by Phone+complete=[0], Send Notification by Post+complete=[0], Send Notification by e-mail+complete=[0], High Medical History+complete=[0], Low Insurance Check+complete=[0], Create Questionnaire+complete=[1], Send Questionnaire+complete=[1], Receive Questionnaire Response+complete=[1], Low Medical History+complete=[0], Prepare Notification Content+complete=[0], Contact Hospital+complete=[0], Skip Questionnaire+complete=[0, 1]}
+Found parallel branches:
+0: [High Insurance Check+complete, Low Insurance Check+complete, Send Notification by Phone+complete, Send Notification by Post+complete, Send Notification by e-mail+complete, Low Medical History+complete, Prepare Notification Content+complete, Contact Hospital+complete, High Medical History+complete]
+1: [Create Questionnaire+complete, Send Questionnaire+complete, Receive Questionnaire Response+complete, Skip Questionnaire+complete]
+
+Edge tree:	Xor(High Insurance Check+complete, And(Low Insurance Check+complete, Low Medical History+complete))
+Whole tree:	Xor(And(Low Insurance Check+complete, Low Medical History+complete), Seq(High Insurance Check+complete, Xor(tau, High Medical History+complete), Xor(tau, Contact Hospital+complete)))
+Events to branches:
+{Low Insurance Check+complete=[0], Low Medical History+complete=[1]}
+Edge tree:	And(Xor(tau, Send Notification by Phone+complete), Xor(tau, Send Notification by Post+complete), Xor(tau, Send Notification by e-mail+complete))
+Whole tree:	And(Xor(tau, Send Notification by Phone+complete), Xor(tau, Send Notification by Post+complete), Xor(tau, Send Notification by e-mail+complete))
+Events to branches:
+{Send Notification by Phone+complete=[0], Send Notification by Post+complete=[1], Send Notification by e-mail+complete=[2]}
+Found parallel branches:
+0: [Low Insurance Check+complete]
+1: [Low Medical History+complete]
+2: [Send Notification by Phone+complete]
+3: [Send Notification by Post+complete]
+4: [Send Notification by e-mail+complete]
+
+Edge tree:	Xor(Receive Questionnaire Response+complete, Skip Questionnaire+complete)
+Whole tree:	Xor(Receive Questionnaire Response+complete, Skip Questionnaire+complete)
+
+Process tree:Seq(Register+complete, And(Seq(Create Questionnaire+complete, Send Questionnaire+complete, Xor(Receive Questionnaire Response+complete, Skip Questionnaire+complete)), Seq(Xor(And(Low Insurance Check+complete, Low Medical History+complete), Seq(High Insurance Check+complete, Xor(tau, High Medical History+complete), Xor(tau, Contact Hospital+complete))), Prepare Notification Content+complete, And(Xor(tau, Send Notification by Phone+complete), Xor(tau, Send Notification by Post+complete), Xor(tau, Send Notification by e-mail+complete)))), Archive+complete)

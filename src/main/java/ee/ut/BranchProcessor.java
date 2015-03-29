@@ -16,7 +16,7 @@ import java.util.*;
 
 public class BranchProcessor {
 	public XLog log;
-	public PrintStream printStream = System.out;
+	public PrintStream printStream;
 	public PluginContext pluginContext;
 	public XEventClassifier xEventClassifier;
 	public MiningParameters inductiveMinerParams;
@@ -27,6 +27,7 @@ public class BranchProcessor {
 
 	public BranchProcessor( XLog xLog ) {
 		this.log = xLog;
+		this.printStream = System.out;
 		this.pluginContext = new CLIPluginContext( new CLIContext( ), "Hybrid Miner" );
 		this.xEventClassifier = LogProcessor.defaultXEventClassifier;
 
@@ -54,6 +55,19 @@ public class BranchProcessor {
 						), this.inductiveMinerParams
 				).getRoot( )
 		);
+
+//		Merge into 1 branch & mark Declarative
+		if ( this.parallelBranches.size() > LogProcessor.DeclarativeBranchesThreshold ) {
+			Set< String > result = new HashSet<>(  );
+			result.add( LogProcessor.DeclarativePseudoEvent );
+
+			for ( Set< String > events : this.parallelBranches )
+				result.addAll( events );
+
+			this.parallelBranches.clear();
+			this.parallelBranches.add( result );
+		}
+
 		return this.ExtendAllBranchEvents( this.parallelBranches );
 	}
 

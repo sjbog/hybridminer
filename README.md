@@ -17,8 +17,9 @@ To build a jar, include to project dependencies:
  log completeness (all edge cases are present in the log at least once)
  ambiguously assigned activities to an incorrect branch
  noise-free
- event transition isn't accessible in ProcessTree (only works with complete events) 
 
+### TODO
+ process doesn't exit properly - hangs forever ( safe to kill after Process tree was printed )
 
 
 ### License

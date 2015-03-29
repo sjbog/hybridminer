@@ -17,7 +17,7 @@ public class ContextAnalysis {
 
 	public XLog log;
 	public XLogInfo logInfo;
-	public PrintStream printStream = System.out;
+	public PrintStream printStream;
 
 	public Map< String, Set< String > > predecessors, successors;
 	public String traceStartPseudoEvent = "__start__";
@@ -28,6 +28,7 @@ public class ContextAnalysis {
 
 	public ContextAnalysis( XLog xLog ) {
 		this.log = xLog;
+		this.printStream = System.out;
 	}
 	public ContextAnalysis( XLog xLog, PrintStream ps ) {
 		this.log = xLog;
@@ -80,6 +81,9 @@ public class ContextAnalysis {
 //		100 => counter to protect against unlimited loops
 		for ( int i = 0; ! edgeEvents.isEmpty() && i < 100; i++ ) {
 
+			if ( edgeEvents.size( ) > 1 )
+				edgeEvents.remove( traceEndPseudoEvent );
+
 //			Straight Sequence - only 1 immediate successor
 			if ( edgeEvents.size( ) == 1 ) {
 				String event = edgeEvents.iterator( ).next( );
@@ -106,7 +110,7 @@ public class ContextAnalysis {
 
 			if ( result == null || result.isEmpty( ) ) {
 //				Force further analysis
-				blockProcessor.updateFringeEvents( processedEvents, edgeEvents, edgeEvents );
+				blockProcessor.updateFringeEvents( processedEvents, edgeEvents, new HashSet< >( edgeEvents ) );
 				continue;
 			}
 

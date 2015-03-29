@@ -24,7 +24,7 @@ public class Main {
 
 		try {
 			if ( args.length == 0 )
-				log = XLogReader.openLog( "data/L1.mxml" );
+				log = XLogReader.openLog( "data/l1.mxml" );
 //				log = XLogReader.openLog ( "data/s1_py.xes" );
 //				log = XLogReader.openLog ( "data/s2_wo_prefix_events_py.xes" );
 			else
@@ -47,9 +47,9 @@ public class Main {
 
 		ProcessTree pt = logProcessor.toProcessTree( );
 		printStream.println( "\nProcess tree:" + pt.toString() );
-		System.out.println( "\nProcess tree:" + pt.toString() );
+		System.out.println( "\nProcess tree:" + pt.toString( ) );
 
-		BPMNDiagram bpmn = ( BPMNDiagram ) new ProcessTree2BPMNConverter( ).convertToBPMN( pt, true )[ 0 ];
+		BPMNDiagram bpmn = ( BPMNDiagram ) new ProcessTree2BPMNConverter( ).convertToBPMN( pt, false )[ 0 ];
 		try {
 			new BpmnExportPlugin().export(
 					logProcessor.pluginContext
@@ -60,6 +60,8 @@ public class Main {
 			printStream.println( "Exception : " + e.getMessage( ) );
 //			e.printStackTrace( );
 		}
+		System.out.flush();
+		printStream.flush();
 		printStream.close();
 	}
 
@@ -71,5 +73,15 @@ public class Main {
 		logProcessor.pluginContext	= context;
 		logProcessor.mine( );
 		return logProcessor.toProcessTree( );
+	}
+
+	@Plugin (name = "Mine BPMN with Hybrid Miner", returnLabels = { "Process Tree" }, returnTypes = { BPMNDiagram.class }, parameterLabels = { "Log" }, userAccessible = true)
+	@UITopiaVariant (affiliation = UITopiaVariant.EHV, author = "Bogdan S", email = "bogdan89@ut.ee")
+	@PluginVariant (variantLabel = "Mine a BPMN, dialog", requiredParameterLabels = { 0 })
+	public BPMNDiagram mineGuiBPMN(PluginContext context, XLog log) {
+		LogProcessor logProcessor = new LogProcessor( XLogReader.deepcopy( log ), System.out );
+		logProcessor.pluginContext	= context;
+		logProcessor.mine( );
+		return ( BPMNDiagram ) new ProcessTree2BPMNConverter( ).convertToBPMN( logProcessor.toProcessTree( ), false )[ 0 ];
 	}
 }

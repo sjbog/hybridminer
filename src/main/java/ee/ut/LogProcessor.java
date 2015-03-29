@@ -21,7 +21,7 @@ import java.io.PrintStream;
 import java.util.*;
 
 public class LogProcessor {
-	public PrintStream printStream = System.out;
+	public PrintStream printStream;
 	public PluginContext pluginContext = new CLIPluginContext( new CLIContext( ), "Hybrid Miner" );;
 
 //	Inductive Miner - incompleteness
@@ -29,11 +29,15 @@ public class LogProcessor {
 	public static XEventClassifier defaultXEventClassifier = new XEventAndClassifier( new XEventNameClassifier(), new XEventLifeTransClassifier() );
 
 	public XLog log;
-	public String SubprocessNamePrefix = "Block";
+	public String SubprocessNamePrefix = "Block", DeclarativeSubprocessNamePrefix = "Declarative_" ;
+	public static String DeclarativePseudoEvent = "__declarative_pseudo_event__";
+	public static int DeclarativeBranchesThreshold = 3;
+
 	public Map< String, LogProcessor > childBlocks = new HashMap<>(  );
 
 	public LogProcessor( XLog log ) {
 		this.log = log;
+		this.printStream = System.out;
 		this.inductiveMinerParams.setClassifier( defaultXEventClassifier );
 	}
 	public LogProcessor( XLog log, PrintStream ps ) {
@@ -63,6 +67,8 @@ public class LogProcessor {
 		if ( parallelBranches == null || parallelBranches.isEmpty( ) )
 			return;
 
+		LinkedList< String > childrenToMine = new LinkedList<>(  );
+
 		printStream.println( "Found parallel branches:" );
 
 		for ( int i = 0, size = parallelBranches.size( ) ; i < size ; i++ ) {
@@ -70,16 +76,27 @@ public class LogProcessor {
 
 			if ( parallelBranches.get( i ).size() > 1 ) {
 				String name	= String.format( "%s_%d", SubprocessNamePrefix, childBlocks.size( ) );
+				boolean declarativeBlock = parallelBranches.get( i ).contains( DeclarativePseudoEvent );
+
+				if ( declarativeBlock )
+					name = DeclarativeSubprocessNamePrefix + name;
+				else
+					childrenToMine.add( name );
+
 				XLog sublog	= XLogReader.filterRemoveByEvents( log, parallelBranches.get( i ), name );
 
 				childBlocks.put( name, new LogProcessor( sublog, printStream ) );
 				childBlocks.get( name ).SubprocessNamePrefix = name;
-				childBlocks.get( name ).mine();
 
 				XAttributeLiteralImpl nameAttr = ( XAttributeLiteralImpl ) sublog.getAttributes( ).getOrDefault( "concept:name", new XAttributeLiteralImpl( "concept:name", "" ) );
 				nameAttr.setValue( String.format( "%s %s", nameAttr.getValue( ), name ) );
 			}
 		}
+		printStream.println();
+
+//		Purpose: distinct separation of parent & child logging
+		for ( String name : childrenToMine )
+			childBlocks.get( name ).mine( );
 	}
 
 	public ProcessTree toProcessTree() {

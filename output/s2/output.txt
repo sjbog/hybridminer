@@ -1,0 +1,37 @@
+Edge tree:	And(A1+complete, B1+complete)
+Whole tree:	XorLoop(Seq(Xor(tau, A4+complete), Xor(tau, B1+complete), Xor(tau, And(B2+complete, B3+complete)), Xor(tau, A1+complete)), Xor(A3+complete, A2+complete), tau)
+Events to branches:
+{C2+complete=[0, 1], A3+complete=[0], B2+complete=[1], D1+complete=[0, 1], B3+complete=[1], D2+complete=[0, 1], E1+complete=[0, 1], A4+complete=[0], D3+complete=[0, 1], C3+complete=[0, 1], A1+complete=[0], E2+complete=[0, 1], C1+complete=[0, 1], END+complete=[0, 1], B1+complete=[1], A2+complete=[0], E3+complete=[0, 1]}
+Edge tree:	And(D1+complete, C1+complete, E1+complete)
+Whole tree:	And(D1+complete, E2+complete, Xor(D3+complete, D2+complete), Seq(C1+complete, C3+complete), C2+complete, Seq(E1+complete, E3+complete))
+Events to branches:
+{D3+complete=[0], C2+complete=[1], C3+complete=[1], D1+complete=[0], E2+complete=[2], C1+complete=[1], END+complete=[0, 1, 2], D2+complete=[0], E1+complete=[2], E3+complete=[2]}
+Found parallel branches:
+0: [A4+complete, A3+complete, A1+complete, A2+complete]
+1: [B2+complete, B3+complete, B1+complete]
+2: [D3+complete, D1+complete, D2+complete]
+3: [C2+complete, C3+complete, C1+complete]
+4: [E2+complete, E1+complete, E3+complete]
+
+Edge tree:	Xor(A3+complete, A2+complete)
+Whole tree:	Xor(A3+complete, A2+complete)
+Edge tree:	And(B2+complete, B3+complete)
+Whole tree:	And(B2+complete, B3+complete)
+Events to branches:
+{B2+complete=[0], B3+complete=[1]}
+Found parallel branches:
+0: [B2+complete]
+1: [B3+complete]
+
+Edge tree:	Xor(D3+complete, D2+complete)
+Whole tree:	Xor(D3+complete, D2+complete)
+Edge tree:	And(E2+complete, E3+complete)
+Whole tree:	And(E2+complete, E3+complete)
+Events to branches:
+{E2+complete=[0], E3+complete=[1]}
+Found parallel branches:
+0: [E2+complete]
+1: [E3+complete]
+
+
+Process tree:Seq(And(Seq(B1+complete, And(B2+complete, B3+complete)), Seq(A1+complete, Xor(A3+complete, A2+complete), A4+complete)), And(Seq(C1+complete, C2+complete, C3+complete), Seq(D1+complete, Xor(D3+complete, D2+complete)), Seq(E1+complete, And(E2+complete, E3+complete))), END+complete)
