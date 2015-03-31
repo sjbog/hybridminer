@@ -34,6 +34,7 @@ public class BranchProcessor {
 		//	Inductive Miner - incompleteness
 		this.inductiveMinerParams = new MiningParametersIMin( );
 		this.inductiveMinerParams.setClassifier( this.xEventClassifier );
+		this.inductiveMinerParams.setUseMultithreading( false );
 	}
 
 	public BranchProcessor( XLog xLog, PrintStream ps ) {
@@ -143,8 +144,8 @@ public class BranchProcessor {
 				continue;
 
 			Set< Integer >predecessorBranches	= new HashSet<>(  );
-			for ( String predecessor : this.contextAnalysis.predecessors.getOrDefault( event, new HashSet<>(  ) ))
-				predecessorBranches.addAll( eventToBranch.getOrDefault( predecessor, new HashSet<>(  ) ) );
+			for ( String predecessor : this.contextAnalysis.predecessors.getOrDefault( event, new HashSet<String>(  ) ))
+				predecessorBranches.addAll( eventToBranch.getOrDefault( predecessor, new HashSet< Integer>(   ) ) );
 
 			if ( predecessorBranches.size() == 1 )
 				eventToBranch.put( event, predecessorBranches );
@@ -160,7 +161,7 @@ public class BranchProcessor {
 
 		while ( ! fringe.isEmpty( ) ) {
 			String event = fringe.pop( );
-			Set< String > predecessorEvents = predecessors.getOrDefault( event, new HashSet<>( ) );
+			Set< String > predecessorEvents = predecessors.getOrDefault( event, new HashSet< String >( ) );
 
 			processedEvents.add( event );
 			predecessorEvents.removeAll( processedEvents );

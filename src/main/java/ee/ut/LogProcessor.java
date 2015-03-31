@@ -39,6 +39,7 @@ public class LogProcessor {
 		this.log = log;
 		this.printStream = System.out;
 		this.inductiveMinerParams.setClassifier( defaultXEventClassifier );
+		this.inductiveMinerParams.setUseMultithreading( false );
 	}
 	public LogProcessor( XLog log, PrintStream ps ) {
 		this( log );

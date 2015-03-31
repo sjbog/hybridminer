@@ -30,6 +30,7 @@ public class BlockProcessor {
 		//	Inductive Miner - incompleteness
 		this.inductiveMinerParams = new MiningParametersIMin( );
 		this.inductiveMinerParams.setClassifier( this.xEventClassifier );
+		this.inductiveMinerParams.setUseMultithreading( false );
 	}
 
 	/**
@@ -52,23 +53,18 @@ public class BlockProcessor {
 		printStream.println( "Edge tree:\t" + treeRootEdgeEvents.toString() );
 		printStream.println( "Whole tree:\t" + treeRoot.toString() );
 
-		if ( this.IsParallelGatewayPresent( treeRootEdgeEvents ) ) {
+// 		TODO: check for loops
+		List< Set< String > > eventsList;
 
-			List< Set< String > > eventsList;
-
-			if ( treeRootEdgeEvents instanceof Block.And ) {
-				eventsList = new BranchProcessor( xLog, printStream ).ExtractParallelBranches( );
-				this.updateFringeEvents( processedEvents, edgeEvents, eventsList );
-			}
-			else {
-				eventsList = this.FindParallelBranches( treeRoot );
-				this.updateFringeEvents( processedEvents, edgeEvents, GetNodeTasks( treeRoot ) );
-			}
-			return eventsList;
+		if ( treeRootEdgeEvents instanceof Block.And ) {
+			eventsList = new BranchProcessor( xLog, printStream ).ExtractParallelBranches( );
+			this.updateFringeEvents( processedEvents, edgeEvents, eventsList );
 		}
-
-		this.updateFringeEvents( processedEvents, edgeEvents, GetNodeTasks( treeRoot ) );
-		return null;
+		else {
+			eventsList = this.FindParallelBranches( treeRoot );
+			this.updateFringeEvents( processedEvents, edgeEvents, GetNodeTasks( treeRoot ) );
+		}
+		return eventsList;
 	}
 
 
@@ -116,7 +112,7 @@ public class BlockProcessor {
 		return ( Block ) firstChild;
 	}
 
-	public void updateFringeEvents( HashSet< String > processedEvents, HashSet< String > edgeEvents, List< Set< String > > eventsList ) {
+	public void updateFringeEvents( Set< String > processedEvents, HashSet< String > edgeEvents, List< Set< String > > eventsList ) {
 		HashSet< String > allEvents = new HashSet< >(  );
 
 		for ( Set< String > events : eventsList )
@@ -125,7 +121,7 @@ public class BlockProcessor {
 		this.updateFringeEvents( processedEvents, edgeEvents, allEvents );
 	}
 
-	public void updateFringeEvents( HashSet< String > processedEvents, HashSet< String > edgeEvents, Set< String > events ) {
+	public void updateFringeEvents( Set< String > processedEvents, HashSet< String > edgeEvents, Set< String > events ) {
 		processedEvents.addAll( events );
 //			Add BLock successors
 		edgeEvents.addAll( GetSuccessors( events, successors ) );

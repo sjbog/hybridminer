@@ -41,8 +41,8 @@ public class ContextAnalysis {
 		this.predecessors = new HashMap<>( );
 		this.logInfo = XLogInfoImpl.create( log, xEventClassifier );
 
-		this.successors.put( traceStartPseudoEvent, new HashSet<>( ) );
-		this.predecessors.put( traceEndPseudoEvent, new HashSet<>( ) );
+		this.successors.put( traceStartPseudoEvent, new HashSet< String >( ) );
+		this.predecessors.put( traceEndPseudoEvent, new HashSet< String >( ) );
 
 		for ( XTrace trace : log ) {
 			if ( trace.size( ) < 1 )
@@ -54,15 +54,15 @@ public class ContextAnalysis {
 				prevEvent = currEvent;
 				currEvent = fetchName( trace.get( i ) );
 
-				successors.putIfAbsent( prevEvent, new HashSet<>( ) );
+				successors.putIfAbsent( prevEvent, new HashSet< String >( ) );
 				successors.get( prevEvent ).add( currEvent );
 
-				predecessors.putIfAbsent( currEvent, new HashSet<>( ) );
+				predecessors.putIfAbsent( currEvent, new HashSet< String >( ) );
 				predecessors.get( currEvent ).add( prevEvent );
 			}
 			predecessors.get( traceEndPseudoEvent ).add( currEvent );
 
-			successors.putIfAbsent( currEvent, new HashSet<>( ) );
+			successors.putIfAbsent( currEvent, new HashSet< String >( ) );
 			successors.get( currEvent ).add( traceEndPseudoEvent );
 		}
 	}
