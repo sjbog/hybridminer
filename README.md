@@ -18,9 +18,6 @@ To build a jar, include to project dependencies:
  ambiguously assigned activities to an incorrect branch
  noise-free
 
-### TODO
- process doesn't exit properly - hangs forever ( safe to kill after Process tree was printed )
-
 
 ### License
 Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
