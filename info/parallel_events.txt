@@ -28,3 +28,4 @@ Branch 1:						A1	A2	A3
 Branch 2:		B1	B2	B3	B4
 
 We know that B4 for sure belongs to a parallel branch ( from Trace #2 ), thus A3 is also parallel event (A3 is predecessor of B4 from Trace #1). Applying chaining (recursive iteration) we can say that A2 is parallel event, because A2 is a predecessor of A3.
+

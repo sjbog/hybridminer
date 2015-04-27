@@ -17,6 +17,7 @@ import org.deckfour.xes.model.XTrace;
 
 import java.io.File;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class XLogReader {
 	public static XFactory factory = XFactoryRegistry.instance( ).currentDefault( );
@@ -95,6 +96,24 @@ public class XLogReader {
 		return filteredLog;
 	}
 
+	public static XLog filterByEvents( XLog log, String eventNamePrefix ) {
+		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes( ).clone( ) );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
+		XTrace filteredTrace;
+
+		for ( XTrace trace : log ) {
+			filteredTrace	= factory.createTrace ( ( XAttributeMap ) trace.getAttributes ().clone() );
+
+			for ( XEvent event : trace ) {
+				if ( fetchName( event, logInfo ).startsWith( eventNamePrefix ) )
+					filteredTrace.add( event );
+			}
+			if ( filteredTrace.size() > 0 )
+				filteredLog.add( filteredTrace );
+		}
+		return filteredLog;
+	}
+
 	public static XLog filterSkipEvents( XLog log, Set< String > targetEvents ) {
 		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes( ).clone( ) );
 		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
@@ -157,7 +176,7 @@ public class XLogReader {
 	}
 
 	public static XLog deepcopy( XLog log ) {
-		XLog logCopy	= factory.createLog(  );
+		XLog logCopy	= factory.createLog( );
 		logCopy.setAttributes( log.getAttributes() );
 		XTrace traceCopy;
 
@@ -207,6 +226,92 @@ public class XLogReader {
 				for ( int i : indicesToRemove )
 					trace.remove( i );
 			}
+		}
+		return filteredLog;
+	}
+
+	public static XLog logWithoutRepeatEvents( XLog log, String eventNamePrefix, String loopPlaceholderName ) {
+		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes( ).clone( ) );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
+		XTrace filteredTrace;
+
+		for ( XTrace trace : log ) {
+			filteredTrace	= factory.createTrace ( ( XAttributeMap ) trace.getAttributes ().clone() );
+			HashSet< String > eventsToRemove = new HashSet<>(  );
+			boolean isPlaceholderUsed = false;
+
+			for ( int i = 0, traceSize = trace.size( ) ; i < traceSize ; i++ ) {
+				XEvent event = trace.get( i );
+				String eventName = fetchName( event, logInfo );
+
+				if ( eventName.startsWith( eventNamePrefix ) ) {
+					if ( eventsToRemove.contains( eventName ) ) {
+						if ( isPlaceholderUsed )
+							continue;
+						event = ( XEvent ) event.clone( );
+						XExtendedEvent.wrap( event ).setName( loopPlaceholderName );
+						XExtendedEvent.wrap( event ).setTransition( "complete" );
+						isPlaceholderUsed = true;
+					}
+					else
+						eventsToRemove.add( eventName );
+				}
+				filteredTrace.add( event );
+			}
+			if ( filteredTrace.size() > 0 )
+				filteredLog.add( filteredTrace );
+		}
+		return filteredLog;
+	}
+
+	public static void findSameTimestampEvents( XLog log ) {
+		Map< List< String >, Long > result =
+			log.stream( ).flatMap(
+				trace ->
+						trace.stream( )
+								.collect( Collectors.groupingBy( e -> XExtendedEvent.wrap( e ).getTimestamp( ) ) )
+								.entrySet( ).stream( )
+								.filter( e -> e.getValue( ).size( ) > 1 )
+								.map(
+										eventList -> eventList.getValue( )
+												.stream( )
+												.map( e -> XExtendedEvent.wrap( e ).getName( ) )
+												.collect( Collectors.toList( ) )
+								)
+//							.collect( Collectors.toList( ) )
+		).collect(
+				Collectors.groupingBy( x -> x, Collectors.counting( ) )
+		);
+
+		result.entrySet().forEach( es ->
+				System.out.println( String.format( "%s\t%s", es.getValue(), es.getKey( ) ) )
+		);
+	}
+
+	public static XLog fixOLogTimingOrder( XLog log ) {
+//		Collectors.groupingBy( ( i, e ) ->  )
+		XLog filteredLog	= factory.createLog( ( XAttributeMap ) log.getAttributes( ).clone( ) );
+		XLogInfo logInfo	= XLogInfoImpl.create( log, LogProcessor.defaultXEventClassifier );
+		XTrace filteredTrace;
+
+		for ( XTrace trace : log ) {
+			filteredTrace	= factory.createTrace ( ( XAttributeMap ) trace.getAttributes ().clone() );
+			XEvent prevEvent = null;
+
+			for ( int i = 0, traceSize = trace.size( ) ; i < traceSize ; i++ ) {
+				XEvent event = trace.get( i );
+
+				if ( fetchName( event, logInfo ).startsWith( "O_CANCELLED" ) &&
+						fetchName( prevEvent, logInfo ).startsWith( "O_SELECTED" ) ) {
+					filteredTrace.add( i-1, event );
+				}
+				else
+					filteredTrace.add( event );
+
+				prevEvent	= event;
+			}
+			if ( filteredTrace.size() > 0 )
+				filteredLog.add( filteredTrace );
 		}
 		return filteredLog;
 	}
